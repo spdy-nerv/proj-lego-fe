@@ -52,6 +52,12 @@ var APIS = {
   GET_MY_SIGNUP_LIST: '/activity/getMySignUpList',
   GET_EVENT_POSTER: '/activity/getEventPoster',
   GET_EVENT_QRCODE: '/activity/getEventQrCode',
+  
+  GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
+  GET_ALL_REGULARCHAIN:  '/store/getAllRegularChain',//获取所有专卖店列表
+  GET_STORE_DETAIL:      '/sotre/getStoreDetail',//获取店铺详情
+  SIGNIN_STORE:          '/store/signinStore',//店铺签到
+  GET_STORE_QRCODE:      '/store/getStoreQrCode',//获取店铺小程序码
 
   TOP_COLUMNS: '/cms/viewOption/topColumns',
   VIEWDATA_POST: '/cms/viewData/post/${id}',
