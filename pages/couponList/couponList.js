@@ -14,7 +14,6 @@ Page({
         timestamp: 142349304,                   // 由服务端生成的时间戳
         signature: 'asdasdasd213edwadf'         // 卡券签名
       },
-      ...
 		]
   },
 
