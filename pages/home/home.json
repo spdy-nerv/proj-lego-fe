@@ -1,1 +1,4 @@
-{}
+{ "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "LEGO乐高玩具",
+    "navigationBarTextStyle":"black"}

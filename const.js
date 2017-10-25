@@ -37,7 +37,7 @@ var APIS = {
   GET_NAV_SPOT_DETAIL: '/nav/spot/${id}',
 
   LOGIN: '/activity/login',
-
+  GET_SLIDER_LIST:       '/home/getSliderList', //获取首页轮播列表
   GET_EVENT_TYPE_LIST: '/activity/eventType',
   GET_EVENTS_LIST_BY_MONTH: '/activity/getEventListByMonth',
   GET_EVENT_BASE: '/activity/getEventBase',
