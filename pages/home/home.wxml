@@ -1,41 +1,39 @@
 <!--pages/home/home.wxml-->
 <view class="page">
-<view class="banner-container"> 
-    <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{pictureUrl}}" wx:key="unique">
-      <swiper-item>
-        <navigator url='{{navigateUrl}}'>
-        <image src="{{item}}" mode='aspectFill'/>
-        </navigator>
-      </swiper-item>
-    </block>
-  </swiper>
-</view>
-
-<view><image class="homeTopLogo" src='../../images/homeTopLogo.png'/></view>
-<view class="homeBg">
-    <view class="content">
-        <view class="reserve">
-            <navigator><image src='../../images/reserve.png'/></navigator>
-          </view>
-          <view class="giftCard" bindtap='openProgram'>
-            <image src='../../images/giftCard.png'/>
-          </view>
-    </view>
-
-  <view class="footer">
-    <view class="bottomNav">
-        <navigator><view class="bottomLeft">
-        <image src='../../images/homeFootLeft.png'/>
-        </view></navigator>
-        <navigator><view class="bottomRight">
-        <image src='../../images/personCenter.png'/>  
-        </view></navigator>
-    </view>
+  <view class="banner-container">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{pictureUrl}}" wx:key="unique">
+        <swiper-item>
+          <navigator url='{{navigateUrl}}'>
+            <image src="{{item}}" mode='aspectFill' />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 
+  <view>
+    <image class="homeTopLogo" src='../../images/homeTopLogo.png' />
+  </view>
+
+<view class="content">
+    <view class="reserve">
+        <navigator>
+          <image src='{{reserveImg}}'/>
+        </navigator>
+      </view>
+      
+      <view class="gift" bindtap='openProgram'>
+        <image src='{{giftImg}}'/>
+      </view>
 </view>
+  <view class="footer">
+      <navigator>
+        <view class="bottomLeft">寻找乐高</view>
+      </navigator>
 
-
+      <navigator>
+        <view class="bottomRight">个人中心</view>
+      </navigator>
+  </view>
 </view>

@@ -1,21 +1,22 @@
 /* pages/home/home.wxss */
+
 .img{
     width: 100%;
     height:100%
 }
 swiper{
-    height: 515rpx;
+    height: 440rpx;
 }
 .banner-container{
     width: 100%;
-    height: 515rpx;
-    margin-top: 75rpx;
+    height: 440rpx;
+    margin-top: 42rpx;
     background-color: #666;
     border-bottom: 5rpx solid #fff;
   }
   .banner-container image{
     width: 100%;
-    height: 515rpx;
+    height: 440rpx;
   }
   .homeTopLogo{
       width: 97rpx;
@@ -24,41 +25,33 @@ swiper{
       top:0rpx;
       left:30rpx;
       border-radius: 8rpx;
-      box-shadow: 6rpx 6rpx 4rpx #666;
+      box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(0,0,0,.5);
   }
-  .homeBg{
-      width: 100%;
-      background: url(data:image/png;base64,R0lGODlhJAAkANUAAMzMzPb39+Xm5tLS0vDx8eHh4ezt7fn5+dnZ2fPz8+rr6/v7+9fX19vb2+Tl5c/Pz/T19fHy8tXV1efo6O/v7/f4+OLj4/z9/evs7Nnb2/X19e3v7/Hx8d3d3dPT0/f39+Xl5ePj4+np6evr6////+fn5////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEHACYALAAAAAAkACQAAAa+wIBwSCwaj8ikcslsOp/QqHRKpW4oWGyiWoxQNJfLYXxIUCLcAKGyqCQJVcJiwYRLKRd3kyLlHJ4jURsXUQVQFH9QAnxOHFIYDU9bURgPk0sGdFIAIU5olAAdToxQGAAIo1ITp04bUggAkU6BTwoAABZPAhBPErd2TgW8TA23qFAJCJ9IEbAAD6RPIg8W0UIUDg+3uFQT2gwFIOLO24ZVBr7b6gADE2lCIQza2wwWl+9CIvr4/P3+/wADCiQSBAA7) repeat;
-      height: 100%;
-      padding: 30rpx 0;
-      box-sizing: border-box;
-      background-size:36rpx 36rpx;
-    }
-    .homeBg .reserve image{ 
-        width: 350rpx;
-        height: 380rpx;
-    }
-    .homeBg .giftCard image{
-        width: 350rpx;
-        height: 380rpx;
-    }
-    .homeBg .content{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .homeBg .footer{
-        margin-top:15rpx;
-      
-    }
-    .homeBg .footer .bottomNav image{
-        width: 348rpx;
-        height: 130rpx;
-    }
-    .homeBg .footer .bottomNav{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
+  .reserve image{
+      width: 688rpx;
+      height: 224rpx;
+      margin-top: 45rpx;
+     
+  }
+  .gift image{
+    width: 688rpx;
+    height: 224rpx;
+    margin-top: 45rpx;
+  }
+  .reserve,.gift{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+  }
+  .footer{
+      width: 750rpx;
+      height: 93rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      background-color: #F7F7F9;
+      margin-top:77rpx;
+      align-items: center;
+      font-family: hyt4gi;
+      border-top:1rpx solid #e0e0e0;
+  }

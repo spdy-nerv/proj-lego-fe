@@ -1,10 +1,9 @@
 // pages/home/home.js
-
+const { APIS } = require('../../const');
+const { request } = require('../../libs/request');
+const util = require('../../utils/util');
+const user = require('../../libs/user');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     pictureUrl: [
       '../../images/ceshi.png'
@@ -13,31 +12,40 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 500,
-    navigateUrl: ''
+    navigateUrl: '',
+    reserveImg:'../../images/reserve.png',
+    giftImg:'../../images/gift.png',
+    list:''
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    this.getSliderList();
   },
-  onPullDownRefresh: function () {
+  getSliderList: () => {
+    request({
+      url: APIS.GET_SLIDER_LIST,
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      data: {},
+      method: 'POST',
+      realSuccess: (res) => {
+        console.log(res.data);
+        this.setData({
+          list:res.data.list
+        })
+      }
+    }, true, this)
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-
   },
+  //跳转小程序
   openProgram: () => {
+    wx.showModal({
+      title: '精彩好礼',
+      showCancel: false,
+      content: '即将上线，敬请期待！',
+    })
     wx.navigateToMiniProgram({
       appId: '',
       path: 'pages/index/index?id=123',
