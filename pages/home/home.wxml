@@ -18,7 +18,7 @@
 
 <view class="content">
     <view class="reserve">
-        <navigator>
+        <navigator url='../productDetail/productDetail'>
           <image src='{{reserveImg}}'/>
         </navigator>
       </view>
@@ -28,11 +28,11 @@
       </view>
 </view>
   <view class="footer">
-      <navigator>
+      <navigator url='../storeList/storeList'>
         <view class="bottomLeft">寻找乐高</view>
       </navigator>
 
-      <navigator>
+      <navigator url='../userCenter/userCenter'>
         <view class="bottomRight">个人中心</view>
       </navigator>
   </view>
