@@ -42,9 +42,9 @@ Page({
   //跳转小程序
   openProgram: () => {
     wx.showModal({
-      title: '精彩好礼',
+      title: '精选好礼',
       showCancel: false,
-      content: '即将上线，敬请期待！',
+      content: '敬请期待！',
     })
     wx.navigateToMiniProgram({
       appId: '',

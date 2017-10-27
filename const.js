@@ -38,6 +38,8 @@ var APIS = {
 
   LOGIN: '/activity/login',
   GET_SLIDER_LIST:       '/home/getSliderList', //获取首页轮播列表
+  GET_ORDER_LIST:        'order/getOrderList', //获取历史购买商品的订单列表 
+  
   GET_EVENT_TYPE_LIST: '/activity/eventType',
   GET_EVENTS_LIST_BY_MONTH: '/activity/getEventListByMonth',
   GET_EVENT_BASE: '/activity/getEventBase',

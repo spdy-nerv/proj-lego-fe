@@ -1,5 +1,9 @@
 /* pages/home/home.wxss */
-
+.page{
+    padding-top: 42rpx;
+    box-sizing: border-box;
+    position: relative;
+}
 .img{
     width: 100%;
     height:100%
@@ -10,7 +14,6 @@ swiper{
 .banner-container{
     width: 100%;
     height: 440rpx;
-    margin-top: 42rpx;
     background-color: #666;
     border-bottom: 5rpx solid #fff;
   }
@@ -44,13 +47,13 @@ swiper{
       justify-content: center;
   }
   .footer{
-      width: 750rpx;
-      height: 93rpx;
+      width: 100%rpx;
+     line-height: 93rpx;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       background-color: #F7F7F9;
-      margin-top:77rpx;
+      margin-top:60rpx;
       align-items: center;
       font-family: hyt4gi;
       border-top:1rpx solid #e0e0e0;

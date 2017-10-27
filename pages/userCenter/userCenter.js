@@ -1,9 +1,9 @@
 // pages/userCenter/userCenter.js
+const { APIS } = require('../../const');
+const { request } = require('../../libs/request');
+const util = require('../../utils/util');
+const user = require('../../libs/user');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     star: 0,
     notice: {
@@ -13,62 +13,32 @@ Page({
     revieceCardList: [],
     myCouponList: [],
     cardOrderList: [],
-    productOrderList: []
+    productOrderList: [],
+    personCenterBg:'../../images/personCenterBg.png',
+    headImg:'../../images/homeTopLogo.png',
+    name:'LeGo Toys',
+    couponType:'现金抵用券',
+    couponDate:'2017年2月30日-6月30日',
+    giftCardType:'伦敦巴士礼品卡',
+    receivepeople:'王大胖已领取',
+    price:'199'
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    this.getOrderList();
   
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  getOrderList:()=>{
+    request({
+      url: APIS.GET_ORDER_LIST,
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      data: {},
+      method: 'POST',
+      realSuccess: (res) => {
+        console.log(res.data);
+      }
+    }, true, this)
   }
+
 })
