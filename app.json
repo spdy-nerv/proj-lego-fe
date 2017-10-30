@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/home/home",
-    "pages/userCenter/userCenter",
     "pages/orderDetail/orderDetail",
+    "pages/userCenter/userCenter",
     "pages/addressManager/addressManager",
     "pages/addressAdd/addressAdd",
     "pages/productDetail/productDetail",
@@ -13,7 +13,8 @@
     "pages/storeQrcode/storeQrcode",
     "pages/navigate/navigate",
     "pages/cardDetail/cardDetail",
-    "pages/expressDetail/expressDetail"
+    "pages/expressDetail/expressDetail",
+    "pages/expressStatus/expressStatus"
   ],
   "window":{
     "backgroundTextStyle":"light",

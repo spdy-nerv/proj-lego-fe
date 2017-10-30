@@ -1,2 +1,30 @@
-<!--pages/orderConfirm/orderConfirm.wxml-->
-<text>pages/orderConfirm/orderConfirm.wxml</text>
+<view class="page">
+    <view><image class="goodsImg" src='../../images/ceshi.png'/></view>
+    <view class="goodsName">10255 乐高城市中心集会广场</view>
+    <view class="page__bd">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__bd pd20 ">
+                <view class="weui-form-preview__item mg15">
+                    <view class="weui-form-preview__label">订单号</view>
+                    <view class="weui-form-preview__value">98765432109876543210</view>
+                </view>
+                <view class="weui-form-preview__item mg15">
+                    <view class="weui-form-preview__label">下单时间</view>
+                    <view class="weui-form-preview__value">2020年02月20日20时20分</view>
+                </view>
+                <view class="weui-form-preview__item mg15">
+                    <view class="weui-form-preview__label">支付状态</view>
+                    <view class="weui-form-preview__value">199.00元已支付</view>
+                </view>
+                <view class="weui-form-preview__item mg15" bindtap='expressStatus'>
+                        <view class="weui-form-preview__label">货单号：1234567890a</view>
+                        <view class="weui-form-preview__value"><image class="arrow" src='../../images/arrow.png'/></view>
+                </view>
+                <view class="weui-form-preview__item mg15" bindtap="openConfirm">
+                        <view class="weui-form-preview__label">联系客服</view>
+                        <view class="weui-form-preview__value"><image class="arrow" src='../../images/arrow.png'/></view>
+                </view>
+            </view>
+        </view>
+    </view> 
+</view>
