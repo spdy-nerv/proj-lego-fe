@@ -6,7 +6,7 @@ Page({
    */
   data: {
   	toView: 'red',
-    scrollTop: 100,
+    scrollTop: 0,
   	pictureUrls: [
       '../../images/banner0.jpg',
       '../../images/banner0.jpg',

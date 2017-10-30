@@ -61,7 +61,7 @@
 		      </block>
 		    </swiper>
 		  </view>
-	 <scroll-view scroll-y style="height: 250px;background:yellow;margin-top:40rpx" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+	 <scroll-view scroll-y style="height: 290px;background:yellow;margin-top:40rpx" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}">
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			   <view class="chainStore-name">
@@ -69,7 +69,8 @@
 			   </view>
 			   <view class="chainStore-info">
 				   <view class="chainStore-distance">
-				      <text>{{item.distance}}</text>
+				      <text style="height:100%;line-height:100%">{{item.distance}}</text>
+				       <image src="../../images/five.png" mode='aspectFill'  style="width:40rpx;height:40rpx;padding-left:10rpx"/>
 				   </view>
 				   <view class="chainStore-address" >
 				      {{item.address}}
