@@ -107,33 +107,6 @@ Page({
         address: 'fqefqefq',
         latitude: 23.135552,         // 店铺经度
         longitude: 113.223111        // 店铺纬度
-     },
-     {
-        storeId: '123ddasd2',     // 店铺id
-        pictureUrl: '../../images/gift.png',  // 店铺图片
-        name: '乐高玩具经销店1',
-        distance: '1000米',           // 店铺距离，米为单位
-        address: '分起飞起飞前往',
-        latitude: 23.135552,         // 店铺经度
-        longitude: 113.223111        // 店铺纬度
-     },
-     {
-        storeId: '123ddasd2',     // 店铺id
-        pictureUrl: '../../images/gift.png',  // 店铺图片
-        name: '乐高玩具经销店2',
-        distance: '1000米',           // 店铺距离，米为单位
-        address: '费无法请吩咐帝企鹅',
-        latitude: 23.135552,         // 店铺经度
-        longitude: 113.223111       // 店铺纬度
-     },
-     {
-        storeId: '123ddasd2',     // 店铺id
-        pictureUrl: '../../images/gift.png',  // 店铺图片
-        name: '乐高玩具经销店3',
-        distance: '1000米',           // 店铺距离，米为单位
-        address: 'fqefqefq',
-        latitude: 23.135552,         // 店铺经度
-        longitude: 113.223111        // 店铺纬度
       }
     ],
     pageSize: 20,
