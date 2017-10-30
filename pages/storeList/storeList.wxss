@@ -1,8 +1,4 @@
 /* pages/storeList/storeList.wxss */
-page{
-	height:100%;
-	width:100%;
-}
 .img{
     width: 100%;
     height:100%
@@ -85,10 +81,10 @@ page{
   	padding-left:30rpx;
   }
   .chainStore-info{
-  	height:auto;
+  	height:70rpx;
   	margin-left:30rpx;
   	margin-right:30rpx;
-  	margin-bottom:100rpx;
+  	
   }
   .chainStore-distance{
   	float:right;
@@ -105,7 +101,6 @@ page{
   	line-height:30rpx;
   	color:#6c6c6c;
   }
-  
   .content{
   	border:2rpx solid #ccc;
   	margin-top:10rpx;
@@ -132,16 +127,20 @@ page{
   .weui-flex{
   	margin-bottom:15rpx;
   }
+  .store-title{
+  	 width: 100%;
+    height: 100rpx;
+  }
   .store-title1{
-  padding-top:10rpx;
-  font-weight:bold ;
+    padding-top:10rpx;
+    font-weight:bold ;
   	text-align:center;
   	font-size:30rpx;
   	height:40rpx;
   	color:#ff2d2d;
   	line-height:40rpx;
   }
-    .store-title2{
+  .store-title2{
     padding-top:10rpx;
     font-weight:bold ;
   	text-align:center;
@@ -150,14 +149,11 @@ page{
   	color:#642100;
   	line-height:40rpx;
   }
-
 swiper{
     height: 440rpx;
 }
 .banner-container{
     width: 100%;
-    height: 440rpx;
-    margin-top: 42rpx;
     background-color: #666;
     border-bottom: 5rpx solid #fff;
   }
@@ -165,10 +161,9 @@ swiper{
     width: 100%;
     height: 440rpx;
   }
-  .scrol{
+   .scrol{
   		width:80%;
   		padding-left:10%;
-  		padding-top:100rpx;
   		
   }
   .chainStore1{
@@ -180,7 +175,20 @@ swiper{
   .store1{
   background:red;
   }
+  .header{
+  	width:100%;
+  	height:60rpx;
+  	 margin-bottom: 42rpx;
+  }
   .regular-bc{
   	margin-left:40rpx;
   	background:#fff;
+  }
+  .header-left{
+  	width:50%;
+  	float:left;
+  }
+   .header-right{
+  	width:50%;
+  	float:right;
   }

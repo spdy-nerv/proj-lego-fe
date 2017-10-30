@@ -17,8 +17,11 @@
       top:50rpx;
       right:30rpx;
  }
+ .header{
+ 	height:150rpx;
+ 	width:100%;
+ }
  .store-title1{
-    margin-top:150rpx;
   	text-align:center;
   	font-size:30rpx;
   	height:40rpx;
