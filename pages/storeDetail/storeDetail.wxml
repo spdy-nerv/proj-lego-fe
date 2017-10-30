@@ -1,11 +1,13 @@
 <!--pages/storeDetail/storeDetail.wxml-->
 <view class="page">
-   <view>
-    	<image class="homeTopLogo" src='../../images/homeTopLogo.png' />
-   </view>
-   <view>
-    	<image class="back" src='../../images/back.png' />
-   </view>
+  <view class="header">
+	   <view>
+	    	<image class="homeTopLogo" src='../../images/homeTopLogo.png' />
+	   </view>
+	   <view bindtap="back">
+	    	<image class="back" src='../../images/back.png' />
+	   </view>
+   </view>   
    <view class="store-title1">
   		下滑查看更多店内活动资讯
   	</view>
