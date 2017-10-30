@@ -81,10 +81,10 @@
   	padding-left:30rpx;
   }
   .chainStore-info{
-  	height:auto;
+  	height:70rpx;
   	margin-left:30rpx;
   	margin-right:30rpx;
-  	margin-bottom:100rpx;
+  	
   }
   .chainStore-distance{
   	float:right;
