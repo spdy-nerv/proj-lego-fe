@@ -20,12 +20,17 @@ Page({
     },
     qrCodeUrl: '',    // 线下核销二维码，如果deliveyType为1，此字段可缺省
 		expressCode: '',     // 快递单号，如果deliveyType为0，此字段可缺省
-		status: 0                 // 0未支付（要考虑有效时间），1未发货，2已发货，3已收货，4已过期，5已退货退款
+    status: 0 ,
+    selectedNum:'2',
+    name:'王二胖',
+    tel:'18188188232',
+    address:'上海市普陀区桃浦镇百丽路99弄165号',
+    items: [
+      {name: 'USA', value: '个人',inputValue:'请填写个人信息'},
+      {name: 'CHN', value: '公司',inputValue:'请填写公司信息'},
+    ]
+  
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
   
   },

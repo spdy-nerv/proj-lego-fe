@@ -6,6 +6,7 @@
       <text class="name">{{name}}</text>
     </view>
     <!-- 我的优惠券 -->
+    <view class="centerContent">
     <view class="coupon">
       <view class="couponTitle">
         <image src='../../images/couponIcon.png'/>
@@ -50,7 +51,7 @@
         <text>我的购买记录</text>
       </view>
 
-      <navigator>
+      <navigator url='../orderDetail/orderDetail'>
       <view class="buyHistory-Item">
         <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
         <view class="buyHistoryText">
@@ -67,7 +68,7 @@
       </view>
     </navigator>
     
-    <navigator>
+    <navigator url='../orderDetail/orderDetail'>
         <view class="buyHistory-Item">
           <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
           <view class="buyHistoryText">
@@ -83,7 +84,7 @@
           <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
         </view>
       </navigator>
-      <navigator>
+      <navigator url='../orderDetail/orderDetail'>
           <view class="buyHistory-Item">
             <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
             <view class="buyHistoryText">
@@ -99,7 +100,7 @@
             <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
           </view>
         </navigator>
-        <navigator>
+        <navigator url='../orderDetail/orderDetail'>
             <view class="buyHistory-Item">
               <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
               <view class="buyHistoryText">
@@ -155,5 +156,5 @@
 
 
 
-
+  </view>
 </view>

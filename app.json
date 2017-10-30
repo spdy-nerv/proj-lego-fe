@@ -1,15 +1,16 @@
 {
   "pages":[
-   
     "pages/home/home",
+    "pages/userCenter/userCenter",
+    "pages/orderDetail/orderDetail",
+    "pages/addressManager/addressManager",
+    "pages/addressAdd/addressAdd",
     "pages/productDetail/productDetail",
     "pages/orderConfirm/orderConfirm",
-    "pages/orderDetail/orderDetail",
     "pages/couponList/couponList",
     "pages/storeList/storeList",
     "pages/storeDetail/storeDetail",
     "pages/storeQrcode/storeQrcode",
-    "pages/userCenter/userCenter",
     "pages/cardDetail/cardDetail",
     "pages/expressDetail/expressDetail"
   ],
