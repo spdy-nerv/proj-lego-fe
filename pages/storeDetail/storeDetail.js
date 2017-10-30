@@ -1,30 +1,94 @@
 // pages/storeDetail/storeDetail.js
+var { APIS } = require('../../const');
+var { request } = require('../../libs/request');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    storeId: '123ddasd2',     // 店铺id
-    pictureUrls: [],
-    name: '店铺名称',
-    description: '店铺描述',
-    distance: 1000,           // 店铺距离，米为单位
-    address: '店铺地址',
-    latitude: 10.123,         // 店铺经度
-    longitude: 108.123,        // 店铺纬度
-    openTime: '每周1-5 9:00-20:00，周末休息'
+  	toView: 'red',
+    scrollTop: 100,
+  	pictureUrls: [
+      '../../images/ceshi.png',
+      '../../images/ceshi.png',
+      '../../images/ceshi.png',
+      '../../images/ceshi.png'
+    ],
+   activity:{
+   		hearder:'10月店内活动',
+   		activities:[
+   			{
+   				openTime: '9.28',
+   				closeTime: '10.8',
+   				title:'十一黄金周活动',
+   				pictureUrl:'../../images/ceshi.png',
+   			},
+   			{
+   				openTime: '10.9',
+   				closeTime: '10.30',
+   				title:'十一黄金周活动',
+   				pictureUrl:'../../images/ceshi.png',
+   			},
+   			{
+   				openTime: '10.9',
+   				closeTime: '10.30',
+   				title:'十一黄金周活动',
+   				pictureUrl:'../../images/ceshi.png',
+   			},
+   			{
+   				openTime: '10.10',
+   				closeTime: '10.17',
+   				title:'十一黄金周活动',
+   				pictureUrl:'../../images/ceshi.png',
+   			}  
+    ] 
+   }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  	var that=this;
+  	that.setData({
+        storeId: options.storeId,
+   	});
+   	wx.request({
+      url:  APIS.GET_STORE_DETAIL,
+      data: {
+      	storeId: options.storeId
+      },
+      header: {
+            'Content-Type': 'application/json'
+         },
+      success: function(res){
+        that.setData({
+			      storeId: res.data.storeId,
+			      pictureUrls:res.data.pictureUrls,
+			      name:res.data.name,
+			      description:res.data.description,
+			      distance:res.data.distance,
+			      address:res.data.address,
+			      latitude:res.data.latitude,
+			      longitude:res.data.longitude,
+			      openTime:res.data.openTime,
+			      closeTime:res.data.closeTime,
+			  });
+      }
+    });
   },
 
+//扫描签到
+  Sign:function(e){
+    wx.scanCode({
+		  success: (res) => {
+		    console.log(res)
+		  }
+		})
+  },
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 生命周期函数--监听页面初次渲染完成s
    */
   onReady: function () {
   
