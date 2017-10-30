@@ -9,6 +9,7 @@
     "pages/storeList/storeList",
     "pages/storeDetail/storeDetail",
     "pages/storeQrcode/storeQrcode",
+    "pages/navigate/navigate",
     "pages/userCenter/userCenter",
     "pages/cardDetail/cardDetail",
     "pages/expressDetail/expressDetail"
