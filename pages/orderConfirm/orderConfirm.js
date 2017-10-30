@@ -1,4 +1,4 @@
-// pages/orderConfirm/orderConfirm.js
+// pages/orderDetail/orderDetail.js
 Page({
 
   /**
@@ -6,9 +6,10 @@ Page({
    */
   data: {
     productList: [],
-    delieryType: 0,     // 0为上门自提，1为邮寄配送
+    totalPrice: 1000,     // 订单金额
+    delieryType: 0 / 1,     // 0为上门自提，1为邮寄配送
     deliveyInfo: {
-      userName: '',
+			userName: '',
       telNumber: '',
       address: ''
     },
@@ -17,12 +18,19 @@ Page({
       type: 0,      // 0为个人，1为公司
       title: ''
     },
-    totalPrice: 0
+    qrCodeUrl: '',    // 线下核销二维码，如果deliveyType为1，此字段可缺省
+		expressCode: '',     // 快递单号，如果deliveyType为0，此字段可缺省
+    status: 0 ,
+    selectedNum:'2',
+    name:'王二胖',
+    tel:'18188188232',
+    address:'上海市普陀区桃浦镇百丽路99弄165号',
+    items: [
+      {name: 'USA', value: '个人',inputValue:'请填写个人信息'},
+      {name: 'CHN', value: '公司',inputValue:'请填写公司信息'},
+    ]
+  
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
   
   },

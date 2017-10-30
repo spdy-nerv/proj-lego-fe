@@ -1,1 +1,184 @@
-/* pages/orderConfirm/orderConfirm.wxss */
+/* pages/orderDetail/orderDetail.wxss */
+.page{
+    background-color:#f3f3f3;
+    width: 100% rpx;
+    height: 100% rpx;
+    padding-top: 25rpx;
+}
+.selectedGoods{
+    width: 100%;
+    height: 277rpx;
+    background-color: #fff;
+}
+.selectedGoods .selectedTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 107rpx;
+    border-bottom: 1rpx solid #d0d0d0;
+}
+.selectedGoods .selectedTitle image{
+    width: 46rpx;
+    height: 46rpx;
+    margin-left: 30rpx;
+    margin-right:26rpx;
+}
+.selectedItem{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:25rpx;
+}
+.selectedItem .GoodsImg{
+    width: 124rpx;
+    height: 124rpx;
+}
+.selectedItem .arrow{
+    width: 15rpx;
+    height: 26rpx;
+}
+.selectedItem .selectedText{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.selectedItem .selectedMid{
+    margin-left:-90rpx;
+}
+.selectedItem .price{
+    color:#D81E06;
+    font-size: 34rpx;
+}
+.selectedItem .selectedNum{
+    color:#999;
+    font-size: 34rpx;
+    margin-left:60rpx;
+}
+.express{
+    width: 100%;
+    height: 277rpx;
+    background-color: #fff;
+    margin-top: 25rpx;
+    padding-bottom:38rpx;
+}
+.express .expressTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 107rpx;
+    border-bottom: 1rpx solid #d0d0d0;
+}
+.express .expressTitle image{
+    width: 46rpx;
+    height: 46rpx;
+    margin-left: 30rpx;
+    margin-right:26rpx;
+}
+.express .expressDetail{
+    width: 100%;
+    padding-top:34rpx;
+}
+.express .expressDetail .detailTitle{
+    margin-left:98rpx;
+    color:#707070;
+    font-size: 28rpx;
+}
+.express .personlInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:98rpx;
+    color:#FFB400;
+    font-size: 30rpx;
+    margin-top:15rpx;
+}
+.express .personlInfo image{
+    width: 15rpx;
+    height: 26rpx;
+    margin-right:65rpx;
+}
+.express .address{
+    padding-left:98rpx;
+    font-size: 28rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+   
+}
+ .expressType{
+    padding-left:98rpx;
+    font-size: 26rpx;
+    color: #949494;
+    background-color: #fff;
+    width: 100%;
+    line-height: 80rpx;
+    margin-top:20rpx;
+    border-top: 1rpx solid #d0d0d0;
+    box-sizing: border-box;
+}
+.invoice{
+    background-color: #fff;
+    margin-top:25rpx;
+}
+.invoice .invoiceTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 107rpx;
+    border-bottom: 1rpx solid #d0d0d0;
+    margin-bottom:23rpx;
+}
+.invoice image{
+    width: 45rpx;
+    height: 45rpx;
+    margin-left: 30rpx;
+    margin-right:26rpx;
+}
+.invoice check{
+    width: 29rpx;
+    height: 29rpx;
+}
+.radio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left:42rpx;
+    font-size: 30rpx;
+    margin-bottom: 15rpx;
+}
+.radio .input{
+    width: 481rpx;
+    height: 44rpx;
+    background-color: #f3f3f3;
+    padding-left:20rpx;
+    margin-left:-50rpx;
+    border-radius: 8rpx;
+}
+.invoice .notice{
+    font-size: 24rpx;
+    padding:0 0 20rpx 135rpx;
+    color: #949494;
+    margin-top:8rpx;
+    border-bottom: 1rpx solid #d0d0d0;
+}
+.button{
+    width: 342rpx;
+    background-color: #E50011;
+    color:#fff;
+    text-align: center;
+    line-height: 62rpx;
+}
+.footer{
+    background-color: #fff;
+    padding-top:25rpx;
+}
