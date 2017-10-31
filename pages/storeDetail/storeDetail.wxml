@@ -14,21 +14,10 @@
   	<view class="store-title2">
   		*详情请咨询店内，具体活动以店内海报为准 
   	</view>
-  	<scroll-view scroll-y class="scrol" style="height: 400px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
-	  	<view class="activity">
-	  		 <view class="header">
-		  		{{activity.hearder}}
-		  	</view>
-		  	<view class="content"  wx:for="{{activity.activities}}">
-		  		<view class="activity-info">
-		  			<image class="Logo" src='../../images/calendar.png' />
-		  			<view class="activity-time">{{item.openTime}}-{{item.closeTime}}</view>
-		  			<view class="activity-title">{{item.title}}</view>
-		  		</view>
-		  		<view class="activity-pac">
-			    	<image src="{{item.pictureUrl}}" />
-			   </view>
-		  	</view>
-	    </view>
+  	<scroll-view scroll-y class="scrol" style="height: 1000rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+	  	 <view class="store-list" style="width:100%;height:auto">
+	  		<image class="list"  style="width:100%;" mode="widthFix"  src='{{content}}' />
+	  	</view>	  
+	  	
     </scroll-view>
 </view>

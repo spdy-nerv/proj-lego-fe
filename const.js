@@ -60,7 +60,7 @@ var APIS = {
   
   GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
   GET_ALL_REGULARCHAIN:  '/store/getAllRegularChain',//获取所有专卖店列表
-  GET_STORE_DETAIL:      '/sotre/getStoreDetail',//获取店铺详情
+  GET_STORE_DETAIL:      '/store/detail',//获取店铺详情
   SIGNIN_STORE:          '/store/signinStore',//店铺签到
   GET_STORE_QRCODE:      '/store/getStoreQrCode',//获取店铺小程序码
 
