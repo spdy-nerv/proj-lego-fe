@@ -4,8 +4,9 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{pictureUrl}}" wx:key="unique">
         <swiper-item>
-          <navigator url='{{navigateUrl}}'>
-            <image src="{{item}}" mode='aspectFill' />
+          <!-- item.navigateUrl -->
+          <navigator url='{{navigateUrl}}'>  
+            <image src="{{item.pictureUrl}}" mode='aspectFill' />
           </navigator>
         </swiper-item>
       </block>
@@ -19,12 +20,12 @@
 <view class="content">
     <view class="reserve">
         <navigator url='../productDetail/productDetail'>
-          <image src='{{reserveImg}}'/>
+          <image src='{{reserveImg}}' wx:if='{{reserveImg}}'/>
         </navigator>
       </view>
       
       <view class="gift" bindtap='openProgram'>
-        <image src='{{giftImg}}'/>
+        <image src='{{giftImg}}' wx:if='{{giftImg}}'/>
       </view>
 </view>
   <view class="footer">

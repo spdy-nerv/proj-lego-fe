@@ -30,6 +30,7 @@ Page({
         }
     },
     onLoad: function (options) {
+        console.log(options);
         wx.showLoading({
             title: '加载中',
         })

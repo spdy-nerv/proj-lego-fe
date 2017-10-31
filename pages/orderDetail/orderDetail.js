@@ -1,32 +1,57 @@
+const { APIS } = require('../../const');
+const { request } = require('../../libs/request');
+const util = require('../../utils/util');
+const user = require('../../libs/user');
 Page({
-    openConfirm: function () {
-        wx.showModal({
-            title: '联系客服',
-            content: '相关的文字说明，法务条款 \n 联系人：LEGO TOYS \n 电话：9090980 ',
-            confirmText: "确定",
-            showCancel: false,
-            success: function (res) {
-                console.log(res);
-                if (res.confirm) {
-                    console.log('用户点击主操作')
-                }else{
-                    console.log('用户点击辅助操作')
-                }
-            }
-        });
+    data:{
+        orderId:'',
+        orderTime:'',
+        deliveryInfo:{},
+        orderItems:{}
+        
     },
-    expressStatus:()=>{
+    onLoad:function(options){
+       console.log(options)
+       this.setData({
+           orderId:options.orderId,
+           orderTime:options.orderTime
+       })
+       this.getOrderDetail();
+    },
+    customerService: function () {
+       wx.navigateTo({
+           url:'../customerService/customerService',
+           success: function(res){
+               // success
+           },
+           fail: function() {
+               // fail
+           }
+       })
+    },
+    expressStatus:function(){
         wx.navigateTo({
-            url: '../expressStatus/expressStatus',
-            success: function(res){
-                // success
-            },
-            fail: function() {
-                // fail
-            },
-            complete: function() {
-                // complete
-            }
+            url: '../expressStatus/expressStatus?deliveryNo='+this.data.deliveryNo,
         })
+    },
+    getOrderDetail:function(){
+        var that = this;
+        request({
+            url: APIS.GET_ORDER_DETAIL+this.data.orderId,
+            method:'GET',
+            header: {
+              auth: wx.getStorageSync('token')
+            },
+            realSuccess: (res) => {
+              console.log(res);
+              this.setData({
+                deliveryNo:res.deliveryInfo.deliveryNo,
+                orderStatus:res.orderStatus,
+                orderItems:res.orderItems[0]
+
+              })
+            }
+          }, true, this)
     }
+
 });

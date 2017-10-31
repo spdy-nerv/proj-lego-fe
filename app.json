@@ -1,5 +1,6 @@
 {
-  "pages":[
+  "pages": [
+   
     "pages/home/home",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
@@ -14,12 +15,14 @@
     "pages/navigate/navigate",
     "pages/cardDetail/cardDetail",
     "pages/expressDetail/expressDetail",
-    "pages/expressStatus/expressStatus"
+    "pages/expressStatus/expressStatus",
+    "pages/customerService/customerService"
+
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

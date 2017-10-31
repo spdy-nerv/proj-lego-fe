@@ -2,8 +2,8 @@
 <view class="page">
     <view class='header'>
       <view><image src='{{personCenterBg}}'/></view>  
-      <view><image class='headImg' src='{{headImg}}'/></view>
-      <text class="name">{{name}}</text>
+      <view><image class='headImg' src='{{avatarUrl}}' wx:if='{{avatarUrl}}'/></view>
+      <text class="name">{{nickName}}</text>
     </view>
     <!-- 我的优惠券 -->
     <view class="centerContent">
@@ -12,9 +12,9 @@
         <image src='../../images/couponIcon.png'/>
         <text>我的优惠券</text>
       </view>
-
-      <navigator>
-      <view class="coupon-Item">
+<block wx:for='{{myCouponList}}' wx:key='unique'>
+      <navigator >
+      <view class="coupon-Item"  wx:if='{{myCouponList.name}}'>
         <image  class='couponImg' src='../../images/couponImg.png'/>
         <view class="couponText">
           <text class="couponType">{{couponType}}</text>
@@ -23,26 +23,8 @@
         <image class="arrow" src='../../images/arrow.png'/>
       </view>
     </navigator>
-    <navigator>
-        <view class="coupon-Item">
-          <image  class='couponImg' src='../../images/couponImg.png'/>
-          <view class="couponText">
-            <text class="couponType">{{couponType}}</text>
-            <text class="couponDate">有效期：{{couponDate}}</text>
-          </view>
-          <image class="arrow" src='../../images/arrow.png'/>
-        </view>
-      </navigator>
-      <navigator>
-          <view class="coupon-Item">
-            <image  class='couponImg' src='../../images/couponImg.png'/>
-            <view class="couponText">
-              <text class="couponType">{{couponType}}</text>
-              <text class="couponDate">有效期：{{couponDate}}</text>
-            </view>
-            <image class="arrow" src='../../images/arrow.png'/>
-          </view>
-        </navigator>
+   </block>
+    <view wx:if='{{!myCouponList.name}}' class="ifCoupon">暂无优惠券</view>
     </view>
    <!-- 我的购买记录 -->
     <view class="coupon">
@@ -50,74 +32,27 @@
         <image src='../../images/buyHistoryIcon.png'/>
         <text>我的购买记录</text>
       </view>
-
-      <navigator url='../orderDetail/orderDetail'>
+<block wx:for='{{myCouponList}}' wx:key='unique'>
+      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
       <view class="buyHistory-Item">
         <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
         <view class="buyHistoryText">
           <view class="receiveInfo">
-              <text class="buyHistoryType">{{giftCardType}}</text>
+              <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
               <text class="receivepeople">{{receivepeople}}</text>
           </view>
           <view class="price">
             <image class="rmb" src='../../images/rmb.png'/>
-            <text class="rmbText">{{price}}</text>
+            <text class="rmbText">{{item.realPayAmount}}</text>
           </view>
         </view>
         <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
       </view>
     </navigator>
-    
-    <navigator url='../orderDetail/orderDetail'>
-        <view class="buyHistory-Item">
-          <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
-          <view class="buyHistoryText">
-            <view class="receiveInfo">
-                <text class="buyHistoryType">{{giftCardType}}</text>
-                <text class="receivepeople">{{receivepeople}}</text>
-            </view>
-            <view class="price">
-              <image class="rmb" src='../../images/rmb.png'/>
-              <text class="rmbText">{{price}}</text>
-            </view>
-          </view>
-          <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
-        </view>
-      </navigator>
-      <navigator url='../orderDetail/orderDetail'>
-          <view class="buyHistory-Item">
-            <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
-            <view class="buyHistoryText">
-              <view class="receiveInfo">
-                  <text class="buyHistoryType">{{giftCardType}}</text>
-                  <text class="receivepeople">{{receivepeople}}</text>
-              </view>
-              <view class="price">
-                <image class="rmb" src='../../images/rmb.png'/>
-                <text class="rmbText">{{price}}</text>
-              </view>
-            </view>
-            <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
-          </view>
-        </navigator>
-        <navigator url='../orderDetail/orderDetail'>
-            <view class="buyHistory-Item">
-              <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
-              <view class="buyHistoryText">
-                <view class="receiveInfo">
-                    <text class="buyHistoryType">{{giftCardType}}</text>
-                    <text class="receivepeople">{{receivepeople}}</text>
-                </view>
-                <view class="price">
-                  <image class="rmb" src='../../images/rmb.png'/>
-                  <text class="rmbText">{{price}}</text>
-                </view>
-              </view>
-              <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
-            </view>
-          </navigator>
-
-
+    <view wx:if='{{!item.orderItems}}' class="ifCoupon">暂无购买记录</view>
+  </block>
+ 
+  
 
 
 

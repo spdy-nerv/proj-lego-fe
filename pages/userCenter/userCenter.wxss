@@ -79,6 +79,13 @@ box-sizing: border-box;
     font-size: 26rpx;
     margin-left:-66rpx;
 }
+.ifCoupon{
+    font-size: 33rpx;
+    width: 100%;
+    text-align: center;
+    padding: 20rpx 0;
+    color: #ccc;
+}
 .arrow{
     width: 15rpx;
     height: 26rpx;

@@ -14,29 +14,69 @@ Page({
     myCouponList: [],
     cardOrderList: [],
     productOrderList: [],
+    nickName:'',
+    avatarUrl:'',
     personCenterBg:'../../images/personCenterBg.png',
-    headImg:'../../images/homeTopLogo.png',
-    name:'LeGo Toys',
     couponType:'现金抵用券',
     couponDate:'2017年2月30日-6月30日',
     giftCardType:'伦敦巴士礼品卡',
-    receivepeople:'王大胖已领取',
+    receivepeople:'',
     price:'199'
   },
   onLoad: function (options) {
-    this.getOrderList();
-  
+    user.login(this.getOrderList,true,this);
+    this.getMyCouponList();
+    const userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      nickName:userInfo.nickName,
+      avatarUrl:userInfo.avatarUrl
+    })
   },
-  getOrderList:()=>{
+  getOrderList:function(){
+    wx.showLoading({
+      title:'数据加载中'
+    })
     request({
       url: APIS.GET_ORDER_LIST,
+      method:'GET',
       header: {
         auth: wx.getStorageSync('token')
       },
-      data: {},
-      method: 'POST',
+      data: {
+        pageSize:'10',
+        pageNum:'1'
+      },
       realSuccess: (res) => {
-        console.log(res.data);
+        if(res.list){
+          wx.hideLoading();
+        }
+        console.log(res.list);
+        this.setData({
+          myCouponList:res.list
+        })
+      },realFail:(res)=>{
+        wx.showToast({
+          title: res.message
+      });
+      }
+    }, true, this)
+  },
+  getMyCouponList:function(){
+    request({
+      url: APIS.GET_MY_COUPON_LIST,
+      method:'GET',
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      realSuccess: (res) => {
+        console.log(res);
+        this.setData({
+          myCouponList:res.data
+        })
+      },realFail:(res)=>{
+        wx.showToast({
+          title: res.message
+      });
       }
     }, true, this)
   }

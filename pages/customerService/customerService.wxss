@@ -1,0 +1,14 @@
+.page{
+    padding:20rpx;
+    
+}
+.title{
+    font-size: 36rpx;
+    text-align: center;
+    margin-bottom: 20rpx;
+}
+.tel,.time{
+    font-size: 33rpx;
+    margin:30rpx 0 0 30rpx;
+
+}

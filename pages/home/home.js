@@ -5,37 +5,59 @@ const util = require('../../utils/util');
 const user = require('../../libs/user');
 Page({
   data: {
-    pictureUrl: [
-      '../../images/ceshi.png'
-    ],
+    pictureUrl: [],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
     duration: 500,
     navigateUrl: '',
     reserveImg:'../../images/reserve.png',
-    giftImg:'../../images/gift.png',
+     giftImg:'../../images/gift.png',
+   // reserveImg:'',
+   // giftImg:'',
     list:''
   },
   onLoad: function (options) {
     this.getSliderList();
+    //this.getModelBg('INDEX_SECKILL');
+    //this.getModelBg('INDEX_GIFT');
   },
-  getSliderList: () => {
-    request({
+  getSliderList:function(){
+    wx.request({
       url: APIS.GET_SLIDER_LIST,
-      header: {
-        auth: wx.getStorageSync('token')
-      },
-      data: {},
-      method: 'POST',
-      realSuccess: (res) => {
-        console.log(res.data);
+      method: 'GET', 
+      success:res=>{
+        console.log(res.data)
         this.setData({
-          list:res.data.list
+          pictureUrl:res.data
         })
+      },
+      fail:res=> {
+        wx.showToast({
+          title: res.errMsg
+      });
       }
-    }, true, this)
+    })
 
+  },
+  getModelBg:function(data){
+    wx.request({
+      url: APIS.GET_MODEL_BG,
+      method: 'GET',
+      data:{positionType:data}, 
+      success:res=>{
+        console.log(res);
+        this.setData({
+          reserveImg:res.data.pictureUrl,
+          giftImg:res.data.pictureUrl
+        })
+      },
+      fail:res=> {
+        wx.showToast({
+          title: res.errMsg
+      });
+      }
+    })
   },
   onShareAppMessage: function () {
   },

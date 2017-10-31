@@ -36,9 +36,12 @@ var APIS = {
   GET_NAV_SPOT_LIST: '/nav/spot',
   GET_NAV_SPOT_DETAIL: '/nav/spot/${id}',
 
-  LOGIN: '/activity/login',
+  LOGIN: '/uc/login',
   GET_SLIDER_LIST:       '/home/getSliderList', //获取首页轮播列表
-  GET_ORDER_LIST:        'order/getOrderList', //获取历史购买商品的订单列表 
+  GET_ORDER_LIST:        '/order/list', //获取历史购买商品的订单列表 
+  GET_ORDER_DETAIL:      '/order/detail/',//获取购买订单详情
+  GET_MY_COUPON_LIST:     '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
+  GET_MODEL_BG:            '/home/getModelBackground',
   
   GET_EVENT_TYPE_LIST: '/activity/eventType',
   GET_EVENTS_LIST_BY_MONTH: '/activity/getEventListByMonth',

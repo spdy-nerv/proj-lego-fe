@@ -79,7 +79,7 @@ function doAppLogin(data, cb, ctx) {
       method: 'POST',
       success: function(res){
         var d = res.data;
-        if (d.code == 'success' && d.data) {
+        if (d.code == 'SUCCESS' && d.data) {
             var token = d.data.token;
             wx.setStorageSync('token', token);
             typeof cb == "function" && cb.call(ctx);
