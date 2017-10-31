@@ -48,6 +48,7 @@
 		 </scroll-view>
 	</view>
 	<view wx:else>
+		
 		 <view class="banner-container">
 		    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 		      <block wx:for="{{pictureUrls}}" wx:key="unique">
@@ -59,7 +60,10 @@
 		      </block>
 		    </swiper>
 		  </view>
-	 <scroll-view scroll-y style="height: 290px;margin-top:40rpx" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+		   <view class="store-title">
+	  	    
+		 </view>
+	 <scroll-view scroll-y style="height: 290px;"bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}">
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			   <view class="chainStore-name">

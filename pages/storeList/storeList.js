@@ -82,8 +82,8 @@ Page({
       url: APIS.GET_ALL_REGULARCHAIN,
       method: 'GET',
       data: {
-          latitude: that.data.centerLongitude,
-          longitude:that.data.centerLatitude,
+          longitude: that.data.centerLongitude,
+          latitude:that.data.centerLatitude,
           pageSize:that.data.pageSize,
           pageNum:that.data.pageNum
         },
@@ -108,8 +108,8 @@ Page({
       url: APIS.GET_NEARBY_CHAINSTORE,
       method: 'GET',
       data: {
-          latitude: that.data.centerLongitude,
-          longitude:that.data.centerLatitude,
+          longitude: that.data.centerLongitude,
+          latitude:that.data.centerLatitude,
           pageSize:that.data.pageSize,
           pageNum:that.data.pageNum
         },
