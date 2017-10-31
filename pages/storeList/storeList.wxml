@@ -23,11 +23,9 @@
 		  </view>
 		  <view class="store-title">
 	  	     <view class="store-title1">
-		  		点击旗舰店/专卖店名称 
+		  		点击旗舰店/专卖店名称  查看店内当月活动
 		  	</view>
-		    <view class="store-title2">
-		  		查看店内当月活动  
-		  	</view>
+		    
 		  	</view>
 	  	<scroll-view scroll-y class="scrol" style="height: 290px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 			<view class="content store1"  wx:for="{{regularChainList}}">
@@ -38,7 +36,7 @@
 				     </view>
 				      <view class="regular-info">
 				        <view class="regular-distance">
-				        	<text>{{item.distance}}</text>
+				        	<text>{{item.distance}}米</text>
 				     	</view>
 				     	<view class="regular-address">
 				        	<text>{{item.address}}</text>
@@ -69,7 +67,7 @@
 			   </view>
 			   <view class="chainStore-info">
 				   <view class="chainStore-distance">
-				      <text style="height:100%;line-height:100%">{{item.distance}}</text>
+				      <text style="height:100%;line-height:100%">{{item.distance}}米</text>
 				   </view>
 				   <view class="chainStore-address" >
 				      {{item.address}}

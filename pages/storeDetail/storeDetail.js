@@ -11,12 +11,8 @@ Page({
     centerLatitude: '',
   	toView: 'red',
     scrollTop: 100,
-  	pictureUrls: [
-      '../../images/ceshi.png',
-      '../../images/ceshi.png',
-      '../../images/ceshi.png',
-      '../../images/ceshi.png'
-    ],
+  	pictureUrl:'../../images/storedetail.jpg',
+		content:'',
    activity:{
    		hearder:'10月店内活动',
    		activities:[
@@ -93,7 +89,11 @@ Page({
           longitude:that.data.centerLatitude,
         },
       realSuccess: function (data) {
-        console.log(data)
+      	console.log(data)
+        that.setData({
+          content: data.content,
+       
+        })
       },
       realFail: function (msg, code) {
         console.log(msg,code)
