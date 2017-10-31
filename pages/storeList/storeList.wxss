@@ -21,27 +21,31 @@
   }
   .tab-left{
   	display:block;
-  	width:40%;
+  	width:70%;
   	height:50rpx;
   	line-height:50rpx;
   	float:right;
   	text-align:center;
-  	border:2rpx solid #ddd;
+  	border:2rpx solid red;
   	font-size:30rpx;
+  	color:red;
+  	background:#fff;
+  	border-radius:15rpx 0rpx 0rpx 15rpx ;
   }
   .tab-right{
   	display:block;
-  	width:40%;
+  	width:70%;
   	height:50rpx;
   	line-height:50rpx;
   	float:left;
   	text-align:center;
-  	border:2rpx solid #ddd;
+  	border:2rpx solid red;
   	font-size:30rpx;
+  	border-radius:0rpx 15rpx 15rpx 0rpx ;
   }
   .on{
   	color:#fff;
-  	background:#4dffff;
+  	background:red;
   }
   .regular-name{
   color:#ff2d2d;
@@ -88,7 +92,7 @@
   }
   .chainStore-distance{
   	float:right;
-  	width:25%;
+  	width:30%;
   	font-size:30rpx;
   	height:40rpx;
   	line-height:40rpx;
@@ -150,7 +154,7 @@
   	line-height:40rpx;
   }
 swiper{
-    height: 440rpx;
+    height: 290rpx;
 }
 .banner-container{
     width: 100%;
@@ -159,7 +163,7 @@ swiper{
   }
   .banner-container image{
     width: 100%;
-    height: 440rpx;
+    height: 290rpx;
   }
    .scrol{
   		width:80%;
@@ -171,9 +175,11 @@ swiper{
   		margin-left:5%;
   		margin-top:35rpx;
   		box-shadow:25rpx 10rpx 10rpx #ccc;
+  		position: relative;
   }
   .store1{
   background:red;
+  border:2rpx solid red;
   }
   .header{
   	width:100%;
@@ -191,4 +197,11 @@ swiper{
    .header-right{
   	width:50%;
   	float:right;
+  }
+  .img{
+  	height:40rpx;
+  	width:40rpx;
+  	position: absolute;
+	top:28rpx;
+	right:0rpx;
   }

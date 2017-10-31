@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+  	centerLongitude: '',
+    centerLatitude: '',
   	toView: 'red',
     scrollTop: 100,
   	pictureUrls: [
@@ -59,31 +61,46 @@ Page({
   	that.setData({
         storeId: options.storeId,
    	});
-   	wx.request({
-      url:  APIS.GET_STORE_DETAIL,
-      data: {
-      	storeId: options.storeId
-      },
-      header: {
-            'Content-Type': 'application/json'
-         },
-      success: function(res){
+   	that.getLocaltion()
+  },
+ //获取当前经纬度
+  getLocaltion:function(){
+  	var that=this;
+  	wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+      	console.log(res)
         that.setData({
-			      storeId: res.data.storeId,
-			      pictureUrls:res.data.pictureUrls,
-			      name:res.data.name,
-			      description:res.data.description,
-			      distance:res.data.distance,
-			      address:res.data.address,
-			      latitude:res.data.latitude,
-			      longitude:res.data.longitude,
-			      openTime:res.data.openTime,
-			      closeTime:res.data.closeTime,
-			  });
+          centerLongitude: res.longitude,
+          centerLatitude: res.latitude,
+        })
+        that.getAllRegularChain()
+      },
+      fail: function (err) {
+        console.log(err)
+      },
+    })
+  },
+  //获取所有门店
+   getAllRegularChain: function() {
+   	var that=this;
+   	var storeId=that.data.storeId;
+    request({
+      url: APIS.GET_STORE_DETAIL+'/'+storeId,
+      method: 'GET',
+      data: {
+          latitude: that.data.centerLongitude,
+          longitude:that.data.centerLatitude,
+        },
+      realSuccess: function (data) {
+        console.log(data)
+      },
+      realFail: function (msg, code) {
+        console.log(msg,code)
       }
     });
-  },
 
+  },
 //扫描签到
   Sign:function(e){
     wx.scanCode({
