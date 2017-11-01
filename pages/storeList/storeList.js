@@ -38,7 +38,8 @@ Page({
     ],
     pageSize: 20,
     pageNum: 1,
-    hasMore: true
+    hasMore: true,
+    hidden:false
   },
   //点击切换专卖店跟经销店
   swichNav: function( e ) {  
@@ -75,9 +76,12 @@ Page({
       },
     })
   },
-  //获取所有门店
+  //获取门店
    getAllRegularChain: function() {
    	var that=this;
+   	   wx.showLoading({
+        title: '正在加载',
+      })
     request({
       url: APIS.GET_ALL_REGULARCHAIN,
       method: 'GET',
@@ -92,7 +96,8 @@ Page({
           regularChainList: data.list,
           hasMore: data.hasMore,
           qrCodeUrl:data.hasMore,
-        })
+        });
+         wx.hideLoading()
       },
       realFail: function (msg, code) {
         console.log(msg,code)
@@ -104,6 +109,9 @@ Page({
  //获取附近经销店
    getNearbyChainStore: function() {
    	var that=this;
+   	   wx.showLoading({
+        title: '正在加载',
+      })
     request({
       url: APIS.GET_NEARBY_CHAINSTORE,
       method: 'GET',
@@ -115,16 +123,33 @@ Page({
         },
       realSuccess: function (data) {
         console.log(data)
+         var chainStoreList = that.data.chainStoreList;
+		      for(var i = 0;i<data.list.length;i++){
+		          chainStoreList.push(data.list[i]);
+		      }
          that.setData({
-          chainStoreList: data.list,
+          chainStoreList: chainStoreList,
           hasMore: data.hasMore,
           qrCodeUrl:data.hasMore,
-        })
+        });
+          that.data.pageNum ++;
+	     wx.hideLoading()
       },
       realFail: function (msg, code) {
         console.log(msg,code)
       }
     });
+  },
+  bindDownLoad:function(){
+  	console.log('上拉')
+    var that = this;
+    that.getNearbyChainStore();
+},
+  lower: function(e) {
+    console.log(e)
+    var that = this;
+    that.getNearbyChainStore();
+    console.log(that.data.chainStoreList)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -165,7 +190,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+  	console.log('上拉啊')
+      var that = this;
+    that.data.getNearbyChainStore();
   },
 
   /**

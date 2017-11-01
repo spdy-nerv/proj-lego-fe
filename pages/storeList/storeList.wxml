@@ -27,7 +27,7 @@
 		  	</view>
 		    
 		  	</view>
-	  	<scroll-view scroll-y class="scrol" style="height: 290px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+	  	<scroll-view scroll-y class="scrol" style="height: 290px;" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 			<view class="content store1"  wx:for="{{regularChainList}}">
 			   <navigator url='../storeDetail/storeDetail?storeId={{item.storeId}}'>
 			    <view class="regular-bc">
@@ -80,6 +80,7 @@
 			   <view class="img"><image src="../../images/five.png" mode='aspectFill'  style="width:40rpx;height:40rpx"/></view>
 			</navigator>
 		</view>
+		<view wx:if="{{!hasMore}}" style="width:100%;height:50rpx;line-height:50rpx;font-size:40rpx;text-align:center;">没有更多了</view>
 	 </scroll-view>
 	</view>
 </view>

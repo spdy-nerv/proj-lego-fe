@@ -11,9 +11,9 @@ Page({
     centerLatitude: '',
   	toView: 'red',
     scrollTop: 100,
-  	pictureUrl:'../../images/storedetail.jpg',
+  	detailPictureUrls:[],
 		content:'',
-   activity:{
+    activity:{
    		hearder:'10月店内活动',
    		activities:[
    			{
@@ -70,15 +70,15 @@ Page({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
         })
-        that.getAllRegularChain()
+        that.getDetail()
       },
       fail: function (err) {
         console.log(err)
       },
     })
   },
-  //获取所有门店
-   getAllRegularChain: function() {
+  //获取店铺详情
+   getDetail: function() {
    	var that=this;
    	var storeId=that.data.storeId;
     request({
@@ -92,6 +92,7 @@ Page({
       	console.log(data)
         that.setData({
           content: data.content,
+          detailPictureUrls:data.detailPictureUrls,
        
         })
       },
