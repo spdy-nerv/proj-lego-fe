@@ -11,7 +11,7 @@ Page({
       link: ''
     },
     revieceCardList: [],
-    myCouponList: [],
+    myCouponList: [1],
     cardOrderList: [],
     productOrderList: [],
     nickName:'',
@@ -21,7 +21,11 @@ Page({
     couponDate:'2017年2月30日-6月30日',
     giftCardType:'伦敦巴士礼品卡',
     receivepeople:'',
-    price:'199'
+    price:'199',
+    pageNum:1,
+    pageSize:6,
+    hasMore: true,
+    contentlist: []
   },
   onLoad: function (options) {
     user.login(this.getOrderList,true,this);
@@ -32,7 +36,8 @@ Page({
       avatarUrl:userInfo.avatarUrl
     })
   },
-  getOrderList:function(){
+  getOrderList: function(){
+    var that = this;
     wx.showLoading({
       title:'数据加载中'
     })
@@ -43,17 +48,27 @@ Page({
         auth: wx.getStorageSync('token')
       },
       data: {
-        pageSize:'10',
-        pageNum:'1'
+        pageSize:that.data.pageSize,
+        pageNum:that.data.pageNum
       },
       realSuccess: (res) => {
-        if(res.list){
-          wx.hideLoading();
-        }
         console.log(res.list);
-        this.setData({
-          myCouponList:res.list
-        })
+        var orderListItem = that.data.productOrderList;
+        var productOrderList = res.list;
+        console.log(productOrderList)
+        if(productOrderList.length<that.data.pageSize){
+          that.setData({
+            productOrderList:orderListItem.concat(productOrderList),
+            hasMore:false,
+          })
+        }else{
+          that.setData({
+            productOrderList:orderListItem.concat(productOrderList),
+            hasMore:true,
+            pageNum:that.data.pageNum +1
+          })
+        }
+        wx.hideLoading();
       },realFail:(res)=>{
         wx.showToast({
           title: res.message
@@ -79,6 +94,17 @@ Page({
       });
       }
     }, true, this)
-  }
+  }, 
+  onReachBottom: function () {
+    console.log(13213);
+    wx.showLoading({title:'数据加载中..'})
+    if(this.data.hasMore){
+      this.getOrderList();
+    }else{
+      wx.showToast({
+        title:'没有更多数据了'
+      })
+    }
+  },
 
 })

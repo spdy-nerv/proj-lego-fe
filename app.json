@@ -17,6 +17,7 @@
     "pages/expressDetail/expressDetail",
     "pages/expressStatus/expressStatus",
     "pages/customerService/customerService"
+    
 
   ],
   "window": {

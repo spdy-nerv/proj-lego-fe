@@ -14,32 +14,18 @@ view{
 .header{
     display: flex;
     background-color: #E60012;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
     padding: 5%;
-    position: relative;
+    position: fixed;
+    width: 100%;
+    z-index: 33;
 }
-
-.logo {
-    flex: 0 0 54px;
-    width: 55px;
-    height: 55px;
-    text-align: center;
-    line-height: 50px;
-    font-style: oblique;
-    font-weight: 700;
-}
-
-.logo image {
-    width:55px;
-    height: 55px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-}
-
 .content{
     flex: 0 0 1;
     margin-left: 5%;
+    padding-top: 300rpx;
 }
 
 .title{
@@ -72,6 +58,7 @@ view{
 
 .detail-box{
     width: 100%;
+    padding-top:200rpx;
 }
 
 .detail-item{
@@ -89,7 +76,7 @@ view{
     height: 40px;
     border-radius: 50%;
     position: absolute;
-    top: 20px;
+    top: 40px;
     left: -20px;
     box-shadow:0 2px 4px 0 rgba(239,98,98,.12), 0 0 6px 0 rgba(0,0,0,.04);
 }

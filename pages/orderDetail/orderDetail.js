@@ -31,23 +31,24 @@ Page({
     },
     expressStatus:function(){
         wx.navigateTo({
-            url: '../expressStatus/expressStatus?deliveryNo='+this.data.deliveryNo,
+            url: '../expressStatus/expressStatus?deliveryNo='+this.data.deliveryNo+'&&deliveryCompany='+this.data.deliveryCompany,
         })
     },
     getOrderDetail:function(){
         var that = this;
         request({
-            url: APIS.GET_ORDER_DETAIL+this.data.orderId,
+            url: APIS.GET_ORDER_DETAIL+that.data.orderId,
             method:'GET',
             header: {
               auth: wx.getStorageSync('token')
             },
             realSuccess: (res) => {
               console.log(res);
-              this.setData({
+              that.setData({
                 deliveryNo:res.deliveryInfo.deliveryNo,
                 orderStatus:res.orderStatus,
-                orderItems:res.orderItems[0]
+                orderItems:res.orderItems[0],
+                deliveryCompany:res.deliveryInfo.deliveryCompany
 
               })
             }
