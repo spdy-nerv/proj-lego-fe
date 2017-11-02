@@ -56,8 +56,11 @@ Page({
          },
       realSuccess: function (data) {
       	console.log(data)
+      	  wx.setNavigationBarTitle({
+			      title: data.seckillTitle//页面标题为路由参数
+			    })
         that.setData({
-//        headimgPath:data.headimgPath,
+        headimgPath:data.headimgPath,
           pictureUrls: data.pictureUrls,
           name :data.name ,
           price :data.price ,

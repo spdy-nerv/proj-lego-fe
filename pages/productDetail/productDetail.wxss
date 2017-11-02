@@ -39,21 +39,21 @@
   }
   .content_name{
   	padding-top:60rpx;
-  	padding-left:50rpx;
+  	padding-left:150rpx;
   	font-size:30rpx;
   	height:50rpx;
   	line-height:50rpx;
   }
   .content_num{
   	padding-top:10rpx;
-  	padding-left:50rpx;
+  	padding-left:150rpx;
   	font-size:30rpx;
   	height:50rpx;
   	line-height:50rpx;
   }
   .content_price{
   	padding-top:10rpx;
-  	padding-left:50rpx;
+  	padding-left:150rpx;
   	font-size:30rpx;
   	height:50rpx;
   	line-height:50rpx;
