@@ -42,6 +42,7 @@ var APIS = {
   GET_ORDER_DETAIL:      '/order/detail/',//获取购买订单详情
   GET_MY_COUPON_LIST:     '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
   GET_MODEL_BG:            '/home/getModelBackground',
+  GET_SECKILLSKU_LIST:     '/product/seckill/getSecKillSkuList',//获取所有抢购商品列表
   
   GET_PRODUCT:      '/product/seckill/getProductDetail',//获取商品详情
   

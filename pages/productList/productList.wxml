@@ -1,0 +1,21 @@
+<!--pages/productDetail/productDetail.wxml-->
+<view class="page">
+    <view><image class="goodsImg" src='https://microcloudtech.com/images/lego/image/goodsList.png'/></view>
+    <block wx:for='{{goodsList}}' wx:key='{{unique}}'>
+ <view class="productItem">
+        <view class="productLeft">
+            <image class="productLeftImg" src='{{item.headimgPath}}'/>
+            <image class="icon" src='../../images/productIcon.png' wx:if='{{item.productNo=="10255"?true:false}}'/>
+        </view>
+        <view class="productRight">
+            <view class="title mg27">{{item.productName}}</view>
+            <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
+            <view class="fs30 mg27 fontColor">{{item.startTime}} 开始预定</view>
+            <view class="fs30 mg27 fontColor">{{item.endTime}} 内付款</view>
+            <button class="mg27 startBuy" bindtap='toProductDetail' wx:if="{{item.isEnd=='STARTED'?true:false}}">开始预定</button>
+            <button class="mg27 bgcolor" bindtap='toProductDetail' wx:else>预定结束</button>
+        </view>
+    </view>
+</block>
+   
+</view>

@@ -26,6 +26,11 @@
    </block>
     <view wx:if='{{!myCouponList.name}}' class="ifCoupon">暂无优惠券</view>
     </view>
+    <!-- 我的订单 -->
+    <view class="myOrder">
+      <image class="myOrderImg" src='../../images/myOrder.png'/>
+      <text>我的订单</text>
+    </view>
    <!-- 我的购买记录 -->
     <view class="coupon">
       <view class="couponTitle">

@@ -19,7 +19,7 @@
 
 <view class="content">
     <view class="reserve">
-        <navigator url='../productDetail/productDetail'>
+        <navigator url='../productList/productList'>
           <image src='{{reserveImg}}' wx:if='{{reserveImg}}'/>
         </navigator>
       </view>

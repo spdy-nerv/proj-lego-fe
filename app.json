@@ -16,7 +16,8 @@
     "pages/cardDetail/cardDetail",
     "pages/expressDetail/expressDetail",
     "pages/expressStatus/expressStatus",
-    "pages/customerService/customerService"
+    "pages/customerService/customerService",
+    "pages/productList/productList"
     
 
   ],

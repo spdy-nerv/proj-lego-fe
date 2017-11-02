@@ -7,7 +7,8 @@ Page({
         orderId:'',
         orderTime:'',
         deliveryInfo:{},
-        orderItems:{}
+        orderItems:{},
+        orderStatusLabel:''
         
     },
     onLoad:function(options){
@@ -47,6 +48,7 @@ Page({
               that.setData({
                 deliveryNo:res.deliveryInfo.deliveryNo,
                 orderStatus:res.orderStatus,
+                orderStatusLabel:res.orderStatusLabel,
                 orderItems:res.orderItems[0],
                 deliveryCompany:res.deliveryInfo.deliveryCompany
 

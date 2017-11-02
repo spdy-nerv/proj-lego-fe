@@ -14,7 +14,7 @@
                 </view>
                 <view class="weui-form-preview__item mg15">
                     <view class="weui-form-preview__label">支付状态</view>
-                    <view class="weui-form-preview__value">{{orderStatus}}</view>
+                    <view class="weui-form-preview__value">{{orderStatusLabel}}</view>
                 </view>
                 <view class="weui-form-preview__item mg15" bindtap='expressStatus'>
                         <view class="weui-form-preview__label">物流单号：{{deliveryNo}}</view>
