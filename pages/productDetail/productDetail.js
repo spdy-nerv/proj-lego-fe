@@ -37,7 +37,15 @@ Page({
   	
     that.getProduct()
   },
- //获取门店
+  //点击图片放大
+   onPreviewSlider: function(e) {
+   	console.log(e)
+		wx.previewImage({
+		  current: e.target.dataset.url, // 当前显示图片的链接，不填则默认为 urls 的第一张
+		  urls: this.data.pictureUrls
+		});
+	},
+ //获取数据
    getProduct: function() {
    	var that=this;
    	var productId=that.data.productId;
