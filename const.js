@@ -43,6 +43,8 @@ var APIS = {
   GET_MY_COUPON_LIST:     '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
   GET_MODEL_BG:            '/home/getModelBackground',
   
+  GET_PRODUCT:      '/product/seckill/getProductDetail',//获取商品详情
+  
   GET_EVENT_TYPE_LIST: '/activity/eventType',
   GET_EVENTS_LIST_BY_MONTH: '/activity/getEventListByMonth',
   GET_EVENT_BASE: '/activity/getEventBase',

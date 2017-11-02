@@ -19,6 +19,14 @@ Page({
       '../../images/banner0.jpg',
       '../../images/banner0.jpg'
     ],
+    img_store:'../../images/store.jpg',
+    img_Chain:'../../images/banner0.jpg',
+    pictureUrls: [
+      '../../images/banner0.jpg',
+      '../../images/banner0.jpg',
+      '../../images/banner0.jpg',
+      '../../images/banner0.jpg'
+    ],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,

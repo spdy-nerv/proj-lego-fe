@@ -135,7 +135,11 @@
   }
   .store-title{
   	 width: 100%;
-    height: 100rpx;
+    height: 80rpx;
+  }
+  .Chain-title{
+  	 width: 100%;
+    height: 50rpx;
   }
   .store-title1{
     padding-top:10rpx;
@@ -155,19 +159,22 @@
   	color:#642100;
   	line-height:40rpx;
   }
-swiper{
-    height: 290rpx;
-}
-.banner-container{
-    width: 100%;
-    background-color: #666;
-    border-bottom: 5rpx solid #fff;
+  .reserve,.Chain{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width:100%;
   }
-  .banner-container image{
-    width: 100%;
-    height: 290rpx;
+  .reserve image{
+      width:100%;
+      height: 350rpx;
+     
   }
-
+  .Chain image{
+      width: 100%;
+      height: 300rpx;
+     
+  }
   .chainStore1{
   		width:90%;
   		margin-left:5%;

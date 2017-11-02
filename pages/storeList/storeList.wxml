@@ -9,18 +9,9 @@
 	  </view>
 	</view> 
 	<view wx:if="{{currentTab==0}}">
-		  <view class="banner-container">
-		    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-		      <block wx:for="{{pictureUrls}}" wx:key="unique">
-		        <swiper-item>
-		          <navigator url='{{navigateUrl}}'>
-		            <image src="{{item}}" mode='aspectFill' />
-		          </navigator>
-		        </swiper-item>
-		      </block>
-		    </swiper>
-		
-		  </view>
+		   <view class="reserve">
+	          <image src='{{img_store}}' wx:if='{{img_store}}'/>
+	      </view>
 		  <view class="store-title">
 	  	     <view class="store-title1">
 		  		点击旗舰店/专卖店名称  查看店内当月活动
@@ -47,20 +38,11 @@
 			</view>
 		 </scroll-view>
 	</view>
-	<view wx:else>
-		
-		 <view class="banner-container">
-		    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-		      <block wx:for="{{pictureUrls}}" wx:key="unique">
-		        <swiper-item>
-		          <navigator url='{{navigateUrl}}'>
-		            <image src="{{item}}" mode='aspectFill' />
-		          </navigator>
-		        </swiper-item>
-		      </block>
-		    </swiper>
-		  </view>
-		   <view class="store-title">
+	<view wx:else>	
+		  <view class="Chain">
+	          <image src='{{img_Chain}}' wx:if='{{img_Chain}}'/>
+	      </view>
+		  <view class="Chain-title">
 	  	    
 		 </view>
 	 <scroll-view scroll-y style="height: 290px;"bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
