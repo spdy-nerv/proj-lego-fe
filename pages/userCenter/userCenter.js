@@ -28,13 +28,16 @@ Page({
     contentlist: []
   },
   onLoad: function (options) {
-    user.login(this.getOrderList,true,this);
-    this.getMyCouponList();
+    user.login(this.renderUI,true,this);
     const userInfo = wx.getStorageSync('userInfo');
     this.setData({
       nickName:userInfo.nickName,
       avatarUrl:userInfo.avatarUrl
     })
+  },
+  renderUI:function(){
+    this.getOrderList();
+    this.getMyCouponList();
   },
   getOrderList: function(){
     var that = this;
@@ -55,7 +58,6 @@ Page({
         console.log(res.list);
         var orderListItem = that.data.productOrderList;
         var productOrderList = res.list;
-        console.log(productOrderList)
         if(productOrderList.length<that.data.pageSize){
           that.setData({
             productOrderList:orderListItem.concat(productOrderList),
@@ -65,7 +67,7 @@ Page({
           that.setData({
             productOrderList:orderListItem.concat(productOrderList),
             hasMore:true,
-            pageNum:that.data.pageNum +1
+            pageNum:that.data.pageNum +1,
           })
         }
         wx.hideLoading();
@@ -96,15 +98,18 @@ Page({
     }, true, this)
   }, 
   onReachBottom: function () {
+
     console.log(13213);
     wx.showLoading({title:'数据加载中..'})
-    if(this.data.hasMore){
-      this.getOrderList();
-    }else{
-      wx.showToast({
-        title:'没有更多数据了'
-      })
-    }
+    
+      if(this.data.hasMore){
+        this.getOrderList();
+      }else{
+        wx.showToast({
+          title:'没有更多数据了'
+        })
+      }
+    
   },
 
 })

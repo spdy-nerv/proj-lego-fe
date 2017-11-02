@@ -435,11 +435,11 @@ Page({
         wx.request({
             url:'https://www.kuaidi100.com/query',
             data: {
-                 //type:that.data.types['deliveryCompany'],
-                // postid:that.data.deliveryNo
+                 type:that.data.types[that.data.deliveryCompany],
+                 postid:that.data.deliveryNo
                // 884044987614211278 yuantong
-                type:'shentong',
-                postid:'3341366223241'
+                //type:'shentong',
+                //postid:'3341366223241'
             },
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
@@ -456,8 +456,10 @@ Page({
                    
                 })
             },
-            fail: function() {
-                // fail
+            fail: function(res) {
+                wx.showToast({
+                    title:res.message
+                })
             },
             complete: function() {
                 // complete

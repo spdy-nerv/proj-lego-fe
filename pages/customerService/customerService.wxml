@@ -41,5 +41,5 @@
     </view>
     <!-- <rich-text nodes="{{tt}}"></rich-text> -->
     <view class="tel">客服电话：02162593665</view>
-    <view class="time">客服时间  9:00-17:30</view>
+    <view class="time">客服时间: 9:00-17:30</view>
 </view>

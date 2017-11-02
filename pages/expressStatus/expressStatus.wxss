@@ -100,3 +100,9 @@ view{
     border-bottom: 1px solid #E9E9E9;
     line-height: 20px;
 }
+.err{
+    width: 100%;
+    text-align: center;
+    font-size: 33rpx;
+    margin-top:60rpx;
+}

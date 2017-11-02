@@ -2,7 +2,8 @@
   <view class="header">
    <view>{{deliveryCompany}}：{{nu}}</view>
 
-   <view>物流状态：{{state[stateData]}}</view>
+   <view wx:if='{{list.length==0?false:true}}'>物流状态：{{state[stateData]}}</view>
+   <view wx:else>物流状态：异常</view>
   </view>
   <view class="detail-box">
     <view wx:for="{{list}}">
@@ -15,4 +16,5 @@
       </view>
     </view>
   </view>
+  <view class="err" wx:if='{{list.length==0?true:false}}'>快递公司参数异常：单号不存在或者已经过期</view>
 </view>

@@ -49,8 +49,8 @@
         <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
       </view>
     </navigator>
-    <view wx:if='{{!item.orderItems}}' class="ifCoupon">暂无购买记录</view>
   </block>
+  <view wx:if='{{productOrderList.length==0?true:false}}' class="ifCoupon">暂无购买记录</view>
  
   
 
