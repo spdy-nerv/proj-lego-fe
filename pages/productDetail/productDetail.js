@@ -16,7 +16,7 @@ Page({
     serverTime: 0,
     price: 0,
     format: '',
-    productId:4,
+    productId:null,
     leftStock: 0,
     headimgPath:'../../images/list.png',
     pictureUrls:[
@@ -32,6 +32,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  	console.log(options)
+  	 this.setData({
+          productId :options.productId ,
+        });
   	user.login(this.getProduct,true,this);
     var that = this;
   	
@@ -68,7 +72,7 @@ Page({
 			      title: data.seckillTitle//页面标题为路由参数
 			    })
         that.setData({
-        headimgPath:data.headimgPath,
+          headimgPath:data.headimgPath,
           pictureUrls: data.pictureUrls,
           name :data.name ,
           price :data.price ,
