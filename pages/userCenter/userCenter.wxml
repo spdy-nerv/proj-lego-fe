@@ -7,12 +7,15 @@
     </view>
     <!-- 我的优惠券 -->
     <view class="centerContent">
-    <view class="coupon">
-      <view class="couponTitle">
-        <image src='../../images/couponIcon.png'/>
-        <text>我的优惠券</text>
-      </view>
-<block wx:for='{{myCouponList}}' wx:key='unique'>
+    <view class="myCoupon"  bindtap='toMyCoupon'>
+        <view class="couponTitle">
+            <view class="couponLeft">
+                <image src='../../images/couponIcon.png'/>
+                <text>我的优惠券</text>
+            </view>
+            <image class="couponIcon youhui" src='../../images/arrow.png'/>
+          </view>
+<!-- <block wx:for='{{myCouponList}}' wx:key='unique'>
       <navigator >
       <view class="coupon-Item"  wx:if='{{myCouponList.name}}'>
         <image  class='couponImg' src='../../images/couponImg.png'/>
@@ -23,21 +26,26 @@
         <image class="arrow" src='../../images/arrow.png'/>
       </view>
     </navigator>
-   </block>
-    <view wx:if='{{!myCouponList.name}}' class="ifCoupon">暂无优惠券</view>
+   </block> -->
     </view>
     <!-- 我的订单 -->
-    <view class="myOrder">
-      <image class="myOrderImg" src='../../images/myOrder.png'/>
-      <text>我的订单</text>
+    <view class="myOrder" bindtap='toMyOrder'>
+          <view class="myOrderLeft">
+          <image class="myOrderImg" src='../../images/myOrder.png'/>
+          <text>我的订单</text>
+        </view>
+          <image class='myOrderArrow' src='../../images/arrow.png'/>
     </view>
    <!-- 我的购买记录 -->
-    <view class="coupon">
+    <view class="coupon" bindtap='toMyBuyRecord'>
       <view class="couponTitle">
-        <image src='../../images/buyHistoryIcon.png'/>
-        <text>我的购买记录</text>
+        <view class="couponLeft">
+            <image src='../../images/buyHistoryIcon.png'/>
+            <text>我的购买记录</text>
+        </view>
+        <image class="couponIcon" src='../../images/arrow.png'/>
       </view>
-<block wx:for='{{productOrderList}}' wx:key='unique'>
+<!-- <block wx:for='{{productOrderList}}' wx:key='unique'>
       <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
       <view class="buyHistory-Item">
         <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
@@ -54,47 +62,7 @@
         <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
       </view>
     </navigator>
-  </block>
-  <view wx:if='{{productOrderList.length==0?true:false}}' class="ifCoupon">暂无购买记录</view>
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </block> -->
     </view>
-   
-
-
-
-
-
-
-
-
-
-
-
   </view>
 </view>

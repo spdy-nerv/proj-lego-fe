@@ -1,6 +1,5 @@
 {
   "pages": [
-   
     "pages/home/home",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
@@ -17,9 +16,10 @@
     "pages/expressDetail/expressDetail",
     "pages/expressStatus/expressStatus",
     "pages/customerService/customerService",
-    "pages/productList/productList"
-    
-
+    "pages/productList/productList",
+    "pages/myOrder/myOrder",
+    "pages/myCoupon/myCoupon",
+    "pages/myBuyRecord/myBuyRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",

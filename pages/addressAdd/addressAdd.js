@@ -1,6 +1,9 @@
 
 //确认订单
-
+const { APIS } = require('../../const');
+const { request } = require('../../libs/request');
+const util = require('../../utils/util');
+const user = require('../../libs/user');
 Page({
   data:{
     array:[

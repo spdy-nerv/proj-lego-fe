@@ -11,16 +11,14 @@ Page({
     interval: 5000,
     duration: 500,
     navigateUrl: '',
-    reserveImg:'../../images/reserve.png',
-     giftImg:'../../images/gift.png',
-   // reserveImg:'',
-   // giftImg:'',
+    reserveImg:'',
+    giftImg:'',
     list:''
   },
   onLoad: function (options) {
     this.getSliderList();
-    //this.getModelBg('INDEX_SECKILL');
-    //this.getModelBg('INDEX_GIFT');
+    this.getModelBg1({positionType:'INDEX_SECKILL'});
+    this.getModelBg2({positionType:'INDEX_GIFT'});
   },
   getSliderList:function(){
     wx.request({
@@ -40,16 +38,35 @@ Page({
     })
 
   },
-  getModelBg:function(data){
+  getModelBg1:function(data){
     wx.request({
       url: APIS.GET_MODEL_BG,
       method: 'GET',
-      data:{positionType:data}, 
+      data:data, 
       success:res=>{
         console.log(res);
+
         this.setData({
-          reserveImg:res.data.pictureUrl,
-          giftImg:res.data.pictureUrl
+          reserveImg:res.data.pictureUrl
+        })
+      },
+      fail:res=> {
+        wx.showToast({
+          title: res.errMsg
+      });
+      }
+    })
+  },
+  getModelBg2:function(data){
+    wx.request({
+      url: APIS.GET_MODEL_BG,
+      method: 'GET',
+      data:data, 
+      success:res=>{
+        console.log(res);
+
+        this.setData({
+          giftImg:res.data.pictureUrl,
         })
       },
       fail:res=> {

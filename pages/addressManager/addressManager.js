@@ -1,4 +1,7 @@
-
+const { APIS } = require('../../const');
+const { request } = require('../../libs/request');
+const util = require('../../utils/util');
+const user = require('../../libs/user');
 var uri_address_list = 'address/api/addressList' //地址列表
 var uri_address_delete = 'address/api/delAddress' //删除地址
 Page({
@@ -45,10 +48,10 @@ Page({
       title: '确认删除该地址吗？',
       success: function(res) {
         if (res.confirm) {
-          request.req(uri_address_delete,{  //url data callback
+          request(uri_address_delete,{  //url data callback
             addressId: e.currentTarget.dataset.item.addressId
           },(err,res) =>{
-            request.req(uri_address_list,{
+            request(uri_address_list,{
             },(err,res) =>{
               console.log('aaaaaaaaaa',res);
               if (res.data.result == 1) {
@@ -90,7 +93,7 @@ Page({
   onShow: function() {
     var that = this;
     // 生命周期函数--监听页面加载
-    request.req(uri_address_list,{
+    request(uri_address_list,{
     },(err,res) =>{
       if (res.data.result == 1) {
           that.setData({

@@ -1,0 +1,80 @@
+<view class="page">
+        <view class="page__bd">
+            <view class="weui-tab">
+                <view class="weui-navbar">
+                    <block wx:for="{{tabs}}" wx:key="*this">
+                        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                            <view class="weui-navbar__title">{{item}}</view>
+                        </view>
+                    </block>
+                    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+                </view>
+                <view class="weui-tab__panel">
+                        <view class="order" wx:if='{{productOrderList.length==0?true:false}}'>暂无购买订单</view>
+                    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                            <block wx:for='{{productOrderList}}' wx:key='unique'>
+                                    <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
+                                    <view class="buyHistory-Item">
+                                      <image  class='buyHistoryImg' src='{{item.orderItems[0].pictureUrl}}'/>
+                                      <view class="buyHistoryText">
+                                        <view class="receiveInfo">
+                                            <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
+                                            <text class="receivepeople">{{receivepeople}}</text>
+                                        </view>
+                                        <view class="price">
+                                          <image class="rmb" src='../../images/rmb.png'/>
+                                          <text class="rmbText">{{item.realPayAmount}}</text>
+                                        </view>
+                                      </view>
+                                      <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
+                                    </view>
+                                  </navigator>
+                                </block>
+                    </view>
+                    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                        <!-- 待付款 -->
+                            <block wx:for='{{unPayEdList}}' wx:key='unique'>
+                                    <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
+                                    <view class="buyHistory-Item">
+                                      <image  class='buyHistoryImg' src='{{item.orderItems[0].pictureUrl}}'/>
+                                      <view class="buyHistoryText">
+                                        <view class="receiveInfo">
+                                            <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
+                                            <text class="receivepeople">{{receivepeople}}</text>
+                                        </view>
+                                        <view class="price">
+                                          <image class="rmb" src='../../images/rmb.png'/>
+                                          <text class="rmbText">{{item.realPayAmount}}</text>
+                                        </view>
+                                      </view>
+                                      <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
+                                    </view>
+                                  </navigator>
+                                </block>
+                    </view>
+                    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                        <!-- 待收货 -->
+                            <block wx:for='{{payEdList}}' wx:key='unique'>
+                                    <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
+                                    <view class="buyHistory-Item">
+                                      <image  class='buyHistoryImg' src='{{item.orderItems[0].pictureUrl}}'/>
+                                      <view class="buyHistoryText">
+                                        <view class="receiveInfo">
+                                            <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
+                                            <text class="receivepeople">{{receivepeople}}</text>
+                                        </view>
+                                        <view class="price">
+                                          <image class="rmb" src='../../images/rmb.png'/>
+                                          <text class="rmbText">{{item.realPayAmount}}</text>
+                                        </view>
+                                      </view>
+                                      <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
+                                    </view>
+                                  </navigator>
+                                </block>
+                    </view>
+                   
+                </view>
+            </view>
+        </view>
+    </view>

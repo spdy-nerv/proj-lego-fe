@@ -37,13 +37,9 @@ Page({
   },
   renderUI:function(){
     this.getOrderList();
-    this.getMyCouponList();
   },
   getOrderList: function(){
     var that = this;
-    wx.showLoading({
-      title:'数据加载中'
-    })
     request({
       url: APIS.GET_ORDER_LIST,
       method:'GET',
@@ -78,25 +74,6 @@ Page({
       }
     }, true, this)
   },
-  getMyCouponList:function(){
-    request({
-      url: APIS.GET_MY_COUPON_LIST,
-      method:'GET',
-      header: {
-        auth: wx.getStorageSync('token')
-      },
-      realSuccess: (res) => {
-        console.log(res);
-        this.setData({
-          myCouponList:res.data
-        })
-      },realFail:(res)=>{
-        wx.showToast({
-          title: res.message
-      });
-      }
-    }, true, this)
-  }, 
   onReachBottom: function () {
 
     console.log(13213);
@@ -111,5 +88,20 @@ Page({
       }
     
   },
+  toMyOrder:function(){
+    wx.navigateTo({
+      url: '../myOrder/myOrder',
+    })
+  },
+  toMyCoupon:function(){
+    wx.navigateTo({
+      url: '../myCoupon/myCoupon',
+    })
+  },
+  toMyBuyRecord:function(){
+  wx.navigateTo({
+    url: '../myBuyRecord/myBuyRecord',
+  })
+  }
 
 })

@@ -25,10 +25,10 @@
         </scroll-view>
     </view>
     <view class="add_address" bindtap="addressAdd">
-        <navigator url='../addressAdd/addressAdd'>
+        
                 <view class="add">
                         <text>新建地址</text>
                     </view>
-        </navigator>
+        
     </view>
 </view>

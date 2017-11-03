@@ -1,5 +1,5 @@
 <view class="page">
-    <view><image class="goodsImg" src='../../images/ceshi.png'/></view>
+    <view><image class="goodsImg" src='{{orderItems.pictureUrl}}'wx:if='{{orderItems.pictureUrl}}'/></view>
     <view class="goodsName">{{orderItems.productName}}</view>
     <view class="page__bd">
         <view class="weui-form-preview">
