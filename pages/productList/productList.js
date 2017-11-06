@@ -4,10 +4,6 @@ const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     pictureUrls: [],
     name: '',
@@ -28,14 +24,8 @@ Page({
    */
   onLoad: function (options) {
     this.getSeckillSkuList();
-  
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-  
   },
  getSeckillSkuList:function(){
   request({

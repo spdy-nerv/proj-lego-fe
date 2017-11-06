@@ -8,7 +8,8 @@ Page({
         orderTime:'',
         deliveryInfo:{},
         orderItems:{},
-        orderStatusLabel:''
+        orderStatusLabel:'',
+        orderItems:[]
         
     },
     onLoad:function(options){
@@ -50,10 +51,16 @@ Page({
                 orderStatus:res.orderStatus,
                 orderStatusLabel:res.orderStatusLabel,
                 orderItems:res.orderItems[0],
-                deliveryCompany:res.deliveryInfo.deliveryCompany
+                deliveryCompany:res.deliveryInfo.deliveryCompany,
+                orderItems:res.orderItems
 
               })
-            }
+            },loginCallback:this.getOrderDetail,
+            realFail:(res)=>{
+                wx.showToast({
+                  title: res.message
+              });
+              }
           }, true, this)
     }
 

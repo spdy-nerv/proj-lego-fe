@@ -12,20 +12,17 @@ Page({
         sliderLeft: 0,
         getOrderList:[],
         pageNum:1,
-        pageSize:10,
+        pageSize:14,
         hasMore: true,
         productOrderList:[],
         unPayEdList:[],
         payEdList:[]
     },
     onLoad: function () {
-      wx.showLoading({
-        title:'数据加载中'
-      })
         var that = this;
         that.getOrderList();
-        that.getData({pageSize:that.data.pageSize,pageNum:that.data.pageNum,orderStatus:'PAYED'});
-        that.getData({ pageSize:that.data.pageSize,pageNum:that.data.pageNum,orderStatus:'UNPAYED'});
+        that.getData({pageSize:999,pageNum:that.data.pageNum,orderStatus:'PAYED'});
+        that.getData({pageSize:999,pageNum:that.data.pageNum,orderStatus:'UNPAYED'});
         wx.getSystemInfo({
             success: function(res) {
                 that.setData({
@@ -64,7 +61,8 @@ Page({
               payEdList:res.list
             })
           }
-        },realFail:(res)=>{
+        },loginCallback:this.getData,
+        realFail:(res)=>{
           wx.showToast({
             title: res.message
         });
@@ -87,30 +85,51 @@ Page({
         },
         realSuccess: (res) => {
           console.log(res.list);
-          if(res.list){
-            wx.hideLoading();
+          if(res.list){wx.hideLoading()}
+          var productOrderListItem = that.data.productOrderList;
+          var productOrderList = res.list;
+          if(productOrderList.length<that.data.pageSize){
+            that.setData({
+              productOrderList:productOrderListItem.concat(productOrderList),
+              hasMore:false,
+            }) 
+          }else{
+            that.setData({
+              productOrderList:productOrderListItem.concat(productOrderList),
+              hasMore:true,
+              pageNum:that.data.pageNum +1,
+            })
           }
-         that.setData({
-          productOrderList:res.list
-         })
-        },realFail:(res)=>{
+        },
+        loginCallback:this.getOrderList,
+        realFail:(res)=>{
           wx.showToast({
             title: res.message
         });
         }
       }, true, this)
     },
-    onReachBottom: function () {
-          console.log(13213);
+    // onReachBottom:function () {
+    //       console.log(13213);
+    //       wx.showLoading({title:'数据加载中..'})
+    //         if(this.data.hasMore){
+    //           this.getOrderList();
+    //         }else{
+    //           wx.showToast({
+    //             title:'没有更多数据了'
+    //           })
+    //         }
+          
+    //     }
+searchScrollLower:function(){
+          console.log(111)
           wx.showLoading({title:'数据加载中..'})
-          
-            if(this.data.hasMore){
-              this.getOrderList();
-            }else{
-              wx.showToast({
-                title:'没有更多数据了'
-              })
-            }
-          
+                  if(this.data.hasMore){
+                    this.getOrderList();
+                  }else{
+                    wx.showToast({
+                      title:'没有更多数据了'
+                    })
+                  }
         }
 });
