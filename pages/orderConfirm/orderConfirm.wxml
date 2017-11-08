@@ -6,15 +6,14 @@
             <text>已选商品</text>
         </view>
         <view class="selectedItem">
-            <image class="GoodsImg" src='../../images/homeTopLogo.png' />
+            <image class="GoodsImg" src="{{headimgPath}}" mode="aspectFill" />
             <view class="selectedMid">
                 <view class="selectedText">
-                    <text>10258伦敦巴士</text>
-                    <text class='selectedNum'>X{{2}}</text>
+                    <text>{{productName}}</text>
+                    <text class="selectedNum">X 1</text>
                 </view>
-                <text class="price">¥199</text>
+                <text class="price">¥{{price}}</text>
             </view>
-            <image class="arrow" src='../../images/arrow.png'></image>
         </view>
     </view>
 
@@ -25,19 +24,28 @@
                 <image src='../../images/expressIcon.png' />
                 <text>供货方式</text>
             </view>
-            <navigator url='../addressManager/addressManager' hover-class='none'>
+      <view class="address-wrap" bindtap="onOpenAddressBook" hover-class='none'>
             <view class="expressDetail">
+
+              <view wx:if="{{deliveryInfo.userName}}" class="diw-left">
                 <view class='detailTitle'>快递至这个地址</view>
                 <view class="personlInfo">
-                    <text>收货人：{{name}}</text>
-                    <text>{{tel}}</text>
-                    <image src='../../images/arrow.png' />
+                  <text>收货人：{{deliveryInfo.userName}}</text>
+                  <text>{{deliveryInfo.telNumber}}</text>
                 </view>
                 <view class="address">
-                    <text space='emsp'>收货地址：{{address}}</text>
+                  <text space='emsp'>收货地址：{{deliveryInfo.address}}</text>
                 </view>
+              </view>
+              <view wx:else class="diw-left">
+                <view class="delivery-empty">请选择收货信息</view>
+              </view>
+              <view class="diw-right">
+                <image src='../../images/arrow.png' />
+              </view>
+                
             </view>
-        </navigator>
+        </view>
        
     </view>
     <view class="expressType">配送方式：默认顺丰，不发EMS</view>
@@ -45,28 +53,34 @@
    
 
     <view class="invoice">
-            <view class="invoiceTitle">
-                    <image src='../../images/invoiceIcon.png' />
-                    <text>发票抬头</text>
-                </view>
-                <radio-group class="radio-group" bindchange="radioChange">
-                        <block >
-                            <view  class="radio" wx:for="{{items}}">
-                                    <label>
-                                            <view><radio value="{{item.name}}" checked="{{item.checked}}" color='#3F93E1'/>{{item.value}}</view> 
-                                           </label>
-                                             <input type="text" class="input" placeholder="{{item.inputValue}}"/>
-                            </view>
-                       
-                        </block>
-                </radio-group>
-                <view class="notice">
-                    注：发票随商品邮寄，请注意检查包裹
-                </view>
+      <view class="invoiceTitle">
+        <image src='../../images/invoiceIcon.png' />
+        <text>发票抬头</text>
+      </view>
+      <radio-group class="radio-group" bindchange="onRadioChange">
+        <view  class="radio" wx:for="{{items}}" wx:key="name">
+          <view><radio value="{{index}}" checked="{{item.checked}}" color='#3F93E1'/>{{item.name}}</view>
+        </view>
+      </radio-group>
+
+      <view wx:if="{{items[0].checked}}" class="fapiao-input-wrap">
+        <input type="text" class="input" placeholder="请填写个人信息" data-name="title" bindinput="onInput" placeholder-class="input-ph"></input>
+      </view>
+      <view wx:elif="{{items[1].checked}}" class="fapiao-input-wrap">
+        <input type="text" class="input" placeholder="请填写公司抬头" data-name="title" bindinput="onInput" placeholder-class="input-ph"></input>
+        <input type="text" class="input" placeholder="请填写纳税人识别号" data-name="code" bindinput="onInput" placeholder-class="input-ph"></input>
+        <input type="text" class="input" placeholder="请填写开户行" data-name="bank" bindinput="onInput" placeholder-class="input-ph"></input>
+        <input type="text" class="input" placeholder="请填写开户行账号" data-name="bankAccount" bindinput="onInput" placeholder-class="input-ph"></input>
+        <input type="text" class="input" placeholder="请填写公司地址" data-name="address" bindinput="onInput" placeholder-class="input-ph"></input>
+        <input type="text" class="input" placeholder="请填写公司电话" data-name="tel" bindinput="onInput" placeholder-class="input-ph"></input>
+      </view>
+      <view class="notice">
+        注：发票随商品邮寄，请注意检查包裹
+      </view>
         
     </view>
     <view class="footer">
-            <button class="button">提交订单并支付</button>
+            <button class="button" bindtap="onPay">提交订单并支付</button>
     </view>
    
 

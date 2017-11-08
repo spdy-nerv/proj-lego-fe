@@ -48,7 +48,7 @@ Page({
       title: '确认删除该地址吗？',
       success: function(res) {
         if (res.confirm) {
-          request(uri_address_delete,{  //url data callback
+          request(uri_address_delete, {  //url data callback
             addressId: e.currentTarget.dataset.item.addressId
           },(err,res) =>{
             request(uri_address_list,{
@@ -92,14 +92,28 @@ Page({
   },
   onShow: function() {
     var that = this;
-    // 生命周期函数--监听页面加载
-    request(uri_address_list,{
-    },(err,res) =>{
-      if (res.data.result == 1) {
-          that.setData({
-            addressData: res.data.data,//接数组
-          })
-      }
-    });
+    this._getAddressList();
   },
+
+  _getAddressList: function() {
+    var that = this;
+    request({
+      url: APIS.GET_ADDRESS_LIST,
+      method: 'GET',
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      realSuccess: function (data) {
+        that.setData({
+          addressData: data
+        })
+      },
+      loginCallback: this._getAddressList,
+      realFail: function (msg, code) {
+        wx.showToast({
+          title: 'msg'
+        });
+      }
+    }, true, this);
+  }
 })

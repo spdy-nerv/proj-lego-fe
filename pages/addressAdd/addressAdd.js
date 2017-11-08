@@ -21679,7 +21679,7 @@ Page({
             icon: 'loading',
             mask: true
         })
-    }else{
+    }else {
         request(uri_save_address, {   //url  data  callback
             trueName: that.data.name,
             mobPhone: that.data.phoneNum,

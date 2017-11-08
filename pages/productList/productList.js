@@ -41,17 +41,22 @@ Page({
   request({
     url: APIS.GET_SECKILLSKU_LIST,
     method:'GET',
+    header: {
+      auth: wx.getStorageSync('token')
+    },
     realSuccess: (res) => {
       console.log(res);
       this.setData({
       goodsList:res
       })
-    },realFail:(res)=>{
+    },
+    loginCallback: this.getSeckillSkuList,
+    realFail:(res)=>{
       wx.showToast({
         title: res.message
     });
     }
-  }, false, this)
+  }, true, this)
 
  },
   toProductDetail:function(){
