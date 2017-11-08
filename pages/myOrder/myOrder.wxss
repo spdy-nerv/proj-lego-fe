@@ -73,7 +73,7 @@ page,
     width: 15rpx;
     height: 26rpx;
 }
- .weui-tab__panel .order{
+ .order{
     width: 100%;
     margin-top:30rpx;
     font-size: 36rpx;

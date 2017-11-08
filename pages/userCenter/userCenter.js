@@ -28,7 +28,7 @@ Page({
     contentlist: []
   },
   onLoad: function (options) {
-    user.login(this.renderUI,true,this);
+    this.renderUI();
     const userInfo = wx.getStorageSync('userInfo');
     this.setData({
       nickName:userInfo.nickName,

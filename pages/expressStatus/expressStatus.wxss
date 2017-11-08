@@ -105,4 +105,5 @@ view{
     text-align: center;
     font-size: 33rpx;
     margin-top:60rpx;
+    color: #999;
 }

@@ -45,7 +45,6 @@ Page({
       data:data, 
       success:res=>{
         console.log(res);
-
         this.setData({
           reserveImg:res.data.pictureUrl
         })
@@ -64,7 +63,6 @@ Page({
       data:data, 
       success:res=>{
         console.log(res);
-
         this.setData({
           giftImg:res.data.pictureUrl,
         })

@@ -1,0 +1,14 @@
+<!--pages/productDetail/productDetail.wxml-->
+<view class="page">
+	  <view class="reserve">
+          <image src='{{headimgPath}}' wx:if='{{headimgPath}}'/>
+      </view>
+	  <view class="flex-row" style="flex-direction:row;">
+	      <view class="flex-view-item" wx:for="{{pictureUrls}}" wx:if='{{pictureUrls}}' >
+               <image mode="aspectFill" src="{{item}}" bindtap="onPreviewSlider"  wx:if="{{item}}" data-url="{{item}}"></image>
+          </view>
+      </view>
+       <view class="content">
+         <rich-text nodes='{{description}}'></rich-text>
+      </view>
+</view>

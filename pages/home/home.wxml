@@ -5,7 +5,7 @@
       <block wx:for="{{pictureUrl}}" wx:key="unique">
         <swiper-item>
           <!-- item.navigateUrl -->
-          <navigator url='../productDetail/productDetail?productId=4'>  
+          <navigator url='{{item.navigateUrl}}'>  
             <image src="{{item.pictureUrl}}" mode='aspectFill' />
           </navigator>
         </swiper-item>
