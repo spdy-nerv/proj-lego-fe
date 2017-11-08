@@ -18,10 +18,6 @@ Page({
     hasSignUp: false,
     goodsList:[]           // 当前用户是否已经登记报名
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.getSeckillSkuList();
   },

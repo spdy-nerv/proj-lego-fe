@@ -19,7 +19,8 @@
     "pages/productList/productList",
     "pages/myOrder/myOrder",
     "pages/myCoupon/myCoupon",
-    "pages/myBuyRecord/myBuyRecord"
+    "pages/myBuyRecord/myBuyRecord",
+    "pages/bannerDetail/bannerDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
