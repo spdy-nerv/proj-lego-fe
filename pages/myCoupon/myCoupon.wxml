@@ -1,2 +1,14 @@
 <!--pages/myCoupon/myCoupon.wxml-->
-<view class="coupon">暂无优惠券</view>
+<view class="coupon" wx:if='{{myCouponList.length==0}}'>暂无优惠券</view>
+<block wx:for='{{myCouponList}}' wx:key='unique'>
+      <navigator >
+      <view class="coupon-Item"  wx:if='{{!myCouponList.name}}'>
+        <image  class='couponImg' src='../../images/couponImg.png'/>
+        <view class="couponText">
+          <text class="couponType">{{couponType}}</text>
+          <text class="couponDate">有效期：{{couponDate}}</text>
+        </view>
+        <image class="arrow" src='../../images/arrow.png'/>
+      </view>
+    </navigator>
+   </block>

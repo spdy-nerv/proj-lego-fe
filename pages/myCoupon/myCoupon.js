@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myCouponList:[]
+    myCouponList:[1,1,1],
+    couponType:'现金抵用券',
+    couponDate:'2017年2月30日-6月30日'
   },
 
   /**
@@ -31,7 +33,9 @@ Page({
         this.setData({
           myCouponList:res.data
         })
-      },realFail:(res)=>{
+      },
+      loginCallback:this.getMyCouponList,
+      realFail:(res)=>{
         wx.showToast({
           title: res.message
       });

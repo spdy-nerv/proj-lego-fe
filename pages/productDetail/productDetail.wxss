@@ -67,3 +67,8 @@
   		background:#E50011;
   		font-size:35rpx;
   }
+
+  .order-closed {
+    background-color: #F3F3F3;
+    color: #ccc;
+  }

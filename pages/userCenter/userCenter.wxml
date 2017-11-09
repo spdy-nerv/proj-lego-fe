@@ -15,24 +15,22 @@
             </view>
             <image class="couponIcon youhui" src='../../images/arrow.png'/>
           </view>
-<!-- <block wx:for='{{myCouponList}}' wx:key='unique'>
-      <navigator >
-      <view class="coupon-Item"  wx:if='{{myCouponList.name}}'>
-        <image  class='couponImg' src='../../images/couponImg.png'/>
-        <view class="couponText">
-          <text class="couponType">{{couponType}}</text>
-          <text class="couponDate">有效期：{{couponDate}}</text>
-        </view>
-        <image class="arrow" src='../../images/arrow.png'/>
-      </view>
-    </navigator>
-   </block> -->
     </view>
+    <!-- 我的礼品卡 -->
+    <view class="myCoupon"  catchtap='toMyGiftCard'>
+      <view class="couponTitle">
+          <view class="couponLeft">
+              <image src='../../images/giftCard.png'/>
+              <text>我的礼品卡</text>
+          </view>
+          <image class="couponIcon youhui" src='../../images/arrow.png'/>
+        </view>
+  </view>
     <!-- 我的订单 -->
     <view class="myOrder" bindtap='toMyOrder'>
           <view class="myOrderLeft">
           <image class="myOrderImg" src='../../images/myOrder.png'/>
-          <text>我的订单</text>
+          <text>商品订单</text>
         </view>
           <image class='myOrderArrow' src='../../images/arrow.png'/>
     </view>
@@ -41,28 +39,10 @@
       <view class="couponTitle">
         <view class="couponLeft">
             <image src='../../images/buyHistoryIcon.png'/>
-            <text>我的购买记录</text>
+            <text>礼品卡购买记录</text>
         </view>
         <image class="couponIcon" src='../../images/arrow.png'/>
       </view>
-<!-- <block wx:for='{{productOrderList}}' wx:key='unique'>
-      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
-      <view class="buyHistory-Item">
-        <image  class='buyHistoryImg' src='../../images/couponImg.png'/>
-        <view class="buyHistoryText">
-          <view class="receiveInfo">
-              <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
-              <text class="receivepeople">{{receivepeople}}</text>
-          </view>
-          <view class="price">
-            <image class="rmb" src='../../images/rmb.png'/>
-            <text class="rmbText">{{item.realPayAmount}}</text>
-          </view>
-        </view>
-        <image class="arrow buyHistoryArrow" src='../../images/arrow.png'/>
-      </view>
-    </navigator>
-  </block> -->
     </view>
   </view>
 </view>

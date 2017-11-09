@@ -20,7 +20,8 @@
     "pages/myOrder/myOrder",
     "pages/myCoupon/myCoupon",
     "pages/myBuyRecord/myBuyRecord",
-    "pages/bannerDetail/bannerDetail"
+    "pages/bannerDetail/bannerDetail",
+    "pages/myGiftCard/myGiftCard"
   ],
   "window": {
     "backgroundTextStyle": "light",

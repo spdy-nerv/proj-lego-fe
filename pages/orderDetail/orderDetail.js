@@ -58,7 +58,7 @@ Page({
             },loginCallback:this.getOrderDetail,
             realFail:(res)=>{
                 wx.showToast({
-                  title: res.message
+                  title: res
               });
               }
           }, true, this)

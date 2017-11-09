@@ -36,16 +36,6 @@ var APIS = {
   GET_NAV_SPOT_LIST: '/nav/spot',
   GET_NAV_SPOT_DETAIL: '/nav/spot/${id}',
 
-  LOGIN: '/uc/login',
-  GET_SLIDER_LIST:       '/home/getSliderList', //获取首页轮播列表
-  GET_ORDER_LIST:        '/order/list', //获取历史购买商品的订单列表 
-  GET_ORDER_DETAIL:      '/order/detail/',//获取购买订单详情
-  GET_MY_COUPON_LIST:     '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
-  GET_MODEL_BG:            '/home/getModelBackground',
-  GET_SECKILLSKU_LIST:     '/product/seckill/getSecKillSkuList',//获取所有抢购商品列表
-  
-  GET_PRODUCT:      '/product/seckill/getProductDetail',//获取商品详情
-  
   GET_EVENT_TYPE_LIST: '/activity/eventType',
   GET_EVENTS_LIST_BY_MONTH: '/activity/getEventListByMonth',
   GET_EVENT_BASE: '/activity/getEventBase',
@@ -60,19 +50,39 @@ var APIS = {
   GET_MY_SIGNUP_LIST: '/activity/getMySignUpList',
   GET_EVENT_POSTER: '/activity/getEventPoster',
   GET_EVENT_QRCODE: '/activity/getEventQrCode',
-  
-  GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
-  GET_ALL_REGULARCHAIN:  '/store/getAllRegularChain',//获取所有专卖店列表
-  GET_STORE_DETAIL:      '/store/detail',//获取店铺详情
-  SIGNIN_STORE:          '/store/signinStore',//店铺签到
-  GET_STORE_QRCODE:      '/store/getStoreQrCode',//获取店铺小程序码
 
   TOP_COLUMNS: '/cms/viewOption/topColumns',
   VIEWDATA_POST: '/cms/viewData/post/${id}',
   POST_DETAIL: '/cms/post/detail/${id}',
   VIEWDATA_COLUMN_POSTS: '/cms/viewData/column_posts/${id}',
   POST_LIST: '/cms/post/list',
-  VIEWDATA_SUBCOLUMN_POSTS: '/cms/viewData/subcolumn_posts/${id}'
+  VIEWDATA_SUBCOLUMN_POSTS: '/cms/viewData/subcolumn_posts/${id}',
+
+  // ----------- lego --------------------
+  LOGIN: '/uc/login',
+  GET_SLIDER_LIST: '/home/getSliderList', //获取首页轮播列表
+  GET_ORDER_LIST: '/order/list', //获取历史购买商品的订单列表 
+  GET_ORDER_DETAIL: '/order/detail/',//获取购买订单详情
+  GET_MY_COUPON_LIST: '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
+  GET_MODEL_BG: '/home/getModelBackground',
+  GET_SECKILLSKU_LIST: '/product/seckill/getSecKillSkuList',//获取所有抢购商品列表
+
+  GET_PRODUCT: '/product/seckill/getProductDetail',//获取商品详情
+
+  GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
+  GET_ALL_REGULARCHAIN: '/store/getAllRegularChain',//获取所有专卖店列表
+  GET_STORE_DETAIL: '/store/detail',//获取店铺详情
+  SIGNIN_STORE: '/store/signinStore',//店铺签到
+  GET_STORE_QRCODE: '/store/getStoreQrCode',//获取店铺小程序码
+
+  ADD_ADDRESS: '/uc/address',
+  GET_ADDRESS_LIST: '/uc/address/listAddress',
+  DELETE_ADDRESS: '/uc/address/${addressId}',
+  EDIT_ADDRESS: '/uc/address/${addressId}',
+
+  ADD_ORDER: '/order/addOrder'
+
+
 }
 
 for (var i in APIS) {

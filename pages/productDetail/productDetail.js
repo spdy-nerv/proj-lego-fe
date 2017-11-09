@@ -18,14 +18,33 @@ Page({
     format: '',
     productId:null,
     leftStock: 0,
-    headimgPath:'../../images/list.png',
-    pictureUrls:[
-    	'../../images/list_1.png',
-    	'../../images/list_2.png',
-    	'../../images/list_3.png'
-    ],
+    headimgPath:'',
+    pictureUrls:[],
     isStartToSell: false,       // 是否已经开启支付
-		hasSignUp: false           // 当前用户是否已经登记报名
+		hasSignUp: false,           // 当前用户是否已经登记报名
+    
+    /*
+    ## 登记状态
+    signupStatus
+    - NOT_STARTED: 未开始
+    - STARTED: 进行中
+    - SIGNUPED: 已登记过
+    - END: 已结束
+    */
+    signupStatus: 'END',
+
+    /*
+    ## 秒杀状态
+    seckillStatus
+    - NO_SIGNUP:没有登记
+    - NO_QUALIFY:没有资格，没有收到购买入口消息的
+    - ORDERED:已下单，未支付。订单表里有“未支付”状态订单的用户
+    - PURCHASED:已购买过。支付表里有“已支付成功”状态订单的用户
+    - INVALID_TIME:商品不在秒杀有效期内，如未开始或已结束
+    - QUALIFIED:有资格购买。上面所有约束均通过的用户
+    */
+    seckillStatus: 'QUALIFIED'
+
   },
 
   /**
@@ -36,10 +55,10 @@ Page({
   	 this.setData({
           productId :options.productId ,
         });
-  	user.login(this.getProduct,true,this);
-    var that = this;
+  	//user.login(this.getProduct,true,this);
+    //var that = this;
   	
-    that.getProduct()
+    this.getProduct()
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -67,22 +86,24 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
-      	console.log(data)
       	  wx.setNavigationBarTitle({
 			      title: data.seckillTitle//页面标题为路由参数
 			    })
         that.setData({
           headimgPath:data.headimgPath,
           pictureUrls: data.pictureUrls,
-          name :data.name ,
+          name :data.name,
           price :data.price ,
         });
          wx.hideLoading()
       },
+      loginCallback: this.getProduct,
       realFail: function (msg, code) {
-        console.log(msg,code)
+        wx.showToast({
+          title: 'msg'
+        });
       }
-    });
+    }, true, this);
 
   },
   //确认购买

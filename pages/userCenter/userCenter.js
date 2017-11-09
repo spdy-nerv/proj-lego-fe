@@ -18,8 +18,6 @@ Page({
     nickName:'',
     avatarUrl:'',
     personCenterBg:'../../images/personCenterBg.png',
-    couponType:'现金抵用券',
-    couponDate:'2017年2月30日-6月30日',
     giftCardType:'伦敦巴士礼品卡',
     receivepeople:'',
     price:'199',
@@ -30,7 +28,7 @@ Page({
   },
   onLoad: function (options) {
     const userInfo = app.globalData.userInfo;
-    console.log(app)
+    console.log(userInfo)
      this.setData({
       nickName:userInfo.nickName,
       avatarUrl:userInfo.avatarUrl
@@ -72,20 +70,6 @@ Page({
       }
     }, true, this)
   },
-  onReachBottom: function () {
-
-    console.log(13213);
-    wx.showLoading({title:'数据加载中..'})
-    
-      if(this.data.hasMore){
-        this.getOrderList();
-      }else{
-        wx.showToast({
-          title:'没有更多数据了'
-        })
-      }
-    
-  },
   toMyOrder:function(){
     wx.navigateTo({
       url: '../myOrder/myOrder',
@@ -100,6 +84,11 @@ Page({
   wx.navigateTo({
     url: '../myBuyRecord/myBuyRecord',
   })
+  },
+  toMyGiftCard:function(){
+    wx.navigateTo({
+      url: '../myGiftCard/myGiftCard',
+    })
   }
 
 })

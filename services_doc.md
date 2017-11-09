@@ -56,6 +56,7 @@
 		description: '商品描述',
 		seckillStartTime: '抢购开始时间',
 		seckillEndTime: '抢购结束时间',
+		serverTime: '当前的服务器时间',
 		price: '价格',
 		format: '规格',
 		leftStock: '剩余库存量',
@@ -226,6 +227,18 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxopencardobject
 		]
 	}
 	
+#### 4.3 领取优惠券 coupon/addCoupon
+
+	输入：
+	{
+		token: '用户token，置于header'
+		cardId: 'ausnd23j2qjr',      // 微信卡券id
+		code: 'asd213rq'             // 小程序端成功领取优惠券后，微信返回的加密code
+		
+	}
+	
+	输出：无
+	
 ### 5. 订单相关
 
 #### 5.1 确认订单&收单 order/prepay
@@ -323,8 +336,8 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html#wxrequestpaymentobjec
 			...
 		],
 		totalPrice: 1000,     // 订单金额
-		delieryType: 0/1,     // 0为上门自提，1为邮寄配送
-		deliveyInfo: {        deliveryType为1时，必须提供
+		deliveryType: 0/1,     // 0为上门自提，1为邮寄配送
+		deliveryInfo: {        deliveryType为1时，必须提供
 			userName: '收货人姓名',
 			telNumber: '手机号码',
 			address: '详细收货地址'

@@ -1,0 +1,8 @@
+/* pages/myGiftCard/myGiftCard.wxss */
+.coupon{
+    width: 100%;
+    margin-top:30rpx;
+    font-size: 36rpx;
+    color: #ccc;
+    text-align: center;
+}

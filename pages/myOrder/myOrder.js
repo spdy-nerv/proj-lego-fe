@@ -131,18 +131,6 @@ Page({
       }
     }, true, this)
   },
-  // onReachBottom:function () {
-  //       console.log(13213);
-  //       wx.showLoading({title:'数据加载中..'})
-  //         if(this.data.hasMore){
-  //           this.getOrderList();
-  //         }else{
-  //           wx.showToast({
-  //             title:'没有更多数据了'
-  //           })
-  //         }
-
-  //     }
   searchScrollLower: function () {
     console.log(111)
     wx.showLoading({ title: '数据加载中..' })

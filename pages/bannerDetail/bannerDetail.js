@@ -33,7 +33,7 @@ Page({
   	 this.setData({
           productId :options.productId ,
         });
-   //user.login(this.getProduct,true,this);
+  // user.login(this.getProduct,true,this);
     this.getProduct();
     var that = this;
   	

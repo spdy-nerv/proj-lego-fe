@@ -78,6 +78,7 @@ function checkAppLogin(sid, cb , ctx) {
 function doAppLogin(data, cb, ctx) {
     wx.request({
       url: APIS.LOGIN,
+      //url:'http://192.168.31.206:8080/uc/login',
       data: data,
       method: 'POST',
       success: function(res){

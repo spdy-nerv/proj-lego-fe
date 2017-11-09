@@ -1,38 +1,236 @@
 // pages/orderDetail/orderDetail.js
+var { APIS } = require('../../const.js');
+var { request } = require('../../libs/request');
+var user = require('../../libs/user');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    prodcutId: 0,
     productList: [],
     totalPrice: 1000,     // 订单金额
     delieryType: 0 / 1,     // 0为上门自提，1为邮寄配送
     deliveyInfo: {
 			userName: '',
       telNumber: '',
-      address: ''
+      address: '',
+      province: '',
+      city: '',
+      county: '',
+      nationalCode: '',
+      street: ''
     },
     needFapiao: false,   // 是否需要发票
     fapiaoInfo: {
       type: 0,      // 0为个人，1为公司
-      title: ''
+      title: '',
+      address: '',
+      bank: '',
+      bankAccount: '',
+      code: '',
+      tel: ''
     },
     qrCodeUrl: '',    // 线下核销二维码，如果deliveyType为1，此字段可缺省
 		expressCode: '',     // 快递单号，如果deliveyType为0，此字段可缺省
     status: 0 ,
     selectedNum:'2',
-    name:'王二胖',
-    tel:'18188188232',
-    address:'上海市普陀区桃浦镇百丽路99弄165号',
     items: [
-      {name: 'USA', value: '个人',inputValue:'请填写个人信息'},
-      {name: 'CHN', value: '公司',inputValue:'请填写公司信息'},
+      {name: '个人', value: '0',placeholder:'请填写个人信息', checked: false,inputValue: ''},
+      {name: '公司', value: '1',placeholder:'请填写公司信息', checked: false,inputValue: ''},
     ]
   
   },
   onLoad: function (options) {
-  
+    this.setData({
+      productId: options.productId
+    });
+    this._getSelectedProduct();
+    this.isPaying = false;
+  },
+
+  _getSelectedProduct: function() {
+    var that = this;
+    var productId = this.data.productId;
+    request({
+      url: APIS.GET_PRODUCT,
+      method: 'GET',
+      data: {
+        productId: productId
+      },
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      realSuccess: function (data) {
+        that.setData({
+          headimgPath: data.headimgPath,
+          productName: data.name,
+          price: data.price,
+        });
+        wx.hideLoading();
+      },
+      loginCallback: this._getSelectedProduct,
+      realFail: function (msg, code) {
+        wx.showToast({
+          title: 'msg'
+        });
+      }
+    }, true, this);
+  },
+
+  onOpenAddressBook: function() {
+    var that = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.address']) {
+          wx.authorize({
+            scope: 'scope.address',
+            success() {
+              that._openAddressBook();
+            }
+          })
+        } else {
+          that._openAddressBook();
+        }
+      }
+    })
+  },
+
+  _openAddressBook: function() {
+    var that = this;
+    wx.chooseAddress({
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          deliveryInfo: {
+            userName: res.userName,
+            telNumber: res.telNumber,
+            address: res.provinceName + res.cityName + res.countyName + res.detailInfo,
+            province: res.provinceName,
+            city: res.cityName,
+            county: res.countyName,
+            nationalCode: res.nationalCode
+          }
+        });
+      }
+    });
+  },
+
+  onRadioChange: function(e) {
+    var index = +e.detail.value;
+    var items = this.data.items;
+    items.forEach(function(item, i) {
+      if (i == index) {
+        item.checked = true;
+      } else {
+        item.checked = false;
+      }
+    });
+    this.setData({
+      items: items
+    });
+  },
+
+  onChangeFapiaoTitle: function(e) {
+    var index = +e.currentTarget.dataset.index;
+    var value = e.detail.value;
+    var items = this.data.items;
+    items.forEach(function (item, i) {
+      if (i == index) {
+        item.inputValue = value;
+      }
+    });
+    this.setData({
+      items: items
+    });
+  },
+
+  onInput: function(e) {
+    var val = e.detail.value;
+    var name = e.currentTarget.dataset.name;
+    var fapiaoInfo = this.data.fapiaoInfo;
+    fapiaoInfo[name] = val;
+    this.setData({
+      fapiaoInfo: fapiaoInfo
+    });
+  },
+
+  onPay: function() {
+    var deliveryInfo = this.data.deliveryInfo;
+    if (!deliveryInfo.userName || !deliveryInfo.telNumber || !deliveryInfo.address) {
+      wx.showToast({
+        title: '请选择完整的收货信息'
+      });
+      return;
+    }
+
+    if (this.isPaying) return;
+    this.isPaying = true;
+    var payData = this._buildPayData();
+    var that = this;
+    request({
+      url: APIS.ADD_ORDER,
+      method: 'POST',
+      data: payDate,
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      realSuccess: function (data) {
+        // TODO
+        that.isPaying = false;
+      },
+      loginCallback: this.onPay,
+      realFail: function (msg, code) {
+        wx.showToast({
+          title: 'msg'
+        });
+        that.isPaying = false;
+      }
+    }, true, this);
+  },
+
+  _buildPayData: function() {
+    var d = this.data;
+    var isNeedInvoice = false;
+    var invoiceType = 'PERSONAL';
+    d.items.forEach(function(item, i) {
+      if (item.checked) {
+        isNeedInvoice = true;
+        if (i == 0) {
+          invoiceType = 'PERSONAL';
+        } else if (i == 1) {
+          invoiceType = 'COMPANY';
+        }
+      }
+    });
+    var data = {
+      "address": d.deliveryInfo.address,
+      "city": d.deliveryInfo.city,
+      "county": d.deliveryInfo.county,
+      "invoiceAddress": d.fapiaoInfo.address,
+      "invoiceBank": d.fapiaoInfo.bank,
+      "invoiceBankAccount": d.fapiaoInfo.bankAccount,
+      "invoiceCode": d.fapiaoInfo.code,
+      "invoiceTel": d.fapiaoInfo.tel,
+      "invoiceTitle": d.fapiaoInfo.title,
+      "invoiceType": invoiceType,
+      "isNeedInvoice": isNeedInvoice,
+      "orderItems": [
+        {
+          "productCount": 1,
+          "secKillSkuId": d.productId
+        }
+      ],
+      "payType": "WXPAY",
+      "phone": d.deliveryInfo.telNumber,
+      "province": d.deliveryInfo.province,
+      "realName": d.deliveryInfo.userName,
+      "remark": '',
+      "street": d.deliveryInfo.street
+    }
+
+    return data;
   },
 
   /**

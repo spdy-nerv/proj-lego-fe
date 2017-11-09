@@ -19,7 +19,7 @@
                                           <image  class='buyHistoryImg' src='{{item.orderItems[0].pictureUrl}}'/>
                                           <view class="buyHistoryText">
                                             <view class="receiveInfo">
-                                                <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
+                                                <text class="buyHistoryType">{{item.orderItems[0].skuName}}</text>
                                                 <text class="receivepeople">{{receivepeople}}</text>
                                             </view>
                                             <view class="price">
@@ -41,7 +41,7 @@
                                       <image  class='buyHistoryImg' src='{{item.orderItems[0].pictureUrl}}'/>
                                       <view class="buyHistoryText">
                                         <view class="receiveInfo">
-                                            <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
+                                            <text class="buyHistoryType">{{item.orderItems[0].skuName}}</text>
                                             <text class="receivepeople">{{receivepeople}}</text>
                                         </view>
                                         <view class="price">
@@ -62,7 +62,7 @@
                                       <image  class='buyHistoryImg' src='{{item.orderItems[0].pictureUrl}}'/>
                                       <view class="buyHistoryText">
                                         <view class="receiveInfo">
-                                            <text class="buyHistoryType">{{item.orderItems[0].productName}}</text>
+                                            <text class="buyHistoryType">{{item.orderItems[0].skuName}}</text>
                                             <text class="receivepeople">{{receivepeople}}</text>
                                         </view>
                                         <view class="price">

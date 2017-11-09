@@ -1,6 +1,6 @@
 <!--pages/productDetail/productDetail.wxml-->
 <view class="page">
-    <view>
+    <view class="headerImg">
         <image class="goodsImg" src='https://microcloudtech.com/images/lego/image/product/goodsList.png' />
     </view>
     <block wx:for='{{goodsList}}' wx:key='{{unique}}'>
@@ -14,10 +14,11 @@
                 <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
                 <view class="fs30 mg27 fontColor">{{item.startTime}} 开始预定</view>
                 <view class="fs30 mg27 fontColor">{{item.endTime}} 内付款</view>
-                <button class="mg27 startBuy" bindtap='toProductDetail' wx:if="{{item.isEnd=='STARTED'?true:false}}">开始预定</button>
-                <button class="mg27 bgcolor" disabled bindtap='toProductDetail' wx:else>预定结束</button>
+                <navigator url='../productDetail/productDetail?productId={{item.productId}}'>
+                    <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">开始预定</button>
+                </navigator>
+                <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='STARTED'?false:true}}">预定结束</button>
             </view>
         </view>
     </block>
-
 </view>
