@@ -23,10 +23,13 @@ function rawLogin(cb, ctx) {
         var code = res.code
         wx.getUserInfo({
           success: function (res) {
+            console.log(res);
             var d = {
               code: code,
               user_raw: res.userInfo,
-              signature: res.signature
+              signature: res.signature,
+              encryptedData: res.encryptedData,
+               iv: res.iv
             }
             wx.setStorageSync('userInfo', res.userInfo);
             doAppLogin(d, cb, ctx);
@@ -79,6 +82,7 @@ function doAppLogin(data, cb, ctx) {
       method: 'POST',
       success: function(res){
         var d = res.data;
+        console.log(res);
         if (d.code == 'SUCCESS' && d.data) {
             var token = d.data.token;
             wx.setStorageSync('token', token);

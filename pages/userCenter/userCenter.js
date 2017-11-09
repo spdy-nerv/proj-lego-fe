@@ -3,6 +3,7 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
+const app = getApp();
 Page({
   data: {
     star: 0,
@@ -28,15 +29,12 @@ Page({
     contentlist: []
   },
   onLoad: function (options) {
-    this.renderUI();
-    const userInfo = wx.getStorageSync('userInfo');
-    this.setData({
+    const userInfo = app.globalData.userInfo;
+    console.log(app)
+     this.setData({
       nickName:userInfo.nickName,
       avatarUrl:userInfo.avatarUrl
     })
-  },
-  renderUI:function(){
-    this.getOrderList();
   },
   getOrderList: function(){
     var that = this;

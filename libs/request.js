@@ -18,7 +18,7 @@ function request(obj, needLogin = true, ctx) {
         if (d.success || d.code == 'success') {
             typeof obj.realSuccess == "function" && obj.realSuccess(d.data);
         } else {
-          if (needLogin && d.code == 'ACT_TOKEN_FAILURE') {
+          if (needLogin && d.code == 'CM_ERROR_TOKEN') {
                 wx.showLoading({
                     mask: true,
                     title: '用户登录失效，重新登录中！'

@@ -21,8 +21,8 @@ Page({
   onLoad: function () {
     var that = this;
     that.getOrderList();
-    that.getData({ pageSize: 999, pageNum: that.data.pageNum, orderStatus: 'PAYED' });
-    that.getData({ pageSize: 999, pageNum: that.data.pageNum, orderStatus: 'UNPAYED' });
+    that.getDataPayed();
+    that.getDataUnpayed();
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -38,7 +38,7 @@ Page({
       activeIndex: e.currentTarget.id
     });
   },
-  getData: function (data) {
+  getDataPayed: function (data) {
     const that = this;
     wx.showLoading({
       title: '数据加载中'
@@ -49,26 +49,46 @@ Page({
       header: {
         auth: wx.getStorageSync('token')
       },
-      data: data,
+      data:{ pageSize: 999, pageNum: that.data.pageNum, orderStatus: 'PAYED' },
       realSuccess: (res) => {
-        console.log(res.list);
-        if (res.list[0].orderStatus == "UNPAYED") {
-          that.setData({
-            unPayEdList: res.list
-          })
-        } else if (res.list[0].orderStatus == 'PAYED') {
-          that.setData({
-            payEdList: res.list
-          })
-        }
-      }, loginCallback: this.getData,
+        console.log(res);
+      this.setData({
+        payEdList: res.list
+      })
+      }, loginCallback: this.getDataPayed,
       realFail: (res) => {
         wx.showToast({
-          title: res.message
-        });
+          title:res
+        })
       }
     }, true, this)
   },
+  getDataUnpayed: function (data) {
+    const that = this;
+    wx.showLoading({
+      title: '数据加载中'
+    })
+    request({
+      url: APIS.GET_ORDER_LIST,
+      method: 'GET',
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      data:{ pageSize: 999, pageNum: that.data.pageNum, orderStatus: 'UNPAYED' },
+      realSuccess: (res) => {
+        console.log(res);
+      this.setData({
+        unPayEdList: res.list
+      })
+      }, loginCallback: this.getDataUnpayed,
+      realFail: (res) => {
+        wx.showToast({
+          title:res
+        })
+      }
+    }, true, this)
+  },
+
   getOrderList: function (data) {
     var that = this;
     wx.showLoading({
@@ -104,9 +124,10 @@ Page({
       },
       loginCallback: this.getOrderList,
       realFail: (res) => {
+        console.log(res);
         wx.showToast({
-          title: res.message
-        });
+          title:res
+        })
       }
     }, true, this)
   },

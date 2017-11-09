@@ -18,12 +18,8 @@ Page({
     format: '',
     productId:null,
     leftStock: 0,
-    headimgPath:'../../images/list.png',
-    pictureUrls:[
-    	'../../images/list_1.png',
-    	'../../images/list_2.png',
-    	'../../images/list_3.png'
-    ],
+    headimgPath:'',
+    pictureUrls:[],
     isStartToSell: false,       // 是否已经开启支付
     hasSignUp: false,
     description:''           // 当前用户是否已经登记报名
@@ -37,10 +33,11 @@ Page({
   	 this.setData({
           productId :options.productId ,
         });
-  	user.login(this.getProduct,true,this);
+   //user.login(this.getProduct,true,this);
+    this.getProduct();
     var that = this;
   	
-    that.getProduct()
+    //that.getProduct()
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -81,10 +78,11 @@ Page({
         });
          wx.hideLoading()
       },
+      loginCallback:this.getProduct,
       realFail: function (msg, code) {
         console.log(msg,code)
       }
-    });
+    },true,this);
 
   },
   //确认购买
