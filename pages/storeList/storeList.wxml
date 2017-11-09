@@ -18,8 +18,8 @@
 		  	</view>
 		    
 		  	</view>
-	  	<scroll-view scroll-y class="scrol" style="height: 290px;" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
-			<view class="content store1"  wx:for="{{regularChainList}}">
+	  	<scroll-view scroll-y class="scrol" style="height: 310px;" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+			<view class="content store1"  wx:for="{{regularChainList}}" wx:for-index='key'>
 			   <navigator url='../storeDetail/storeDetail?storeId={{item.storeId}}'>
 			    <view class="regular-bc">
 				     <view class="regular-name">
@@ -27,7 +27,7 @@
 				     </view>
 				      <view class="regular-info">
 				        <view class="regular-distance">
-				        	<text>{{item.distance}}米</text>
+				        	<text>{{rList_distance[key]}}</text>
 				     	</view>
 				     	<view class="regular-address">
 				        	<text>{{item.address}}</text>
@@ -45,15 +45,15 @@
 		  <view class="Chain-title">
 	  	    
 		 </view>
-	 <scroll-view scroll-y style="height: 290px;"bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
-		<view class="content chainStore1"  wx:for="{{chainStoreList}}">
+	 <scroll-view scroll-y style="height: 350px;"bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+		<view class="content chainStore1"  wx:for="{{chainStoreList}}" wx:for-index='key'>
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			   <view class="chainStore-name">
 			        <text>{{item.name}}</text>
 			   </view>
 			   <view class="chainStore-info">
 				   <view class="chainStore-distance">
-				      <text style="height:100%;line-height:100%">{{item.distance}}米</text>
+				      <text style="height:100%;line-height:100%">{{cList_distance[key]}}</text>
 				   </view>
 				   <view class="chainStore-address" >
 				      {{item.address}}

@@ -94,7 +94,7 @@
   }
   .chainStore-distance{
   	float:right;
-  	width:30%;
+  	width:22%;
   	font-size:30rpx;
   	height:40rpx;
   	line-height:40rpx;

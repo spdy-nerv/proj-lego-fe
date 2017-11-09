@@ -40,10 +40,12 @@ Page({
     regularChainList: [
       
 		],
+		rList_distance:[],
     // 经销店
     chainStoreList: [
     	
     ],
+    cList_distance:[],
     pageSize: 20,
     pageNum: 1,
     hasMore: true,
@@ -106,6 +108,7 @@ Page({
           qrCodeUrl:data.hasMore,
         });
          wx.hideLoading()
+         that.reduction()
       },
       realFail: function (msg, code) {
         console.log(msg,code)
@@ -113,7 +116,38 @@ Page({
     });
 
   },
-
+reduction: function(){
+		var that=this;
+		var regularChainList=that.data.regularChainList;
+		var rList_distance=that.data.rList_distance;
+		var chainStoreList=that.data.chainStoreList;
+		var cList_distance=that.data.cList_distance;
+		for(var i = 0;i<regularChainList.length;i++){
+			console.log((regularChainList[i].distance/1000).toFixed(1))
+			if(regularChainList[i].distance<1000){
+				var n=regularChainList[i].distance+"米";
+						rList_distance.push(n);
+			}else if(regularChainList[i].distance>10000){
+				var n= (regularChainList[i].distance/1000).toFixed(1)+"公里";
+					rList_distance.push(n);
+			}
+		}
+	 for(var i = 0;i<chainStoreList.length;i++){
+			console.log((chainStoreList[i].distance/1000).toFixed(1))
+			if(chainStoreList[i].distance<1000){
+							var n=chainStoreList[i].distance+"米";
+						cList_distance.push(n);
+			}else if(chainStoreList[i].distance>1000){
+						var n= (chainStoreList[i].distance/1000).toFixed(1)+"公里";
+							cList_distance.push(n);
+			}
+		}
+	 console.log(rList_distance,cList_distance)
+	      that.setData({
+          rList_distance: rList_distance,
+          cList_distance: cList_distance,
+        });
+},
  //获取附近经销店
    getNearbyChainStore: function() {
    	var that=this;
@@ -142,6 +176,7 @@ Page({
         });
           that.data.pageNum ++;
 	     wx.hideLoading()
+	      that.reduction()
       },
       realFail: function (msg, code) {
         console.log(msg,code)
@@ -198,9 +233,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  	console.log('上拉啊')
-      var that = this;
-    that.data.getNearbyChainStore();
+  	
   },
 
   /**
