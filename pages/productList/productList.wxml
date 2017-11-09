@@ -14,7 +14,7 @@
                 <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
                 <view class="fs30 mg27 fontColor">{{item.startTime}} 开始预定</view>
                 <view class="fs30 mg27 fontColor">{{item.endTime}} 内付款</view>
-                <button class="mg27 startBuy" bindtap='toProductDetail' wx:if="{{item.isEnd=='STARTED'?true:false}}">开始预定</button>
+                <button class="mg27 startBuy" bindtap='toProductDetail' wx:if="{{item.signupStatus=='STARTED'?true:false}}">开始预定</button>
                 <button class="mg27 bgcolor" disabled bindtap='toProductDetail' wx:else>预定结束</button>
             </view>
         </view>
