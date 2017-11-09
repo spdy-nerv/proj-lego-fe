@@ -102,6 +102,7 @@ Page({
           pageNum:that.data.pageNum
         },
       realSuccess: function (data) {
+      	console.log(data)
         that.setData({
           regularChainList: data.list,
           hasMore: data.hasMore,
@@ -123,7 +124,6 @@ reduction: function(){
 		var chainStoreList=that.data.chainStoreList;
 		var cList_distance=that.data.cList_distance;
 		for(var i = 0;i<regularChainList.length;i++){
-			console.log((regularChainList[i].distance/1000).toFixed(1))
 			if(regularChainList[i].distance<1000){
 				var n=regularChainList[i].distance+"米";
 						rList_distance.push(n);
@@ -133,7 +133,6 @@ reduction: function(){
 			}
 		}
 	 for(var i = 0;i<chainStoreList.length;i++){
-			console.log((chainStoreList[i].distance/1000).toFixed(1))
 			if(chainStoreList[i].distance<1000){
 							var n=chainStoreList[i].distance+"米";
 						cList_distance.push(n);
@@ -164,7 +163,6 @@ reduction: function(){
           pageNum:that.data.pageNum
         },
       realSuccess: function (data) {
-        console.log(data)
          var chainStoreList = that.data.chainStoreList;
 		      for(var i = 0;i<data.list.length;i++){
 		          chainStoreList.push(data.list[i]);
@@ -189,7 +187,6 @@ reduction: function(){
     that.getNearbyChainStore();
 },
   lower: function(e) {
-    console.log(e)
     var that = this;
     that.getNearbyChainStore();
     console.log(that.data.chainStoreList)

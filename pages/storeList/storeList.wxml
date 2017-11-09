@@ -18,8 +18,9 @@
 		  	</view>
 		    
 		  	</view>
-	  	<scroll-view scroll-y class="scrol" style="height: 310px;" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+	  	<scroll-view scroll-y class="scrol" style="height: 310px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 			<view class="content store1"  wx:for="{{regularChainList}}" wx:for-index='key'>
+				 <image class="icon" src='../../images/new.png' wx:if='{{item.isNew ==trues}}' />
 			   <navigator url='../storeDetail/storeDetail?storeId={{item.storeId}}'>
 			    <view class="regular-bc">
 				     <view class="regular-name">
@@ -45,7 +46,7 @@
 		  <view class="Chain-title">
 	  	    
 		 </view>
-	 <scroll-view scroll-y style="height: 350px;"bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+	 <scroll-view scroll-y style="height: 350px;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}" wx:for-index='key'>
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			   <view class="chainStore-name">
