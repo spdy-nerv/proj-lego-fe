@@ -33,7 +33,9 @@ Page({
     latitude:'',
     longitude:'',
     nearStoreImg:'',
-    distance:''
+    distance:'',
+    showModal:'',
+    disabled:'true'
   },
 
   /**
@@ -58,12 +60,11 @@ Page({
 	},
  //获取数据
    getProduct: function() {
+    wx.showLoading({
+      title:'数据加载中'
+    })
    	var that=this;
    	var productId=that.data.productId;
-   	console.log(wx.getStorageSync('token'))
-   	   wx.showLoading({
-        title: '正在加载',
-      })
     request({
       url: APIS.GET_PRODUCT,
       method: 'GET',
@@ -87,7 +88,6 @@ Page({
           signupStatus:data.signupStatus,
           seckillSkuStatus:data.seckillSkuStatus
         });
-         wx.hideLoading()
       },
       loginCallback:this.getProduct,
       realFail: function (msg, code) {
@@ -96,7 +96,7 @@ Page({
     },true,this);
 
   },
-  //确认购买
+  //预约登记
   signUp:function(){
     var that = this;
     console.log(111)
@@ -108,11 +108,22 @@ Page({
          },
       realSuccess: function (data) {
         wx.showModal({
-          title: '提示',
-          content: '预约成功',
-          showCancel:false
+          title: '预约成功',
+          content: '下一步，将引导你关注我们公众号。只有关注我们公众号后，才能收到抢购提醒消息，并从消息链接进入购买页面。',
+          cancelText:'去关注',
+          confirmText:'离开',
+          success:(res)=>{
+            console.log('成功回调')
+            wx.navigateBack({
+              delta: 1, 
+            })
+          },
+          fail:(res)=>{
+            console.log('失败回调')
+          }
         });
         that.getProduct();
+        wx.hideLoading();
       },
       loginCallback:this.signUp,
       realFail: function (msg) {
@@ -121,6 +132,7 @@ Page({
         })
       }
     },true,this);
+ 
   },
   //获取当前经纬度
   getLocaltion:function(){
@@ -151,6 +163,7 @@ Page({
       method: 'GET',
       data:{pageSize:1,pageNum:1,latitude:that.data.centerLatitude,longitude:that.data.centerLongitude},
       realSuccess: function (data) {
+        wx.hideLoading();
        console.log(data);
        that.setData({
          name:data.list[0].name,
@@ -175,5 +188,42 @@ Page({
         })
       }
     },false,this);
+  },
+  // 弹窗
+  showDialogBtn: function() {
+    this.setData({
+      showModal: true
+    })
+  },
+  preventTouchMove: function () {
+  },
+  preventMove:function(){},
+
+  hideModal: function () {
+    this.setData({
+      showModal: false
+    });
+  },
+  radioChange: function(e) {
+    if(e.detail.value=='checked'){
+      this.setData({
+        disabled:false
+      })
+    }else if(e.detail.value=='unChecked'){
+      this.setData({
+        disabled:true
+      })
+    }
+  },
+  onCancel: function () {
+    this.hideModal();
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
+
+  onConfirm: function () {
+    this.hideModal();
+    this.signUp()
   }
 })

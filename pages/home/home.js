@@ -16,6 +16,7 @@ Page({
     list:''
   },
   onLoad: function (options) {
+    user.login();
     this.getSliderList();
     this.getModelBg1({positionType:'INDEX_SECKILL'});
     this.getModelBg2({positionType:'INDEX_GIFT'});
