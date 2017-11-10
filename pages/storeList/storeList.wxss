@@ -71,10 +71,10 @@
    .regular-address{
   	float:left;
   	width:70%;
-  	font-size:25rpx;
+  	font-size:23rpx;
   	height:30rpx;
   	line-height:30rpx;
-  	color:#6c6c6c;
+  	color:#7b7b7b;
   }
   
   
@@ -102,10 +102,10 @@
    .chainStore-address{
   	float:left;
   	width:70%;
-  	font-size:25rpx;
+  	font-size:23rpx;
   	height:30rpx;
   	line-height:30rpx;
-  	color:#6c6c6c;
+  	color:#7b7b7b;
   }
   .content{
   	border:2rpx solid #ccc;
