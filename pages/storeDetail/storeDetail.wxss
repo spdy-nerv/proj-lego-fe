@@ -10,12 +10,22 @@
       left:30rpx;
       border-radius: 8rpx;
   }
- .back{
+ .path{
   	 width: 256rpx;
-      height: 41rpx;
+      height: 40rpx;
       position: absolute;
       top:50rpx;
       right:30rpx;
+      font-size:28rpx;
+      line-height:40rpx;
+      color:#000;
+ }
+ .gohear{
+ 	  width: 40rpx;
+      height: 40rpx;
+      position: absolute;
+      top:0rpx;
+      right:10rpx;
  }
  .header{
  	height:150rpx;

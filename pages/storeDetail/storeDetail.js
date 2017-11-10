@@ -9,6 +9,10 @@ Page({
   data: {
   	centerLongitude: '',
     centerLatitude: '',
+  	latitude: '',
+    longitude: '',
+    address:'',
+    currentType: 'entry',
   	toView: 'red',
     scrollTop: 100,
   	detailPictureUrls:[],
@@ -54,46 +58,33 @@ Page({
    */
   onLoad: function (options) {
   	var that=this;
+  	console.log(wx.getStorageSync('coordinate'))
   	that.setData({
         storeId: options.storeId,
-   	});
-   	that.getLocaltion()
-  },
- //获取当前经纬度
-  getLocaltion:function(){
-  	var that=this;
-  	wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-      	console.log(res)
-        that.setData({
-          centerLongitude: res.longitude,
-          centerLatitude: res.latitude,
-        })
-        that.getDetail()
-      },
-      fail: function (err) {
-        console.log(err)
-      },
-    })
+   });
+   that.getDetail()
   },
   //获取店铺详情
    getDetail: function() {
    	var that=this;
    	var storeId=that.data.storeId;
+   	var res=wx.getStorageSync('coordinate');
+   	   	console.log(res.Longitude)
     request({
       url: APIS.GET_STORE_DETAIL+'/'+storeId,
       method: 'GET',
       data: {
-          latitude: that.data.centerLongitude,
-          longitude:that.data.centerLatitude,
+          latitude: res.latitude,
+          longitude:res.longitude,
         },
       realSuccess: function (data) {
       	console.log(data)
         that.setData({
           content: data.content,
           detailPictureUrls:data.detailPictureUrls,
-       
+       		latitude:data.latitude,
+			    longitude:data.longitude,
+			    address:data.name,
         })
       },
       realFail: function (msg, code) {

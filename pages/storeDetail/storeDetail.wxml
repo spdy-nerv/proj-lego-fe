@@ -4,8 +4,10 @@
 	   <view>
 	    	<image class="homeTopLogo" src='../../images/homeTopLogo.png' />
 	   </view>
-	   <view bindtap="back">
-	    	<image class="back" src='../../images/back.png' />
+	   <view bindtap="path" class="path" >
+	      <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{address}}"> 
+	    	<image class="gohear" src='../../images/gohear.png' />
+	      </navigator>
 	   </view>
    </view>   
    <view class="store-title1">

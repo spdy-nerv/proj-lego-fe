@@ -64,7 +64,12 @@ Page({
    */
   onLoad: function (options) {
   	var that = this;
-  	
+  	console.log(wx.getStorageSync('coordinate'))
+  	var res=wx.getStorageSync('coordinate');
+  	 that.setData({
+          centerLongitude: res.longitude,
+          centerLatitude: res.latitude,
+        })
       that.getLocaltion()
   },
   //获取当前经纬度
@@ -78,6 +83,7 @@ Page({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
         })
+        wx.setStorageSync('coordinate', res);
         that.getAllRegularChain(),
         that.getNearbyChainStore()
       },
@@ -99,7 +105,8 @@ Page({
           longitude: that.data.centerLongitude,
           latitude:that.data.centerLatitude,
           pageSize:that.data.pageSize,
-          pageNum:that.data.pageNum
+          pageNum:that.data.pageNum,
+          usePriority	:true
         },
       realSuccess: function (data) {
       	console.log(data)
