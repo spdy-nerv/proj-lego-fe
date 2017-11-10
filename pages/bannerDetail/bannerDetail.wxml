@@ -11,4 +11,28 @@
        <view class="content">
          <rich-text nodes='{{description}}'></rich-text>
       </view>
+      <!-- 附件门店 -->
+      <view class="nearStore" wx:if='{{signupStatus!=="STARTED"?true:false}}'>
+          <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{name}}"> 
+        <view class="nearStoreTitle">
+            <text>附近门店</text>
+            <text class="distance" style="color:#999;font-size:27rpx">距离:{{distance}}</text>
+        </view>
+          <view class="nearStoreItem">
+            <view><image src='../../images/homeTopLogo.png'/></view>
+            <view>
+                <view style="font-size:33rpx"> {{name}}</view>
+                <view style="font-size:27rpx;color:#999">地址：{{address}}</view>
+            </view>
+            
+          </view>
+        </navigator>
+        </view>
+
+      <button class="Orders order-closed" wx:if="{{signupStatus == 'NOT_STARTED'}}">预定未开始</button>
+      <button class="Orders" wx:elif="{{signupStatus == 'STARTED'}}" bindtap="signUp">立即预定</button>
+      <button class="Orders order-closed" wx:elif="{{signupStatus == 'SIGNUPED'}}">您已经预定</button>   
+      <button class="Orders order-closed" wx:elif="{{signupStatus == 'END'}}">预定已截止</button>
+      <!-- 只能通过模板消息进来才能购买，小程序内不直接提供购买 -->
+  
 </view>

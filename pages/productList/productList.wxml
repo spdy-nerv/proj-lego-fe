@@ -14,10 +14,13 @@
                 <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
                 <view class="fs30 mg27 fontColor">{{item.startTime}} 开始预定</view>
                 <view class="fs30 mg27 fontColor">{{item.endTime}} 内付款</view>
-                <navigator url='../productDetail/productDetail?productId={{item.productId}}'>
+                <navigator url='../productDetail/productDetail?productId={{item.id}}'>
+                <!-- <navigator url='../bannerDetail/bannerDetail?productId={{item.id}}'>   抢购列表详情 -->
                     <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">开始预定</button>
                 </navigator>
-                <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='STARTED'?false:true}}">预定结束</button>
+                <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='END'?true:false}}">预定已截止</button>
+                <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='SIGNUPED'?true:false}}">已经预定</button>
+                <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='NOT_STARTED'?true:false}}">未开始</button>
             </view>
         </view>
     </block>

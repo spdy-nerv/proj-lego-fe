@@ -22,7 +22,18 @@ Page({
     pictureUrls:[],
     isStartToSell: false,       // 是否已经开启支付
     hasSignUp: false,
-    description:''           // 当前用户是否已经登记报名
+    description:'' ,
+    signupStatus:'',
+    seckillSkuStatus:'',
+    centerLongitude:'',
+    centerLatitude:'',
+    name:'',
+    address:'',
+    currentType: 'entry',
+    latitude:'',
+    longitude:'',
+    nearStoreImg:'',
+    distance:''
   },
 
   /**
@@ -35,9 +46,7 @@ Page({
         });
   // user.login(this.getProduct,true,this);
     this.getProduct();
-    var that = this;
-  	
-    //that.getProduct()
+    this.getLocaltion();
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -59,7 +68,7 @@ Page({
       url: APIS.GET_PRODUCT,
       method: 'GET',
       data: { 
-      	productId:productId
+      	seckillSkuId:productId
         },
         header: {
             auth: wx.getStorageSync('token')
@@ -74,7 +83,9 @@ Page({
           pictureUrls: data.pictureUrls,
           name :data.name ,
           price :data.price ,
-          description:data.description
+          description:data.description,
+          signupStatus:data.signupStatus,
+          seckillSkuStatus:data.seckillSkuStatus
         });
          wx.hideLoading()
       },
@@ -86,59 +97,83 @@ Page({
 
   },
   //确认购买
- Orders: function(e) {
-	 	var that=this;
-	 	var productId=that.data.productId;
-     wx.navigateTo({
-			  url: '../orderConfirm/orderConfirm?productId='+productId
-			});
+  signUp:function(){
+    var that = this;
+    console.log(111)
+    request({
+      url:APIS.SIGN_UP+'?productId='+that.data.productId,
+      method: 'POST',
+        header: {
+            auth: wx.getStorageSync('token')
+         },
+      realSuccess: function (data) {
+        wx.showModal({
+          title: '提示',
+          content: '预约成功',
+          showCancel:false
+        });
+        that.getProduct();
+      },
+      loginCallback:this.signUp,
+      realFail: function (msg) {
+        wx.showToast({
+          title:msg
+        })
+      }
+    },true,this);
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
+  //获取当前经纬度
+  getLocaltion:function(){
+  	var that=this;
+  	wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+      	console.log(res)
+        that.setData({
+          centerLongitude: res.longitude,
+          centerLatitude: res.latitude,
+        })
+        if(that.nearListStore){
+          that.nearListStore();
+        }
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+      },
+      fail: function (err) {
+        console.log(err)
+      },
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  //获取附件所有门店
+  nearListStore:function(){
+    var that = this;
+    request({
+      url:APIS.GET_LIST_STORE,
+      method: 'GET',
+      data:{pageSize:1,pageNum:1,latitude:that.data.centerLatitude,longitude:that.data.centerLongitude},
+      realSuccess: function (data) {
+       console.log(data);
+       that.setData({
+         name:data.list[0].name,
+         address:data.list[0].address,
+         longitude:data.list[0].longitude,
+         latitude:data.list[0].latitude
+       })
+       const distance = data.list[0].distance;
+       if(distance < 1000){
+         that.setData({
+           distance:distance+'米'
+         })
+       }
+       else if(distance > 1000)
+       that.setData({
+         distance:(Math.round(distance/100)/10).toFixed(1) + "公里"
+       })
+      },
+      realFail: function (msg) {
+        wx.showToast({
+          title:msg
+        })
+      }
+    },false,this);
   }
 })

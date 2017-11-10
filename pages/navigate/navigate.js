@@ -34,6 +34,7 @@ Page({
     polyline: [],
   },
   onLoad: function (options) {
+    console.log(options)
     var that = this;
     var key = config.mapkey;
     var myAmapFun = new amapFile.AMapWX({ key: key });

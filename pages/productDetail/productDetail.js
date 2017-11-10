@@ -80,7 +80,7 @@ Page({
       url: APIS.GET_PRODUCT,
       method: 'GET',
       data: { 
-      	productId:productId
+      	seckillSkuId:productId
         },
         header: {
             auth: wx.getStorageSync('token')

@@ -44,10 +44,5 @@ Page({
     }
   }, true, this)
 
- },
-  toProductDetail:function(){
-    wx.navigateTo({
-      url:'../productDetail/productDetail'
-    })
-  }
+ }
 })

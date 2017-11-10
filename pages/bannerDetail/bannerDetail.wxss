@@ -37,7 +37,7 @@
   	height:180rpx;
   }
   .content{
-  	width:95%;
+  	width:100%;
   	height:330rpx;
   	background:#F3F3F3; 
 	  margin-top:70rpx;	
@@ -73,8 +73,63 @@
   		width:40%;
   		height:60rpx;
   		line-height:60rpx;
-  		margin-top:100rpx;
+  		margin-top:50rpx;
   		color:#fff;
   		background:#E50011;
-  		font-size:35rpx;
+		  font-size:35rpx;
+		  margin-bottom: 50rpx;
   }
+  .Orders{
+	width:40%;
+	height:60rpx;
+	line-height:60rpx;
+	margin-top:40rpx;
+	color:#fff;
+	background:#E50011;
+	font-size:35rpx;
+}
+
+.order-closed {
+background-color: #F3F3F3;
+color: #ccc;
+}
+.nearStore{
+	width: 100%;
+	height: 200rpx;
+	margin-top:50rpx;
+	background-color:#F3F3F3;
+	display: flex;
+	flex-direction: column;
+	font-size: 33rpx;
+
+}
+.nearStoreTitle{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 1rpx solid #d0d0d0;
+	padding:0 30rpx 0 0;
+	align-content: center;
+}
+ .nearStore .nearStoreTitle .distace{
+	color: #F3F3F3;
+	font-size: 27rpx;
+	
+
+	
+}
+.nearStore text{
+	font-size: 30rpx;
+	padding-left:15rpx;
+}
+.nearStore image{
+	width: 110rpx;
+	height:110rpx;
+	border: 1rpx solid #ccc;
+}
+.nearStore .nearStoreItem{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top:20rpx;
+}

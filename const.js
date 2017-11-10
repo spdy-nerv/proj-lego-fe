@@ -41,7 +41,7 @@ var APIS = {
   GET_EVENT_BASE: '/activity/getEventBase',
   GET_EVENT_DETAIL: '/activity/getEventDetail',
   TOGGLE_FOLLOW: '/activity/toggleFollow',
-  SIGN_UP: '/activity/signUp',
+  //SIGN_UP: '/activity/signUp',
   GET_VOTE_MODULE: '/activity/getVoteConfig',
   ADD_VOTE: '/activity/addVote',
   GET_TEST_MODULE: '/activity/getTestModule',
@@ -66,7 +66,8 @@ var APIS = {
   GET_MY_COUPON_LIST: '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
   GET_MODEL_BG: '/home/getModelBackground',
   GET_SECKILLSKU_LIST: '/product/seckill/getSecKillSkuList',//获取所有抢购商品列表
-
+  SIGN_UP:'/product/seckill/signUp',   //登记报名秒杀活动
+  GET_LIST_STORE:'/store/listStore',  //获取附近所有门店
   GET_PRODUCT: '/product/seckill/getProductDetail',//获取商品详情
 
   GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
