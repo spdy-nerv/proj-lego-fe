@@ -46,7 +46,7 @@
 		  <view class="Chain-title">
 	  	    
 		 </view>
-	 <scroll-view scroll-y style="height: 350px;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+	 	 <scroll-view scroll-y style="height: 350px; lower-threshold:10;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> 
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}" wx:for-index='key'>
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			   <view class="chainStore-name">
@@ -54,7 +54,7 @@
 			   </view>
 			   <view class="chainStore-info">
 				   <view class="chainStore-distance">
-				      <text style="height:100%;line-height:100%">{{cList_distance[key]}}</text>
+				      <text style="height:100%;line-height:100%;float:right;padding-right:30rpx">{{cList_distance[key]}}</text>
 				   </view>
 				   <view class="chainStore-address" >
 				      {{item.address}}

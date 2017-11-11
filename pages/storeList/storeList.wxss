@@ -106,14 +106,14 @@
   }
   .chainStore-distance{
   	float:right;
-  	width:22%;
+  	width:40%;
   	font-size:30rpx;
   	height:40rpx;
   	line-height:40rpx;
   }
    .chainStore-address{
   	float:left;
-  	width:70%;
+  	width:60%;
   	font-size:23rpx;
   	height:60rpx;
   	line-height:32rpx;

@@ -46,9 +46,11 @@ Page({
     	
     ],
     cList_distance:[],
+    cs_list:[],
     pageSize: 20,
     pageNum: 1,
     hasMore: true,
+    isend:true,
     hidden:false
   },
   //点击切换专卖店跟经销店
@@ -86,6 +88,7 @@ Page({
         wx.setStorageSync('coordinate', res);
         that.getAllRegularChain(),
         that.getNearbyChainStore()
+        console.log(1)
       },
       fail: function (err) {
         console.log(err)
@@ -109,10 +112,8 @@ Page({
           usePriority	:true
         },
       realSuccess: function (data) {
-      	console.log(data)
         that.setData({
           regularChainList: data.list,
-          hasMore: data.hasMore,
           qrCodeUrl:data.hasMore,
         });
          wx.hideLoading()
@@ -128,7 +129,7 @@ reduction: function(){
 		var that=this;
 		var regularChainList=that.data.regularChainList;
 		var rList_distance=that.data.rList_distance;
-		var chainStoreList=that.data.chainStoreList;
+		var cs_list=that.data.cs_list;
 		var cList_distance=that.data.cList_distance;
 		for(var i = 0;i<regularChainList.length;i++){
 			if(regularChainList[i].distance<1000){
@@ -139,27 +140,17 @@ reduction: function(){
 					rList_distance.push(n);
 			}
 		}
-	 for(var i = 0;i<chainStoreList.length;i++){
-			if(chainStoreList[i].distance<1000){
-							var n=chainStoreList[i].distance+"米";
-						cList_distance.push(n);
-			}else if(chainStoreList[i].distance>1000){
-						var n= (chainStoreList[i].distance/1000).toFixed(1)+"公里";
-							cList_distance.push(n);
-			}
-		}
-	 console.log(rList_distance,cList_distance)
 	      that.setData({
           rList_distance: rList_distance,
-          cList_distance: cList_distance,
         });
 },
  //获取附近经销店
    getNearbyChainStore: function() {
    	var that=this;
-   	   wx.showLoading({
-        title: '正在加载',
-      })
+   	 that.setData({
+         isend:false
+        });
+		var cList_distance=that.data.cList_distance;
     request({
       url: APIS.GET_NEARBY_CHAINSTORE,
       method: 'GET',
@@ -170,17 +161,27 @@ reduction: function(){
           pageNum:that.data.pageNum
         },
       realSuccess: function (data) {
+      	console.log(that.data.pageNum,data.list)
          var chainStoreList = that.data.chainStoreList;
-		      for(var i = 0;i<data.list.length;i++){
-		          chainStoreList.push(data.list[i]);
-		      }
+         var cs_list=data.list;
+          for(var i = 0;i<cs_list.length;i++){
+						if(cs_list[i].distance<1000){
+										var n=cs_list[i].distance+"米";
+									cList_distance.push(n);
+						}else if(cs_list[i].distance>1000){
+									var n= (cs_list[i].distance/1000).toFixed(1)+"公里";
+										cList_distance.push(n);
+						}
+					}
          that.setData({
-          chainStoreList: chainStoreList,
+          chainStoreList: chainStoreList.concat(data.list),
+           cList_distance: cList_distance,
           hasMore: data.hasMore,
           qrCodeUrl:data.hasMore,
+          pageNum:that.data.pageNum+1,
+          isend:true
         });
-          that.data.pageNum ++;
-	     wx.hideLoading()
+         wx.hideLoading();
 	      that.reduction()
       },
       realFail: function (msg, code) {
@@ -193,11 +194,19 @@ reduction: function(){
     var that = this;
     that.getNearbyChainStore();
 },
-  lower: function(e) {
-    var that = this;
-    that.getNearbyChainStore();
-    console.log(that.data.chainStoreList)
-  },
+lower: function(e) {
+    wx.showLoading({title:'数据加载中..'})
+	   if (this.data.hasMore) {
+	   	   if(this.data.isend){
+	   	   		this.getNearbyChainStore()
+	   	   } 
+	    } else {
+	      wx.showToast({
+	        title: '没有更多数据',
+	      })
+	    }
+},
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
