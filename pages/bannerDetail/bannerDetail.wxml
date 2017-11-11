@@ -1,38 +1,70 @@
 <!--pages/productDetail/productDetail.wxml-->
 <view class="page">
-	  <view class="reserve">
-          <image src='{{headimgPath}}' wx:if='{{headimgPath}}'/>
+  <view class="reserve">
+    <image src='{{headimgPath}}' wx:if='{{headimgPath}}' />
+  </view>
+  <view class="flex-row" style="flex-direction:row;">
+    <view class="flex-view-item" wx:for="{{pictureUrls}}" wx:if='{{pictureUrls}}'>
+      <image mode="aspectFill" src="{{item}}" bindtap="onPreviewSlider" wx:if="{{item}}" data-url="{{item}}"></image>
+    </view>
+  </view>
+  <view class="content">
+    <rich-text nodes='{{description}}'></rich-text>
+  </view>
+  <!-- 附件门店 -->
+  <view class="nearStore" wx:if='{{signupStatus!=="STARTED"?true:false}}'>
+    <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{name}}">
+      <view class="nearStoreTitle">
+        <text>附近门店</text>
+        <text class="distance" style="color:#999;font-size:27rpx">距离:{{distance}}</text>
       </view>
-	  <view class="flex-row" style="flex-direction:row;">
-	      <view class="flex-view-item" wx:for="{{pictureUrls}}" wx:if='{{pictureUrls}}' >
-               <image mode="aspectFill" src="{{item}}" bindtap="onPreviewSlider"  wx:if="{{item}}" data-url="{{item}}"></image>
-          </view>
-      </view>
-       <view class="content">
-         <rich-text nodes='{{description}}'></rich-text>
-      </view>
-      <!-- 附件门店 -->
-      <view class="nearStore" wx:if='{{signupStatus!=="STARTED"?true:false}}'>
-          <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{name}}"> 
-        <view class="nearStoreTitle">
-            <text>附近门店</text>
-            <text class="distance" style="color:#999;font-size:27rpx">距离:{{distance}}</text>
+      <view class="nearStoreItem">
+        <view>
+          <image src='../../images/homeTopLogo.png' />
         </view>
-          <view class="nearStoreItem">
-            <view><image src='../../images/homeTopLogo.png'/></view>
-            <view>
-                <view style="font-size:33rpx"> {{name}}</view>
-                <view style="font-size:27rpx;color:#999">地址：{{address}}</view>
-            </view>
-            
-          </view>
-        </navigator>
+        <view>
+          <view style="font-size:29rpx"> {{name}}</view>
+          <view style="font-size:24rpx;color:#999;margin-top:10rpx">地址：{{address}}</view>
         </view>
 
-      <button class="Orders order-closed" wx:if="{{signupStatus == 'NOT_STARTED'}}">预定未开始</button>
-      <button class="Orders" wx:elif="{{signupStatus == 'STARTED'}}" bindtap="signUp">立即预定</button>
-      <button class="Orders order-closed" wx:elif="{{signupStatus == 'SIGNUPED'}}">您已经预定</button>   
-      <button class="Orders order-closed" wx:elif="{{signupStatus == 'END'}}">预定已截止</button>
-      <!-- 只能通过模板消息进来才能购买，小程序内不直接提供购买 -->
-  
+      </view>
+    </navigator>
+  </view>
+
+  <button class="Orders order-closed" wx:if="{{signupStatus == 'NOT_STARTED'}}">登记未开始</button>
+  <button class="Orders" wx:elif="{{signupStatus == 'STARTED'}}" bindtap="showDialogBtn" >立即登记</button>
+  <!-- <button class="Orders" bindtap="showDialogBtn" >立即预定</button> -->
+  <button class="Orders order-closed" wx:elif="{{signupStatus == 'SIGNUPED'}}">您已经登记</button>
+  <button class="Orders order-closed" wx:elif="{{signupStatus == 'END'}}">登记已截止</button>
+  <!-- 只能通过模板消息进来才能购买，小程序内不直接提供购买 -->
+
+  <!--自定义弹窗-->
+  <view class="modal-mask" bindtap="hideModal"wx:if="{{showModal}}" catchtouchmove='preventMove'></view>
+  <view class="modal-dialog"  catchtouchmove="preventTouchMove"  wx:if="{{showModal}}">
+    <view class="modal-title">抢购活动说明</view>
+    <view class="modal-content">
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <view>条款1:必须在我这儿买</view>
+      <form style="margin-top:20rpx">
+          <radio-group class="radio-group" bindchange="radioChange">
+              <label class="radio">
+                <radio value="checked" checked="{{item.checked}}"/>我同意
+              </label>
+              <label class="radio">
+                  <radio value="unChecked" checked="{{item.checked}}"/>不同意
+                </label>
+            </radio-group>
+      </form>
+    </view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onConfirm" data-status="cancel"><button class="button" disabled='{{disabled}}'>立即预约</button></view>
+      <view class="btn-confirm"  bindtap="onCancel"data-status="confirm">返回</view>
+    </view>
+  </view>
 </view>
