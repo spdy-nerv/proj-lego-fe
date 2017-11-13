@@ -29,7 +29,7 @@ Page({
     }],
     distance: '加载中',
     cost: '加载中',
-    istrue:false,
+    istrue:true,
     tabsel: 0,
     transits: [],
     polyline: [],
@@ -143,6 +143,9 @@ Page({
           icon: 'success',
           duration: 2000
         })
+         that.setData({
+              istrue:false
+            });
       }
     })
   },
