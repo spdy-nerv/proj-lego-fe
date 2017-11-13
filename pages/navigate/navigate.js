@@ -5,8 +5,8 @@ var app = getApp();
 Page({
   data: {
     mapHeight: 500,
-    centerLongitude: 113.297035,
-    centerLatitude: 23.100052,
+    centerLongitude:'',
+    centerLatitude:'',
     scale: 15,
     desLati: 23.091052,
     desLong: 113.297035,
@@ -29,6 +29,7 @@ Page({
     }],
     distance: '加载中',
     cost: '加载中',
+    istrue:true,
     tabsel: 0,
     transits: [],
     polyline: [],
@@ -39,6 +40,18 @@ Page({
     var key = config.mapkey;
     var myAmapFun = new amapFile.AMapWX({ key: key });
     var mapheigh = wx.getSystemInfoSync().windowHeight - 120;
+    var res=wx.getStorageSync('coordinate');
+  	if(res){
+  		that.setData({
+          centerLongitude: res.longitude,
+          centerLatitude: res.latitude,
+           storeId: options.storeId,
+        })
+  	}else{
+  		that.setData({
+	        storeId: options.storeId,
+	   });
+  	}
     wx.showLoading({
       title: '加载中',
       icon: 'loading'
@@ -105,7 +118,8 @@ Page({
                 points: points,
                 color: '#0091ff',
                 width: 3
-              }]
+              }],
+              istrue:true
             });
             if (data.paths[0] && data.paths[0].distance) {
               that.setData({
@@ -129,6 +143,9 @@ Page({
           icon: 'success',
           duration: 2000
         })
+         that.setData({
+              istrue:false
+            });
       }
     })
   },

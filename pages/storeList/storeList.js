@@ -68,10 +68,13 @@ Page({
   	var that = this;
   	console.log(wx.getStorageSync('coordinate'))
   	var res=wx.getStorageSync('coordinate');
-  	 that.setData({
+  	if(res){
+  		that.setData({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
         })
+  	}
+  	 
       that.getLocaltion()
   },
   //获取当前经纬度
@@ -93,6 +96,11 @@ Page({
       fail: function (err) {
         console.log(err)
       },
+      complete:function(res){
+      	console.log(res)
+      	that.getAllRegularChain(),
+        that.getNearbyChainStore()
+      }
     })
   },
   //获取门店
