@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myCouponList:[1,1,1],
+    myCouponList:[],
     couponType:'现金抵用券',
     couponDate:'2017年2月30日-6月30日'
   },

@@ -12,7 +12,7 @@
     <rich-text nodes='{{description}}'></rich-text>
   </view>
   <!-- 附件门店 -->
-  <view class="nearStore" wx:if='{{signupStatus!=="STARTED"?true:false}}'>
+  <view class="nearStore" wx:if='{{signupStatus!=="STARTED"&&name?true:false}}'>
     <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{name}}">
       <view class="nearStoreTitle">
         <text>附近门店</text>
@@ -22,7 +22,7 @@
         <view>
           <image src='../../images/homeTopLogo.png' />
         </view>
-        <view>
+        <view style="width:550rpx">
           <view style="font-size:29rpx"> {{name}}</view>
           <view style="font-size:24rpx;color:#999;margin-top:10rpx">地址：{{address}}</view>
         </view>
@@ -52,14 +52,11 @@
       <view>条款1:必须在我这儿买</view>
       <view>条款1:必须在我这儿买</view>
       <form style="margin-top:20rpx">
-          <radio-group class="radio-group" bindchange="radioChange">
+          <checkbox-group class="radio-group" bindchange="radioChange">
               <label class="radio">
-                <radio value="checked" checked="{{item.checked}}"/>我同意
+                <checkbox value="checked" checked="{{item.checked}}"style="transform:scale(.7)"/>我同意以上条款
               </label>
-              <label class="radio">
-                  <radio value="unChecked" checked="{{item.checked}}"/>不同意
-                </label>
-            </radio-group>
+            </checkbox-group>
       </form>
     </view>
     <view class="modal-footer">

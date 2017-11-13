@@ -1,3 +1,30 @@
+page{
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.header{
+    width: 100%;
+    height: 240rpx;
+    background-color: #FF8700;
+    box-sizing: border-box;
+    position: relative;
+}
+.header .status{
+    color: #fff;
+    font-size: 38rpx;
+    position: absolute;
+    top:100rpx;
+    left: 80rpx;
+}
+.header image{
+    width: 158rpx;
+    height: 158rpx;
+    position: absolute;
+    top:50rpx;
+    right: 80rpx;
+}
 .weui-form-preview{
     margin-bottom: 25px;
 }
@@ -25,4 +52,121 @@
 }
 .weui-form-preview::after {
     border:none
+}
+.deliveryInfo{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin:30rpx 0;
+    padding:15rpx;
+    box-sizing: border-box;
+
+}
+.deliveryInfo image{
+    width: 42rpx;
+    height: 42rpx;
+}
+.deliveryInfo .personal{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-content: center;
+    font-size: 30rpx;
+    margin-top:20rpx
+}
+.deliveryInfo .personal .name{
+    margin-left:40rpx;
+}
+.deliveryInfo .personal .phone{
+    margin-left:50rpx;
+}
+.deliveryInfo .address{
+    font-size: 28rpx;
+    padding-left:82rpx;
+    margin:20rpx 0;
+    color: #666;
+}
+.orderItems{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding:13rpx 0 0 15rpx;
+    margin-top:30rpx;
+}
+.orderItems image{
+    width: 160rpx;
+    height: 160rpx;
+}
+.orderItems .orderItemsRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding-left:40rpx;
+}
+.orderItems .orderItemsName{
+    font-size: 30rpx;
+}
+.orderItems .orderItemsNum{
+    font-size: 28rpx;
+    color:#666;
+}
+.orderItems .orderItemsPrice{
+    font-size: 29rpx;
+    margin-top:30rpx;
+}
+.border-bottom{
+    border-bottom: 1rpx solid #d3d3d3;
+}
+.order{
+    
+}
+.order .detail{
+    width: 100%;
+    border-bottom: 1rpx solid #d0d0d0;
+    font-size: 28rpx;
+    line-height: 100rpx;
+    padding-left:30rpx;
+    color: #666;
+    margin-top:20rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.order .detail image{
+    margin-left:280rpx;
+}
+.customerService1{
+    width: 400rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 400rpx;
+    border: 1rpx solid #d0d0d0;
+    font-size: 30rpx;
+    color: #000;
+}
+.mb{
+    margin-bottom: 80rpx;
+}
+.input{
+    width: 360rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height: 400rpx;
+    border: 1rpx solid #666;
+    font-size: 30rpx;
+    color: #666;
+    border-radius: 15rpx;
+    align-self: center;
+    background-color: #fff;
+
+}
+.service{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin:30rpx 0;
+   
 }

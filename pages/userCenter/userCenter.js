@@ -27,7 +27,11 @@ Page({
     contentlist: []
   },
   onLoad: function (options) {
-    const userInfo = app.globalData.userInfo;
+      var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      nickName: userInfo.nickName,
+      avatarUrl: userInfo.avatarUrl
+    });
     console.log(userInfo)
      this.setData({
       nickName:userInfo.nickName,

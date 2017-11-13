@@ -9,7 +9,10 @@ Page({
         deliveryInfo:{},
         orderItems:{},
         orderStatusLabel:'',
-        orderItems:[]
+        orderItems:[],
+        deliveryInfo:'',
+        payTypeLabel:'',
+        invoiceInfo:''
         
     },
     onLoad:function(options){
@@ -52,7 +55,10 @@ Page({
                 orderStatusLabel:res.orderStatusLabel,
                 orderItems:res.orderItems[0],
                 deliveryCompany:res.deliveryInfo.deliveryCompany,
-                orderItems:res.orderItems
+                orderItems:res.orderItems,
+                deliveryInfo:res.deliveryInfo,
+                payTypeLabel:res.payTypeLabel,
+                invoiceInfo:res.invoiceInfo
 
               })
             },loginCallback:this.getOrderDetail,

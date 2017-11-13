@@ -1,30 +1,45 @@
 <view class="page">
-    <view><image class="goodsImg" src='{{orderItems[0].pictureUrl}}'wx:if='{{orderItems[0].pictureUrl}}'/></view>
-    <view class="goodsName">{{orderItems.productName}}</view>
-    <view class="page__bd">
-        <view class="weui-form-preview">
-            <view class="weui-form-preview__bd pd20 ">
-                <view class="weui-form-preview__item mg15">
-                    <view class="weui-form-preview__label">订单号</view>
-                    <view class="weui-form-preview__value">{{orderId}}</view>
-                </view>
-                <view class="weui-form-preview__item mg15">
-                    <view class="weui-form-preview__label">下单时间</view>
-                    <view class="weui-form-preview__value">{{orderTime}}</view>
-                </view>
-                <view class="weui-form-preview__item mg15">
-                    <view class="weui-form-preview__label">支付状态</view>
-                    <view class="weui-form-preview__value">{{orderStatusLabel}}</view>
-                </view>
-                <view class="weui-form-preview__item mg15" bindtap='expressStatus'>
-                        <view class="weui-form-preview__label">物流单号：{{deliveryNo}}</view>
-                        <view class="weui-form-preview__value"><image class="arrow" src='../../images/arrow.png'/></view>
-                </view>
-                <view class="weui-form-preview__item mg15" bindtap="customerService">
-                        <view class="weui-form-preview__label">售后服务</view>
-                        <view class="weui-form-preview__value"><image class="arrow" src='../../images/arrow.png'/></view>
-                </view>
-            </view>
+    <view class="header">
+        <view class="status"> {{orderStatusLabel}}</view>
+        <image src='../../images/status.png'/>
+       </view>
+    
+    <view class="orderItems">
+        <view><image src='{{orderItems[0].pictureUrl}}'wx:if='{{orderItems[0].pictureUrl}}'/></view>
+        <view class="orderItemsRight">
+            <view class="orderItemsName">{{orderItems[0].skuName}}</view>
+            <view class="orderItemsNum">数量：{{orderItems[0].skuCount}}</view>
+            <view class="orderItemsPrice">￥{{orderItems[0].skuPrice}}</view>
         </view>
-    </view> 
+
+    </view>
+    <view class="deliveryInfo">
+        <view class="personal"> 
+            <image src='../../images/deliveryLocation.png'/> 
+            <view class="name">{{deliveryInfo.realname}}</view>
+            <view class="phone">{{deliveryInfo.phone}}</view>
+        </view>
+        <view class="address">
+            地址：{{deliveryInfo.address}}
+        </view>
+    </view>
+    <view class="order">
+        <view class="detail">订单编号：{{orderId}}</view>
+        <view class="detail">下单时间：{{orderTime}}</view>
+        <view class="detail">支付方式：{{payTypeLabel}}</view>
+        
+        <view class="detail" wx:if='{{invoiceInfo.invoiceTypeLabel}}'>发票类型：{{invoiceInfo.invoiceTypeLabel}}</view>
+        <view class="detail" wx:if='{{!invoiceInfo.invoiceTypeLabel}}'>发票类型：暂无发票</view>
+
+        <view class="detail" wx:if='{{deliveryInfo.deliveryCompany}}'>配送方式：{{deliveryInfo.deliveryCompany}}</view>
+        <view class="detail" wx:if='{{!deliveryInfo.deliveryCompany}}'>配送方式：暂无物流信息</view>
+        <view class="detail" wx:if='{{deliveryInfo.deliveryNo}}' bindtap='expressStatus'>
+            <text>物流单号：{{deliveryInfo.deliveryNo}}</text>
+            <image class="arrow" src='../../images/arrow.png'/>
+        </view>    
+    </view>
+    <view class="service">
+            <input value="售后服务" class="input" type="button" bindtap='customerService'/>
+    </view>
+  
 </view>

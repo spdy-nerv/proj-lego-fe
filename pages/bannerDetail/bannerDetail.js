@@ -148,11 +148,22 @@ Page({
         if(that.nearListStore){
           that.nearListStore();
         }
+        
 
       },
       fail: function (err) {
-        console.log(err)
+        console.log(err);
+        wx.showLoading({
+          title:'获取定位失败!'
+        })
+        setTimeout(function(){
+          wx.hideLoading();
+        },3000);
+        
       },
+      complete:function(){
+
+      }
     })
   },
   //获取附件所有门店
@@ -205,11 +216,12 @@ Page({
     });
   },
   radioChange: function(e) {
+    console.log(e.detail.value)
     if(e.detail.value=='checked'){
       this.setData({
         disabled:false
       })
-    }else if(e.detail.value=='unChecked'){
+    }else{
       this.setData({
         disabled:true
       })

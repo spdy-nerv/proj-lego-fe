@@ -4,8 +4,8 @@
         <image class="goodsImg" src='https://microcloudtech.com/images/lego/image/product/goodsList.png' />
     </view>
     <block wx:for='{{goodsList}}' wx:key='{{unique}}'>
-            <navigator url='../productDetail/productDetail?productId={{item.id}}'>
-            <!-- <navigator url='../bannerDetail/bannerDetail?productId={{item.id}}'>   抢购列表详情 -->
+            <!-- <navigator url='../productDetail/productDetail?productId={{item.id}}'> -->
+            <navigator url='../bannerDetail/bannerDetail?productId={{item.id}}'>   
         <view class="productItem">
             <view class="productLeft">
                 <image class="productLeftImg" src='{{item.headimgPath}}' />
@@ -14,11 +14,11 @@
             <view class="productRight">
                 <view class="title mg27">{{item.productName}}</view>
                 <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
-                <view class="fs30 mg27 fontColor">{{item.startTime}} 开始预定</view>
-                <view class="fs30 mg27 fontColor">{{item.endTime}} 内付款</view>
-                    <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">开始预定</button>
-                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='END'?true:false}}">预定已截止</button>
-                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='SIGNUPED'?true:false}}">已经预定</button>
+                <view class="fs30 mg27 fontColor">开始登记：{{item.startTime}}</view>
+                <view class="fs30 mg27 fontColor">结束登记：{{item.endTime}}</view>
+                    <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">开始登记</button>
+                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='END'?true:false}}">登记已截止</button>
+                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='SIGNUPED'?true:false}}">已经登记</button>
                     <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='NOT_STARTED'?true:false}}">未开始</button>
             </view>
         </view>
