@@ -34,6 +34,9 @@ Page({
     this.setData({
       productId: info.productId
     })
+    if(this.data.productId){
+      this.getSeckillSkuList();
+    }
   },
   onReady: function () {
   },
