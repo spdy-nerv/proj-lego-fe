@@ -45,6 +45,22 @@ Page({
     var myAmapFun = new amapFile.AMapWX({ key: key });
     var mapheigh = wx.getSystemInfoSync().windowHeight - 120;
     var res=wx.getStorageSync('coordinate');
+        that.setData({
+		      mapHeight: mapheigh,
+		    })
+		    var desLati = parseFloat(options.lati);
+		    var desLong = parseFloat(options.long);
+		    var name = options.name;
+		    var ctype = options.type;
+		    that.setData({
+		      mapHeight: mapheigh,
+		      centerLongitude: desLong,
+		      centerLatitude: desLati,
+		      desLati: desLati,
+		      desLong: desLong,
+		      type: ctype,
+		      name: name,
+		    });
   	if(res){
   		that.setData({
           centerLongitude: res.longitude,
@@ -75,22 +91,6 @@ Page({
 	     wx.hideLoading();
   	}
    
-    that.setData({
-      mapHeight: mapheigh,
-    })
-    var desLati = parseFloat(options.lati);
-    var desLong = parseFloat(options.long);
-    var name = options.name;
-    var ctype = options.type;
-    that.setData({
-      mapHeight: mapheigh,
-      centerLongitude: desLong,
-      centerLatitude: desLati,
-      desLati: desLati,
-      desLong: desLong,
-      type: ctype,
-      name: name,
-    });
        myAmapFun.getDrivingRoute({
           destination: that.data.desLong + ',' + that.data.desLati,
           origin: res.longitude + ',' + res.latitude,
