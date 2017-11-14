@@ -11,20 +11,21 @@
       border-radius: 8rpx;
   }
  .path{
-  	 width: 256rpx;
-      height: 40rpx;
+  	 width: 120rpx;
+      height: 120rpx;
       position: absolute;
-      top:50rpx;
+      top:20rpx;
       right:30rpx;
       font-size:28rpx;
       line-height:40rpx;
       color:#000;
  }
  .gohear{
- 	  width: 40rpx;
-      height: 40rpx;
+ 	  padding:10rpx 5rpx 0rpx 0rpx;
+	  width:70rpx;
+	  height:70rpx;
       position: absolute;
-      top:0rpx;
+      top:10rpx;
       right:10rpx;
  }
  .header{
