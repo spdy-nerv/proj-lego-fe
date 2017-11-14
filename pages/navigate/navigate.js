@@ -36,6 +36,10 @@ Page({
   },
   onLoad: function (options) {
     console.log(options)
+     wx.showLoading({
+      title: '加载中',
+      icon: 'loading'
+    })
     var that = this;
     var key = config.mapkey;
     var myAmapFun = new amapFile.AMapWX({ key: key });
@@ -46,16 +50,31 @@ Page({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
            storeId: options.storeId,
+            markers: [{
+            iconPath: "../../images/Loc.png",
+            id: 0,
+            latitude: that.data.desLati,
+            longitude: that.data.desLong,
+            width: 23,
+            height: 30
+          }, {
+            iconPath: "../../resources/bestPath.png",
+            id: 0,
+            latitude: res.latitude,
+            longitude: res.longitude,
+            width: 80,
+            height: 30
+          }],
+           
         })
   	}else{
   		that.setData({
 	        storeId: options.storeId,
+	        istrue:false
 	   });
+	     wx.hideLoading();
   	}
-    wx.showLoading({
-      title: '加载中',
-      icon: 'loading'
-    })
+   
     that.setData({
       mapHeight: mapheigh,
     })
@@ -72,29 +91,7 @@ Page({
       type: ctype,
       name: name,
     });
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        that.setData({
-          centerLongitude: res.longitude,
-          centerLatitude: res.latitude,
-          markers: [{
-            iconPath: "../../images/Loc.png",
-            id: 0,
-            latitude: that.data.desLati,
-            longitude: that.data.desLong,
-            width: 23,
-            height: 30
-          }, {
-            iconPath: "../../resources/bestPath.png",
-            id: 0,
-            latitude: res.latitude,
-            longitude: res.longitude,
-            width: 80,
-            height: 30
-          }],
-        })
-        myAmapFun.getDrivingRoute({
+       myAmapFun.getDrivingRoute({
           destination: that.data.desLong + ',' + that.data.desLati,
           origin: res.longitude + ',' + res.latitude,
           success: function (data) {
@@ -136,18 +133,82 @@ Page({
 
           }
         })
-      },
-      fail: function (info) {
-        wx.showToast({
-          title: '无法规划线路！',
-          icon: 'success',
-          duration: 2000
-        })
-         that.setData({
-              istrue:false
-            });
-      }
-    })
+//  wx.getLocation({
+//    type: 'gcj02',
+//    success: function (res) {
+//      that.setData({
+//        centerLongitude: res.longitude,
+//        centerLatitude: res.latitude,
+//        markers: [{
+//          iconPath: "../../images/Loc.png",
+//          id: 0,
+//          latitude: that.data.desLati,
+//          longitude: that.data.desLong,
+//          width: 23,
+//          height: 30
+//        }, {
+//          iconPath: "../../resources/bestPath.png",
+//          id: 0,
+//          latitude: res.latitude,
+//          longitude: res.longitude,
+//          width: 80,
+//          height: 30
+//        }],
+//      })
+//      myAmapFun.getDrivingRoute({
+//        destination: that.data.desLong + ',' + that.data.desLati,
+//        origin: res.longitude + ',' + res.latitude,
+//        success: function (data) {
+//        	console.log(data)
+//          var points = [];
+//          if (data.paths && data.paths[0] && data.paths[0].steps) {
+//            var steps = data.paths[0].steps;
+//            for (var i = 0; i < steps.length; i++) {
+//              var poLen = steps[i].polyline.split(';');
+//              for (var j = 0; j < poLen.length; j++) {
+//                points.push({
+//                  longitude: parseFloat(poLen[j].split(',')[0]),
+//                  latitude: parseFloat(poLen[j].split(',')[1])
+//                })
+//              }
+//            }
+//          }
+//          console.log(points)
+//          that.setData({
+//            polyline: [{
+//              points: points,
+//              color: '#0091ff',
+//              width: 3
+//            }],
+//            istrue:true
+//          });
+//          if (data.paths[0] && data.paths[0].distance) {
+//            that.setData({
+//              distance: data.paths[0].distance + '米'
+//            });
+//          }
+//          if (data.taxi_cost) {
+//            that.setData({
+//              cost: '打车约' + parseInt(data.taxi_cost) + '元'
+//            });
+//          }
+//
+//          wx.hideLoading();
+//
+//        }
+//      })
+//    },
+//    fail: function (info) {
+//      wx.showToast({
+//        title: '无法规划线路！',
+//        icon: 'success',
+//        duration: 2000
+//      })
+//       that.setData({
+//            istrue:false
+//          });
+//    }
+//  })
   },
   goDetail: function () {
     wx.showToast({
