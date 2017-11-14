@@ -3,6 +3,7 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
+const WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
   data: {
     pictureUrls: [],
@@ -16,10 +17,23 @@ Page({
     leftStock: 0,
     isStartToSell: false,       // 是否已经开启支付
     hasSignUp: false,
-    goodsList:[]           // 当前用户是否已经登记报名
+    goodsList:[],
+    productId:''           // 当前用户是否已经登记报名
   },
   onLoad: function (options) {
-    this.getSeckillSkuList();
+    var that = this
+    WxNotificationCenter.addNotification('NotificationName', that.didNotification, that)
+    that.getSeckillSkuList();
+  },
+  onUnload: function () {
+    var that = this
+    WxNotificationCenter.removeNotification('NotificationName', that)
+  },
+  //通知处理
+  didNotification: function (info) {
+    this.setData({
+      productId: info.productId
+    })
   },
   onReady: function () {
   },

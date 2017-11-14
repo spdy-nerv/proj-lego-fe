@@ -2,6 +2,7 @@
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
+var WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
 
   /**
@@ -42,13 +43,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
   	console.log(options)
   	 this.setData({
           productId :options.productId ,
         });
   // user.login(this.getProduct,true,this);
-    this.getProduct();
-    this.getLocaltion();
+    that.getProduct();
+    that.getLocaltion();
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -107,6 +109,12 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
+        const pages = getCurrentPages();
+        const currPage = pages[pages.length - 1];  
+        const prevPage = pages[pages.length - 2];  
+        prevPage.setData({
+          nextPageData: {register:that.data.productId}
+        })
         wx.showModal({
           title: '预约成功',
           content: '下一步，将引导你关注我们公众号。只有关注我们公众号后，才能收到抢购提醒消息，并从消息链接进入购买页面。',
@@ -114,9 +122,8 @@ Page({
           confirmText:'离开',
           success:(res)=>{
             console.log('成功回调')
-            wx.navigateBack({
-              delta: 1, 
-            })
+            WxNotificationCenter.postNotificationName('NotificationName', {productId:that.data.productId})
+            wx.navigateBack();
           },
           fail:(res)=>{
             console.log('失败回调')

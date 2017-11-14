@@ -31,9 +31,9 @@ Page({
           pictureUrl:res.data
         })
       },
-      fail:res=> {
+      fail:(res)=> {
         wx.showToast({
-          title: res.errMsg
+          title: res
       });
       }
     })
@@ -52,7 +52,7 @@ Page({
       },
       fail:res=> {
         wx.showToast({
-          title: res.errMsg
+          title: res
       });
       }
     })
@@ -70,7 +70,7 @@ Page({
       },
       fail:res=> {
         wx.showToast({
-          title: res.errMsg
+          title: res
       });
       }
     })

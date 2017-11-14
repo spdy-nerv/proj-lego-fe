@@ -30,7 +30,6 @@
         
         <view class="detail" wx:if='{{invoiceInfo.invoiceTypeLabel}}'>发票类型：{{invoiceInfo.invoiceTypeLabel}}</view>
         <view class="detail" wx:if='{{!invoiceInfo.invoiceTypeLabel}}'>发票类型：暂无发票</view>
-
         <view class="detail" wx:if='{{deliveryInfo.deliveryCompany}}'>配送方式：{{deliveryInfo.deliveryCompany}}</view>
         <view class="detail" wx:if='{{!deliveryInfo.deliveryCompany}}'>配送方式：暂无物流信息</view>
         <view class="detail" wx:if='{{deliveryInfo.deliveryNo}}' bindtap='expressStatus'>
