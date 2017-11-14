@@ -7,6 +7,7 @@ Page({
   data: {
     pictureUrl: [],
     indicatorDots: true,
+    circular:true,
     autoplay: true,
     interval: 5000,
     duration: 500,

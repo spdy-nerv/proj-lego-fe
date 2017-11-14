@@ -93,7 +93,6 @@ page{
     justify-content: flex-start;
     box-sizing: border-box;
     padding:13rpx 0 0 15rpx;
-    margin-top:30rpx;
 }
 .orderItems image{
     width: 160rpx;
@@ -169,4 +168,9 @@ page{
     align-content: center;
     margin:30rpx 0;
    
+}
+.pay{
+    margin:20rpx 0;
+    background-color: #fff;
+    color: red;
 }

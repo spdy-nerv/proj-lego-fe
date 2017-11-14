@@ -1,8 +1,8 @@
 <view class="page">
-    <view class="header">
+    <!-- <view class="header">
         <view class="status"> {{orderStatusLabel}}</view>
         <image src='../../images/status.png'/>
-       </view>
+       </view> -->
     
     <view class="orderItems">
         <view><image src='{{orderItems[0].pictureUrl}}'wx:if='{{orderItems[0].pictureUrl}}'/></view>
@@ -27,6 +27,8 @@
         <view class="detail">订单编号：{{orderId}}</view>
         <view class="detail">下单时间：{{orderTime}}</view>
         <view class="detail">支付方式：{{payTypeLabel}}</view>
+        <view class="detail">支付状态：{{orderStatusLabel}} </view>
+        <button class="pay" wx:if='{{orderStatus=="UNPAYED"?true:false}}' bindtap='payImmediately'>立即支付</button>
         
         <view class="detail" wx:if='{{invoiceInfo.invoiceTypeLabel}}'>发票类型：{{invoiceInfo.invoiceTypeLabel}}</view>
         <view class="detail" wx:if='{{!invoiceInfo.invoiceTypeLabel}}'>发票类型：暂无发票</view>

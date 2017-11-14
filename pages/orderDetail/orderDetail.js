@@ -68,6 +68,20 @@ Page({
               });
               }
           }, true, this)
+    },
+    payImmediately:function(){  //微信支付
+        console.log(11)
+        wx.requestPayment({
+            'timeStamp': '',
+            'nonceStr': '',
+            'package': '',
+            'signType': 'MD5',
+            'paySign': '',
+            'success':function(res){
+            },
+            'fail':function(res){
+            }
+         })
     }
 
 });

@@ -126,17 +126,17 @@ Page({
         wx.showModal({
           title: '预约成功',
           content: '下一步，将引导你关注我们公众号。只有关注我们公众号后，才能收到抢购提醒消息，并从消息链接进入购买页面。',
-          cancelText:'去关注',
-          confirmText:'离开',
+          cancelText:'离开',
+          confirmText:'去关注',
           success:(res)=>{
             console.log('成功回调')
             WxNotificationCenter.postNotificationName('NotificationName', {productId:that.data.productId})
             if (res.confirm) {
-              wx.navigateBack();
-            } else if (res.cancel) {
               wx.navigateTo({
                 url: '../payAttentionTo/payAttentionTo',
               })
+            } else if (res.cancel) {
+              wx.navigateBack();
             }
           },
           fail:(res)=>{

@@ -5,10 +5,10 @@
     </view>
     <block wx:for='{{goodsList}}' wx:key='{{unique}}'>
             <!-- <navigator url='../productDetail/productDetail?productId={{item.id}}'>-->
-            <navigator url='../bannerDetail/bannerDetail?productId={{item.id}}'>   
-        <view class="productItem">
+            <!-- <navigator url='../bannerDetail/bannerDetail?productId={{item.id}}'>    -->
+        <view class="productItem" data-isMystery="{{item.isMystery}}" bindtap='toProductDetail' id='{{item.id}}'>
             <view class="productLeft">
-                <image class="productLeftImg" src='{{item.headimgPath}}' />
+                <image class="productLeftImg" src='{{item.listImgPath}}' />
                 <image class="icon" src='../../images/productIcon.png' wx:if='{{item.productNo=="10255"?true:false}}' />
             </view>
             <view class="productRight">
@@ -22,6 +22,6 @@
                     <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='NOT_STARTED'?true:false}}">未开始</button>
             </view>
         </view>
-    </navigator>
+    <!-- </navigator> -->
     </block>
 </view>

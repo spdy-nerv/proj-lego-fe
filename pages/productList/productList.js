@@ -61,5 +61,21 @@ Page({
     }
   }, true, this)
 
+ },
+ toProductDetail:function(e){
+     console.log(e.currentTarget.dataset.ismystery)
+     console.log(e.currentTarget.id)
+     const ismystery = e.currentTarget.dataset.ismystery;
+     const id = e.currentTarget.id;
+     if(ismystery==true){
+      wx.showModal({
+        title:'我是神秘商品，此处将会有神秘商品活动介绍。',
+        showCancel:false
+      })
+     }else{
+       wx.navigateTo({
+         url:'../bannerDetail/bannerDetail?productId='+id
+       })
+     }
  }
 })
