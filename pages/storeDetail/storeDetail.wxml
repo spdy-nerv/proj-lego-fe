@@ -6,7 +6,7 @@
 	   </view>
 	   <view bindtap="path" class="path" >
 	      <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{address}}"> 
-	    	<image class="gohear" src='../../images/gohear.png' />
+	    	<image class="gohear" src='../../images/tonav.png' />
 	      </navigator>
 	   </view>
    </view>   
