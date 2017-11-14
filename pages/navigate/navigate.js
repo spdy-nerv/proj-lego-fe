@@ -36,6 +36,10 @@ Page({
   },
   onLoad: function (options) {
     console.log(options)
+     wx.showLoading({
+      title: '加载中',
+      icon: 'loading'
+    })
     var that = this;
     var key = config.mapkey;
     var myAmapFun = new amapFile.AMapWX({ key: key });
@@ -66,12 +70,11 @@ Page({
   	}else{
   		that.setData({
 	        storeId: options.storeId,
+	        istrue:false
 	   });
+	     wx.hideLoading();
   	}
-    wx.showLoading({
-      title: '加载中',
-      icon: 'loading'
-    })
+   
     that.setData({
       mapHeight: mapheigh,
     })
