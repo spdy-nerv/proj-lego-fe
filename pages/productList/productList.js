@@ -56,7 +56,7 @@ Page({
     loginCallback: this.getSeckillSkuList,
     realFail:(res)=>{
       wx.showToast({
-        title: res.message
+        title: res
     });
     }
   }, true, this)

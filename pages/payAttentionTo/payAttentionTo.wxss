@@ -1,0 +1,88 @@
+/* pages/payAttentionTo/payAttentionTo.wxss */
+page{
+    font-size: 35rpx;
+    padding: 30rpx 0 0 50rpx;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40rpx;
+
+}
+.borderRed{
+    border: 4rpx solid red;
+}
+.share{
+    width: 282rpx;
+    height: 62rpx;
+    margin-left: 120rpx;
+}
+.pic1{
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    width: 500rpx;
+    margin:30rpx 0;
+    color: #666;
+    position: relative;
+}
+.pic1 text{
+    border-bottom: 1rpx solid #d0d0d0;
+    padding-left:25rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+}
+.pic1 image{
+    width: 92rpx;
+    height: 92rpx;
+}
+.text{
+    border: 4rpx solid red;
+    border-bottom: 4rpx solid red !important;
+    padding-left:0rpx !important;
+    line-height: 60rpx;
+}
+.image{
+    position: absolute;
+    bottom:0rpx;
+    right: 50rpx;
+}
+.public{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding-left:25rpx;
+    text-align: center;
+    line-height: 75rpx;
+
+}
+.public image{
+   width: 62rpx;
+   height: 70rpx;
+   position: relative;
+   top:15rpx;
+}
+.finish{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding-left:25rpx;
+    border-bottom: 1rpx solid #d0d0d0;
+
+}
+.finish image{
+    width: 62rpx;
+    height: 60rpx;
+    position: relative;
+    top:15rpx;
+}
+.button{
+    width: 400rpx;
+    height: 60rpx;
+    color: #fff;
+    background-color: #009966;
+    border-radius: 15rpx;
+    text-align: center;
+    border: 4rpx solid red;
+    margin-left:35rpx;
+}

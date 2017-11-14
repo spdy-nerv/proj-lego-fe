@@ -1,7 +1,7 @@
 <!--pages/productDetail/productDetail.wxml-->
 <view class="page">
   <view class="reserve">
-    <image src='{{headimgPath}}' wx:if='{{headimgPath}}' />
+    <image src='{{headimgPath}}' wx:if='{{headimgPath}}' mode='aspectFit' />
   </view>
   <view class="flex-row" style="flex-direction:row;">
     <view class="flex-view-item" wx:for="{{pictureUrls}}" wx:if='{{pictureUrls}}'>

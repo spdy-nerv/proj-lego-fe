@@ -1,0 +1,45 @@
+<view>
+    <view class="header">
+            <view>1.先点击右上角</view>
+            <image src='../../images/share.png' class="share"/>
+    </view>
+
+    <view>2.在菜单中点击【关于乐高小程序】</view>
+    <view class="pic1">
+        <text>显示在聊天顶部</text>
+        <text>添加到桌面</text>
+        <text>
+            <text class="borderRed" class="text"> 关于乐高小程序</text>
+        </text>
+    </view>
+    <view>3.在菜单中点击相关公众号图标</view>
+    <view class="pic1">
+            <text>服务项目</text>
+            <text>主体信息</text>
+            <text>相关公众号 </text>
+            <image src='../../images/share2.png' class="image"/>
+    </view>
+ 
+    <view>4.在菜单中点击乐高公众号</view>
+    <view class='public pic1'>
+        <view class="borderRed">
+                <image src='../../images/share3.png'/>
+                乐高公众号
+        </view>
+       </view>
+    <view>5.点击关注，完成</view>
+    <view class="pic1">
+        <view class="finish">
+                <image src='../../images/share3.png'/>
+                <text>乐高公众号</text>
+        </view>
+           
+            <text class="finishText" style="margin-left:19rpx;">查看历史信息</text>
+            
+                    <text class="button">关注</text>
+
+           
+    </view>
+    
+</view>
+

@@ -20,7 +20,6 @@
                     <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='END'?true:false}}">登记已截止</button>
                     <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='SIGNUPED'?true:false}}">已经登记</button>
                     <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='NOT_STARTED'?true:false}}">未开始</button>
-                    <!-- <button class="mg27 bgcolor" disabled wx:if="{{productId==item.id?true:false}}">已经登记</button> -->
             </view>
         </view>
     </navigator>

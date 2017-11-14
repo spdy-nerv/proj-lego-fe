@@ -21,7 +21,10 @@
     "pages/myCoupon/myCoupon",
     "pages/myBuyRecord/myBuyRecord",
     "pages/bannerDetail/bannerDetail",
-    "pages/myGiftCard/myGiftCard"
+    "pages/myGiftCard/myGiftCard",
+    "pages/payAttentionTo/payAttentionTo"
+   
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

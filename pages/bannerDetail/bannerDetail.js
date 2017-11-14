@@ -123,7 +123,13 @@ Page({
           success:(res)=>{
             console.log('成功回调')
             WxNotificationCenter.postNotificationName('NotificationName', {productId:that.data.productId})
-            wx.navigateBack();
+            if (res.confirm) {
+              wx.navigateBack();
+            } else if (res.cancel) {
+              wx.navigateTo({
+                url: '../payAttentionTo/payAttentionTo',
+              })
+            }
           },
           fail:(res)=>{
             console.log('失败回调')
