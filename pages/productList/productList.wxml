@@ -6,7 +6,7 @@
     <block wx:for='{{goodsList}}' wx:key='{{unique}}'>
             <!-- <navigator url='../productDetail/productDetail?productId={{item.id}}'>-->
             <!-- <navigator url='../bannerDetail/bannerDetail?productId={{item.id}}'>    -->
-        <view class="productItem" data-isMystery="{{item.isMystery}}" bindtap='toProductDetail' id='{{item.id}}'>
+        <view class="productItem" data-isMystery="{{item.isCurrentMystery}}" bindtap='toProductDetail' id='{{item.id}}'>
             <view class="productLeft">
                 <image class="productLeftImg" src='{{item.listImgPath}}' />
                 <image class="icon" src='../../images/productIcon.png' wx:if='{{item.productNo=="10255"?true:false}}' />

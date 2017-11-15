@@ -63,13 +63,13 @@ Page({
 
  },
  toProductDetail:function(e){
-     console.log(e.currentTarget.dataset.ismystery)
+     console.log(e.currentTarget.dataset.isCurrentMystery)
      console.log(e.currentTarget.id)
-     const ismystery = e.currentTarget.dataset.ismystery;
+     const isCurrentMystery = e.currentTarget.dataset.ismystery;
      const id = e.currentTarget.id;
-     if(ismystery==true){
+     if(isCurrentMystery==true){
       wx.showModal({
-        title:'我是神秘商品，此处将会有神秘商品活动介绍。',
+        title:'我是神秘商品，此处将会有\r神秘商品活动介绍。',
         showCancel:false
       })
      }else{

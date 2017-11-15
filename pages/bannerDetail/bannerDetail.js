@@ -44,7 +44,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-      	console.log(wx.getStorageSync('coordinate'))
+    console.log(wx.getStorageSync('coordinate'))
   	var res=wx.getStorageSync('coordinate');
   	if(res){
   		that.setData({
@@ -52,13 +52,16 @@ Page({
           centerLatitude: res.latitude,
         })
   	}
-  	console.log(options)
+  	console.log(options);
   	 this.setData({
           productId :options.productId ,
         });
   // user.login(this.getProduct,true,this);
-    that.getProduct();
-    that.getLocaltion();
+       that.getProduct();
+       console.log(that.data.signupStatus)
+      //  if(that.data.signupStatus=="NOT_STARTED"||that.datasignupStatus == "END"){
+      //   that.getLocaltion();
+      // }
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -85,7 +88,7 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
-      	console.log(data)
+         console.log(data)
       	  wx.setNavigationBarTitle({
 			      title: data.seckillTitle//页面标题为路由参数
 			    })
@@ -98,6 +101,11 @@ Page({
           signupStatus:data.signupStatus,
           seckillSkuStatus:data.seckillSkuStatus
         });
+        if(that.data.signupStatus=="NOT_STARTED"||that.datasignupStatus == "END"){
+          that.getLocaltion();
+        }else{
+          wx.hideLoading();
+        }
       },
       loginCallback:this.getProduct,
       realFail: function (msg, code) {
@@ -109,7 +117,7 @@ Page({
   //预约登记
   signUp:function(){
     var that = this;
-    console.log(111)
+    console.log('点击了预约登记');
     request({
       url:APIS.SIGN_UP+'?productId='+that.data.productId,
       method: 'POST',
@@ -117,26 +125,20 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
-        const pages = getCurrentPages();
-        const currPage = pages[pages.length - 1];  
-        const prevPage = pages[pages.length - 2];  
-        prevPage.setData({
-          nextPageData: {register:that.data.productId}
-        })
         wx.showModal({
           title: '预约成功',
           content: '下一步，将引导你关注我们公众号。只有关注我们公众号后，才能收到抢购提醒消息，并从消息链接进入购买页面。',
-          cancelText:'离开',
-          confirmText:'去关注',
+          cancelText:'去关注',
+          confirmText:'离开',
           success:(res)=>{
             console.log('成功回调')
             WxNotificationCenter.postNotificationName('NotificationName', {productId:that.data.productId})
             if (res.confirm) {
+              wx.navigateBack();
+            } else if (res.cancel) {
               wx.navigateTo({
                 url: '../payAttentionTo/payAttentionTo',
               })
-            } else if (res.cancel) {
-              wx.navigateBack();
             }
           },
           fail:(res)=>{
@@ -171,7 +173,6 @@ Page({
           that.nearListStore();
         }
         
-
       },
       fail: function (err) {
         console.log(err);
@@ -227,11 +228,9 @@ Page({
     this.setData({
       showModal: true
     })
-  },
-  preventTouchMove: function () {
-  },
+  }, //此处空的方法勿删
+  preventTouchMove: function () {},
   preventMove:function(){},
-
   hideModal: function () {
     this.setData({
       showModal: false

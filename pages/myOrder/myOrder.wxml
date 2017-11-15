@@ -12,7 +12,7 @@
                 <view class="weui-tab__panel">
                         <view class="order" wx:if='{{productOrderList.length==0?true:false}}'>暂无购买订单</view>
                     <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-                            <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower" style="height:100vh"> 
+                            <scroll-view scroll-y='true'  bindscrolltolower="searchScrollLower" class='scroll'style="height:1100rpx"> 
                                 <block wx:for='{{productOrderList}}' wx:key='unique'>
                                         <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}&&orderTime={{item.orderTime}} '>
                                         <view class="buyHistory-Item">

@@ -12,7 +12,7 @@
     <rich-text nodes='{{description}}'></rich-text>
   </view>
   <!-- 附件门店 -->
-  <view class="nearStore" wx:if='{{signupStatus!=="STARTED"&&name?true:false}}'>
+  <view class="nearStore" wx:if='{{signupStatus=="NOT_STARTED"||signupStatus == "END"?true:false}}'>
     <navigator url="../navigate/navigate?lati={{latitude}}&long={{longitude}}&type={{currentType}}&name={{name}}">
       <view class="nearStoreTitle">
         <text>附近门店</text>
@@ -31,11 +31,11 @@
     </navigator>
   </view>
 
-  <button class="Orders order-closed" wx:if="{{signupStatus == 'NOT_STARTED'}}">登记未开始</button>
+  <!-- <button class="Orders order-closed" wx:if="{{signupStatus == 'NOT_STARTED'}}">登记未开始</button> -->
   <button class="Orders" wx:elif="{{signupStatus == 'STARTED'}}" bindtap="showDialogBtn" >立即登记</button>
   <!-- <button class="Orders" bindtap="showDialogBtn" >立即预定</button> -->
   <button class="Orders order-closed" wx:elif="{{signupStatus == 'SIGNUPED'}}">您已经登记</button>
-  <button class="Orders order-closed" wx:elif="{{signupStatus == 'END'}}">登记已截止</button>
+  <!-- <button class="Orders order-closed" wx:elif="{{signupStatus == 'END'}}">登记已截止</button> -->
   <!-- 只能通过模板消息进来才能购买，小程序内不直接提供购买 -->
 
   <!--自定义弹窗-->
@@ -60,8 +60,8 @@
       </form>
     </view>
     <view class="modal-footer">
-      <view class="btn-cancel" bindtap="onConfirm" data-status="cancel"><button class="button" disabled='{{disabled}}'>立即预约</button></view>
       <view class="btn-confirm"  bindtap="onCancel"data-status="confirm">返回</view>
+      <view class="btn-cancel" bindtap="onConfirm" data-status="cancel"><button class="button" disabled='{{disabled}}'>立即预约</button></view>
     </view>
   </view>
 </view>
