@@ -88,9 +88,12 @@ Page({
          },
       realSuccess: function (data) {
       	console.log(data)
-      	  wx.setNavigationBarTitle({
+      	if(data.seckillTitle){
+      		wx.setNavigationBarTitle({
 			      title: data.seckillTitle//页面标题为路由参数
 			    })
+      	}
+      	  
         that.setData({
           headimgPath:data.headimgPath,
           pictureUrls: data.pictureUrls,
