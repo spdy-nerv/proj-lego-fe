@@ -106,6 +106,7 @@ Page({
       },
       loginCallback: this.getProduct,
       realFail: function (msg, code) {
+      	console.log(msg,code)
         wx.showToast({
           title: msg
         });

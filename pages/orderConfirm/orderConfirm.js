@@ -83,6 +83,7 @@ Page({
     var that = this;
     wx.getSetting({
       success(res) {
+      	console.log(res)
         if (!res.authSetting['scope.address']) {
           wx.authorize({
             scope: 'scope.address',
@@ -167,12 +168,13 @@ Page({
 
     if (this.isPaying) return;
     this.isPaying = true;
-    var payData = this._buildPayData();
     var that = this;
+    console.log(that._buildPayData())
+    var payData = that._buildPayData();
     request({
       url: APIS.ADD_ORDER,
       method: 'POST',
-      data: payDate,
+      data: payData,
       header: {
         auth: wx.getStorageSync('token')
       },
@@ -183,7 +185,7 @@ Page({
       loginCallback: this.onPay,
       realFail: function (msg, code) {
         wx.showToast({
-          title: 'msg'
+          title: msg
         });
         that.isPaying = false;
       }
@@ -204,6 +206,7 @@ Page({
         }
       }
     });
+    console.log(d)
     var data = {
       "address": d.deliveryInfo.address,
       "city": d.deliveryInfo.city,
@@ -227,9 +230,8 @@ Page({
       "province": d.deliveryInfo.province,
       "realName": d.deliveryInfo.userName,
       "remark": '',
-      "street": d.deliveryInfo.street
     }
-
+		console.log(data)
     return data;
   },
 
