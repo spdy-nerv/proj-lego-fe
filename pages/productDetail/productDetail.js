@@ -17,6 +17,7 @@ Page({
     price: 0,
     format: '',
     productId:null,
+    seckillId:null,
     leftStock: 0,
     headimgPath:'',
     pictureUrls:[],
@@ -86,21 +87,24 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
+      	console.log(data)
       	  wx.setNavigationBarTitle({
 			      title: data.seckillTitle//页面标题为路由参数
 			    })
         that.setData({
           headimgPath:data.headimgPath,
           pictureUrls: data.pictureUrls,
+          seckillId:data.seckillId,
           name :data.name,
           price :data.price ,
+          seckillStatus:data.seckillStatus
         });
          wx.hideLoading()
       },
       loginCallback: this.getProduct,
       realFail: function (msg, code) {
         wx.showToast({
-          title: 'msg'
+          title: msg
         });
       }
     }, true, this);
@@ -109,9 +113,10 @@ Page({
   //确认购买
  Orders: function(e) {
 	 	var that=this;
-	 	var productId=that.data.productId;
+	 	var seckillId=that.data.seckillId;
+	 	console.log(seckillId)
      wx.navigateTo({
-			  url: '../orderConfirm/orderConfirm?productId='+productId
+			  url: '../orderConfirm/orderConfirm?productId='+seckillId
 			});
   },
   /**
