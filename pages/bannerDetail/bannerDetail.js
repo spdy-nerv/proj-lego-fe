@@ -59,9 +59,6 @@ Page({
   // user.login(this.getProduct,true,this);
        that.getProduct();
        console.log(that.data.signupStatus)
-      //  if(that.data.signupStatus=="NOT_STARTED"||that.datasignupStatus == "END"){
-      //   that.getLocaltion();
-      // }
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -183,9 +180,6 @@ Page({
           wx.hideLoading();
         },3000);
         
-      },
-      complete:function(){
-
       }
     })
   },
@@ -229,7 +223,7 @@ Page({
       showModal: true
     })
   }, //此处空的方法勿删
-  preventTouchMove: function () {},
+  preventTouchMove: function (){},
   preventMove:function(){},
   hideModal: function () {
     this.setData({

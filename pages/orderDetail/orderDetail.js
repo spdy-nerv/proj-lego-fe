@@ -12,7 +12,14 @@ Page({
         orderItems:[],
         deliveryInfo:'',
         payTypeLabel:'',
-        invoiceInfo:''
+        invoiceInfo:'', 
+
+        app_id: '', //支付订单
+        nonce_str: '',
+        package: '',
+        pay_sign: '',
+        sign_type:'',
+        timestamp: ''
         
     },
     onLoad:function(options){
@@ -69,19 +76,73 @@ Page({
               }
           }, true, this)
     },
-    payImmediately:function(){  //微信支付
-        console.log(11)
-        wx.requestPayment({
-            'timeStamp': '',
-            'nonceStr': '',
-            'package': '',
-            'signType': 'MD5',
-            'paySign': '',
-            'success':function(res){
+    payOrder:function(){
+        request({
+            url: APIS.PAY_ORDER+'?orderId='+this.data.orderId,
+            method:'POST',
+            header: {
+              auth: wx.getStorageSync('token')
             },
-            'fail':function(res){
-            }
-         })
-    }
+            realSuccess: (res) => {
+              console.log(res);
+              this.wxpay();               
+                // wx.requestPayment({    //微信支付
+                //     'timeStamp': res.timeStamp,
+                //     'nonceStr': res.nonceStr,
+                //     'package': res.package,
+                //     'signType': 'MD5',
+                //     'paySign': res.paySign,
+                //     'success':function(res){
+                //         console.log(res);
+                //     },
+                //     'fail':function(res){
+                //     }
+                //  })
+          
+            },loginCallback:this.payOrder,
+            realFail:(res)=>{
+                console.log(res)
+                wx.showToast({
+                  title: res
+              });
+              }
+          }, true, this)
 
+    },
+    wxpay:function(){  //模拟微信支付
+        
+        request({
+            url: APIS.WXPAY+'?orderId='+this.data.orderId+'&&paySuccess=true',
+            method:'POST',
+            header: {
+              auth: wx.getStorageSync('token')
+            },
+            data:{
+                paySuccess:true,
+                orderId:this.data.orderId
+
+            },
+            realSuccess: (res) => {
+              console.log(1312);
+            
+              wx.showToast({
+                  title:'支付成功'
+              })
+              this.setData({
+                orderStatus:'PAYED'
+              })
+            //   if(this.getOrderDetail){
+            //     this.getOrderDetail();   
+            //   }         
+            },loginCallback:this.wxpay,
+            realFail:(res)=>{
+                console.log(res)
+                this.getOrderDetail();
+                wx.showToast({
+                  title: res
+              });
+              }
+          }, true, this)
+
+    }
 });

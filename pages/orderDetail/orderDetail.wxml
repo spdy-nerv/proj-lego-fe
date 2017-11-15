@@ -9,7 +9,7 @@
         <view class="orderItemsRight">
             <view class="orderItemsName">{{orderItems[0].skuName}}</view>
             <view class="orderItemsNum">数量：{{orderItems[0].skuCount}}</view>
-            <view class="orderItemsPrice">￥{{orderItems[0].skuPrice}}</view>
+            <view class="orderItemsPrice" style="color:red">￥{{orderItems[0].realPayAmount}}</view>
         </view>
 
     </view>
@@ -28,7 +28,8 @@
         <view class="detail">下单时间：{{orderTime}}</view>
         <view class="detail">支付方式：{{payTypeLabel}}</view>
         <view class="detail">支付状态：{{orderStatusLabel}} </view>
-        <button class="pay" wx:if='{{orderStatus=="UNPAYED"?true:false}}' bindtap='payImmediately'>立即支付</button>
+        <button class="pay" wx:if='{{orderStatus=="UNPAYED"?true:false}}'bindtap='payOrder'>立即支付</button>
+        <!-- <button class="pay" wx:if='{{orderStatus=="PAYED"?true:false}}'>支付成功</button> -->
         
         <view class="detail" wx:if='{{invoiceInfo.invoiceTypeLabel}}'>发票类型：{{invoiceInfo.invoiceTypeLabel}}</view>
         <view class="detail" wx:if='{{!invoiceInfo.invoiceTypeLabel}}'>发票类型：暂无发票</view>

@@ -69,6 +69,8 @@ var APIS = {
   SIGN_UP:'/product/seckill/signUp',   //登记报名秒杀活动
   GET_LIST_STORE:'/store/listStore',  //获取附近所有门店
   GET_PRODUCT: '/product/seckill/getProductDetail',//获取商品详情
+  PAY_ORDER:'/order/payOrder',//支付订单
+  WXPAY:    '/order/wxpay', //模拟微信支付
 
   GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
   GET_ALL_REGULARCHAIN: '/store/getAllRegularChain',//获取所有专卖店列表
