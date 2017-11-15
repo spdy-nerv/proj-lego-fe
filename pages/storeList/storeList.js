@@ -73,9 +73,11 @@ Page({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
         })
-  	}
-  	 
-      that.getLocaltion()
+  		that.getAllRegularChain(),
+      that.getNearbyChainStore()
+  	}else{
+  		  that.getLocaltion()
+  	} 	   
   },
   //获取当前经纬度
   getLocaltion:function(){
@@ -98,8 +100,8 @@ Page({
       },
       complete:function(res){
       	console.log(res)
-      	that.getAllRegularChain(),
-        that.getNearbyChainStore()
+//    	that.getAllRegularChain(),
+//      that.getNearbyChainStore()
       }
     })
   },
