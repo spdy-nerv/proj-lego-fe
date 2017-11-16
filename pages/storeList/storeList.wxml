@@ -1,5 +1,8 @@
 <!--pages/storeList/storeList.wxml-->
 <view class="page">
+    <view class="reserve">
+	      <image src='{{img_store}}' wx:if='{{img_store}}'/>
+	</view>
 	<view class="header">
 	  <view class="header-left ">
 	  		<view class="tab-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">乐高旗舰店/专卖店</view>  
@@ -9,16 +12,8 @@
 	  </view>
 	</view> 
 	<view wx:if="{{currentTab==0}}">
-		   <view class="reserve">
-	          <image src='{{img_store}}' wx:if='{{img_store}}'/>
-	      </view>
-		  <view class="store-title">
-	  	     <view class="store-title1">
-		  		点击旗舰店/专卖店名称  查看店内当月活动
-		  	</view>
-		    
-		  	</view>
-	  	<scroll-view scroll-y class="scrol" style="height: 280px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+		 
+	  	<scroll-view scroll-y class="scrol" style="height: 320px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 			<view class="content store1"  wx:for="{{regularChainList}}" wx:for-index='key'>
 				 <image class="icon" src='../../images/new.png' wx:if='{{item.isNew ==true}}' />
 			   <navigator url='../storeDetail/storeDetail?storeId={{item.storeId}}'>
@@ -40,13 +35,8 @@
 		 </scroll-view>
 	</view>
 	<view wx:else>	
-		  <view class="Chain">
-	          <image src='{{img_Chain}}' wx:if='{{img_Chain}}'/>
-	      </view>
-		  <view class="Chain-title">
-	  	    
-		 </view>
-	 	 <scroll-view scroll-y style="height: 350px; lower-threshold:10;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> 
+		
+	 	 <scroll-view scroll-y style="height: 320px; lower-threshold:10;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> 
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}" wx:for-index='key'>
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			   <view class="chainStore-name">
