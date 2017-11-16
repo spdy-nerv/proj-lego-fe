@@ -44,7 +44,7 @@ Page({
     - INVALID_TIME:商品不在秒杀有效期内，如未开始或已结束
     - QUALIFIED:有资格购买。上面所有约束均通过的用户
     */
-    seckillStatus: 'QUALIFIED'
+    seckillSkuStatus: 'QUALIFIED'
 
   },
 
@@ -100,7 +100,7 @@ Page({
           seckillId:data.seckillId,
           name :data.name,
           price :data.price ,
-          seckillStatus:data.seckillStatus
+          seckillSkuStatus:data.seckillSkuStatus
         });
          wx.hideLoading()
       },

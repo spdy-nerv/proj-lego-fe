@@ -76,10 +76,10 @@ Page({
    	var that=this;
    	var productId=that.data.productId;
     request({
-      url: APIS.GET_PRODUCT,
+      url: APIS.GET_PRODUCT_DETAIL,
       method: 'GET',
       data: { 
-      	seckillSkuId:productId
+      	productId:productId
         },
         header: {
             auth: wx.getStorageSync('token')
@@ -87,7 +87,7 @@ Page({
       realSuccess: function (data) {
          console.log(data)
       	  wx.setNavigationBarTitle({
-			      title: data.seckillTitle//页面标题为路由参数
+			      title: data.name//页面标题为路由参数
 			    })
         that.setData({
           headimgPath:data.headimgPath,
@@ -98,7 +98,7 @@ Page({
           signupStatus:data.signupStatus,
           seckillSkuStatus:data.seckillSkuStatus
         });
-        if(that.data.signupStatus=="NOT_STARTED"||that.datasignupStatus == "END"){
+        if(that.data.signupStatus=="NOT_STARTED"||that.data.signupStatus == "END"){
           that.getLocaltion();
         }else{
           wx.hideLoading();

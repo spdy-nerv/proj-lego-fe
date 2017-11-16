@@ -1,6 +1,6 @@
 <view class="box">
   <view class="header">
-   <view>{{deliveryCompany}}：{{nu}}</view>
+   <view>{{deliveryCompany}}：{{deliveryNo}}</view>
 
    <view wx:if='{{list.length==0?false:true}}'>物流状态：{{state[stateData]}}</view>
    <view wx:else>物流状态：异常</view>

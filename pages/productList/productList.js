@@ -21,13 +21,11 @@ Page({
     productId:''           // 当前用户是否已经登记报名
   },
   onLoad: function (options) {
-    var that = this
-    WxNotificationCenter.addNotification('NotificationName', that.didNotification, that)
-    that.getSeckillSkuList();
+    WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
+    this.getSeckillSkuList();
   },
   onUnload: function () {
-    var that = this
-    WxNotificationCenter.removeNotification('NotificationName', that)
+    WxNotificationCenter.removeNotification('NotificationName', this)
   },
   //通知处理
   didNotification: function (info) {
@@ -55,16 +53,12 @@ Page({
     },
     loginCallback: this.getSeckillSkuList,
     realFail:(res)=>{
-      wx.showToast({
-        title: res
-    });
+    console.log(res);
     }
   }, true, this)
 
  },
  toProductDetail:function(e){
-     console.log(e.currentTarget.dataset.isCurrentMystery)
-     console.log(e.currentTarget.id)
      const isCurrentMystery = e.currentTarget.dataset.ismystery;
      const id = e.currentTarget.id;
      if(isCurrentMystery==true){

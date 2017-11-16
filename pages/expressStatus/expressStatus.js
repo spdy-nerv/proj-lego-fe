@@ -63,6 +63,7 @@ Page({
             },
             method: 'GET',
             success: function(res){
+                console.log(res);
                 if(res.data.data){
                     wx.hideLoading();
                 }

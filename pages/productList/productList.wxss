@@ -81,3 +81,10 @@
     line-height: 47rpx;
     margin-top:30rpx;
 }
+.error{
+    width: 100%;
+    margin-top:30rpx;
+    font-size: 36rpx;
+    color: #ccc;
+    text-align: center;
+}

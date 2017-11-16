@@ -69,6 +69,7 @@ var APIS = {
   SIGN_UP:'/product/seckill/signUp',   //登记报名秒杀活动
   GET_LIST_STORE:'/store/listStore',  //获取附近所有门店
   GET_PRODUCT: '/product/seckill/getProductDetail',//获取商品详情
+  GET_PRODUCT_DETAIL:'/product/productinfo/getProductDetail',//根据spu的ID获取抢购商品详情
   PAY_ORDER:'/order/payOrder',//支付订单
   WXPAY:    '/order/wxpay', //模拟微信支付
 

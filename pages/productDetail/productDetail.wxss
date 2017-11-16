@@ -11,8 +11,8 @@
   }
 .reserve image{
       width: 700rpx;
-      height: 350rpx;
-      margin-top: 45rpx;
+      height: 420rpx;
+      margin-top: 15rpx;
      
   }
   .flex-row{

@@ -22,6 +22,7 @@ Page({
       nationalCode: '',
       street: ''
     },
+    deliveryInfo:'',
     needFapiao: false,   // 是否需要发票
     fapiaoInfo: {
       type: 0,      // 0为个人，1为公司
@@ -228,7 +229,7 @@ Page({
       "payType": "WXPAY",
       "phone": d.deliveryInfo.telNumber,
       "province": d.deliveryInfo.province,
-      "realName": d.deliveryInfo.userName,
+      "realname": d.deliveryInfo.userName,
       "remark": '',
     }
 		console.log(data)

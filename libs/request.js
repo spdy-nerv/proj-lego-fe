@@ -48,7 +48,7 @@ function request(obj, needLogin = true, ctx) {
                 });
                 */
             } else {
-                typeof obj.realFail == "function" && obj.realFail('数据获取失败！' + d.message || '', d.code);
+                typeof obj.realFail == "function" && obj.realFail(d.message || '');
             }
         }
     };

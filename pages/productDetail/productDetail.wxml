@@ -23,11 +23,11 @@
       <button class="Orders order-closed" wx:if="{{signupStatus == 'NOT_STARTED'}}">预定未开始</button>
       <button class="Orders" wx:elif="{{signupStatus == 'STARTED'}}" bindtap="signUp">立即预定</button>
       <button class="Orders order-closed" wx:elif="{{signupStatus == 'SIGNUPED'}}">您已经预定</button>   
-      <button class="Orders order-closed" wx:elif="{{signupStatus == 'END' && seckillStatus == 'INVALID_TIME'}}">预定已截止</button>
+      <button class="Orders order-closed" wx:elif="{{signupStatus == 'END' && seckillSkuStatus == 'INVALID_TIME'}}">预定已截止</button>
       <block wx:else>
-        <button class="Orders order-closed" wx:if="{{seckillStatus == 'NO_SIGNUP' || seckillStatus == 'NO_QUALIFY'}}" bindtap="Orders">没有购买资格</button>
-        <button class="Orders order-closed" wx:elif="{{seckillStatus == 'ORDERED'}}">已下单，去支付</button>
-        <button class="Orders order-closed" wx:elif="{{seckillStatus == 'PURCHASED'}}">已购买</button>
-        <button class="Orders" wx:elif="{{seckillStatus == 'QUALIFIED'}}" bindtap="Orders">去购买</button>
+        <button class="Orders order-closed" wx:if="{{seckillSkuStatus == 'NO_SIGNUP' || seckillSkuStatus == 'NO_QUALIFY'||seckillSkuStatus==''}}">没有购买资格</button>
+        <button class="Orders order-closed" wx:elif="{{seckillSkuStatus == 'ORDERED'}}">已下单，去支付</button>
+        <button class="Orders order-closed" wx:elif="{{seckillSkuStatus == 'PURCHASED'}}">已购买</button>
+        <button class="Orders" wx:elif="{{seckillSkuStatus == 'QUALIFIED'}}" bindtap="Orders">去购买</button>
       </block>
 </view>

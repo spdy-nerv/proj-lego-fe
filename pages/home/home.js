@@ -96,5 +96,18 @@ Page({
         console.log(res);
       }
     })
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '玩的快乐',
+      path: '/page/home/home',
+      //imageUrl:'',
+      success: function(res) {
+        console.log('转发成功')
+      },
+      fail: function(res) {
+        console.log("转发失败")
+      }
+    }
   }
 })

@@ -16,7 +16,8 @@ Page({
     hasMore: true,
     productOrderList: [],
     unPayEdList: [],
-    payEdList: []
+    payEdList: [],
+    isScroll:false
   },
   onLoad: function () {
     var that = this;
@@ -112,7 +113,7 @@ Page({
         if (productOrderList.length < that.data.pageSize) {
           that.setData({
             productOrderList: productOrderListItem.concat(productOrderList),
-            hasMore: false,
+            hasMore: false
           })
         } else {
           that.setData({
@@ -135,6 +136,7 @@ Page({
     console.log(111)
     wx.showLoading({ title: '数据加载中..' })
     if (this.data.hasMore) {
+      this.data.hasMore =false;
       this.getOrderList();
     } else {
       wx.showToast({

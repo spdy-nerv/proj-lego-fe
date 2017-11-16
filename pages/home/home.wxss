@@ -28,7 +28,9 @@ swiper{
       top:0rpx;
       left:30rpx;
       border-radius: 8rpx;
-      box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(0,0,0,.5);
+      -moz-box-shadow:2px 2px 5px #333333;
+       -webkit-box-shadow:2px 2px 5px #333333; 
+       box-shadow:2px 2px 5px #333333;
   }
   .reserve image{
       width: 688rpx;
