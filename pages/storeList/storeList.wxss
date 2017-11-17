@@ -237,7 +237,7 @@
   	height:40rpx;
   	width:40rpx;
   	position: absolute;
-	top:45rpx;
+	top:50rpx;
 	right:20rpx;
   }
   .icon{
