@@ -2,7 +2,8 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
-var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+const WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
+const sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
   data: {
@@ -22,8 +23,6 @@ Page({
   onLoad: function () {
     var that = this;
     that.getOrderList();
-    that.getDataPayed();
-    that.getDataUnpayed();
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -32,12 +31,26 @@ Page({
         });
       }
     });
+    WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
+  },
+  didNotification: function (info) {
+    if(info.cancelOrder){
+      this.getDataUnpayed();
+    }
   },
   tabClick: function (e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
+    const index = e.currentTarget.id;
+    if(index==0){
+      //this.getOrderList();
+    }else if(index==1){
+      this.getDataUnpayed();
+    }else if(index==2){
+      this.getDataPayed();
+    }
   },
   getDataPayed: function (data) {
     const that = this;
@@ -50,12 +63,13 @@ Page({
       header: {
         auth: wx.getStorageSync('token')
       },
-      data:{ pageSize: 999, pageNum: that.data.pageNum, orderStatus: 'PAYED' },
+      data:{ pageSize: 999, pageNum: 1, orderStatus: 'DELIVERED' },
       realSuccess: (res) => {
         console.log(res);
       this.setData({
         payEdList: res.list
       })
+      wx.hideLoading();
       }, loginCallback: this.getDataPayed,
       realFail: (res) => {
         wx.showToast({
@@ -75,12 +89,13 @@ Page({
       header: {
         auth: wx.getStorageSync('token')
       },
-      data:{ pageSize: 999, pageNum: that.data.pageNum, orderStatus: 'UNPAYED' },
+      data:{ pageSize: 999, pageNum: 1, orderStatus: 'UNPAYED' },
       realSuccess: (res) => {
         console.log(res);
       this.setData({
         unPayEdList: res.list
       })
+      wx.hideLoading();
       }, loginCallback: this.getDataUnpayed,
       realFail: (res) => {
         wx.showToast({

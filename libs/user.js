@@ -93,6 +93,7 @@ function doAppLogin(data, cb, ctx) {
                 title: '登录失败！' + d.resultMsg
             });
         }
+        wx.hideLoading();
       },
       fail: function(res) {
         // fail

@@ -23,7 +23,7 @@
           <image src='../../images/homeTopLogo.png' />
         </view>
         <view style="width:550rpx">
-          <view style="font-size:29rpx"> {{name}}</view>
+          <view style="font-size:29rpx"> {{storeName}}</view>
           <view style="font-size:24rpx;color:#999;margin-top:10rpx">地址：{{address}}</view>
         </view>
 

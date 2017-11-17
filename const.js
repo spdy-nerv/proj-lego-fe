@@ -71,6 +71,8 @@ var APIS = {
   GET_PRODUCT: '/product/seckill/getProductDetail',//获取商品详情
   GET_PRODUCT_DETAIL:'/product/productinfo/getProductDetail',//根据spu的ID获取抢购商品详情
   PAY_ORDER:'/order/payOrder',//支付订单
+  CANCEL_ORDER:'/order/cancelOrder',//取消订单
+  GET_ORDER_STATUS:'/order/orderStatus',//获取订单状态
   WXPAY:    '/order/wxpay', //模拟微信支付
 
   GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表

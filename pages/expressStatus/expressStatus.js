@@ -36,7 +36,7 @@ Page({
     getExpressType:function(queryParam){
         var that =this;
         wx.request({
-            url: 'https://legowxapp.oss-cn-shanghai.aliyuncs.com/delivery.json',
+            url: 'https://legostatic.teown.com/delivery.json',
             method: 'GET',
             success:function(res){
                 console.log(res.data);

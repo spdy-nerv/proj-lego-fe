@@ -19,8 +19,9 @@ Page({
   onLoad: function (options) {
     user.login();
     this.getSliderList();
-    this.getModelBg1({positionType:'INDEX_SECKILL'});
-    this.getModelBg2({positionType:'INDEX_GIFT'});
+    this.getModelBg({positionType:'INDEX_SECKILL'});
+    this.getModelBg({positionType:'INDEX_GIFT'});
+    this.getModelBg({positionType:'INDEX_SHARED_IMAGE'});
   },
   getSliderList:function(){
     wx.request({
@@ -29,7 +30,7 @@ Page({
       success:res=>{
         console.log(res.data)
         this.setData({
-          pictureUrl:res.data
+          pictureUrl:res.data.data
         })
       },
       fail:(res)=> {
@@ -39,17 +40,19 @@ Page({
       }
     })
 
-  },
-  getModelBg1:function(data){
+  },getModelBg:function(data){
     wx.request({
       url: APIS.GET_MODEL_BG,
       method: 'GET',
       data:data, 
       success:res=>{
-        console.log(res);
-        this.setData({
-          reserveImg:res.data.pictureUrl
-        })
+        if(data.positionType=='INDEX_SECKILL'){
+          this.setData({reserveImg:res.data.data.pictureUrl})
+        }else if(data.positionType=='INDEX_GIFT'){
+          this.setData({giftImg:res.data.data.pictureUrl})
+        }else if(data.positionType=='INDEX_SHARED_IMAGE'){
+          this.setData({shareImg:res.data.data.pictureUrl})
+        }
       },
       fail:res=> {
         wx.showToast({
@@ -57,28 +60,8 @@ Page({
       });
       }
     })
-  },
-  getModelBg2:function(data){
-    wx.request({
-      url: APIS.GET_MODEL_BG,
-      method: 'GET',
-      data:data, 
-      success:res=>{
-        console.log(res);
-        this.setData({
-          giftImg:res.data.pictureUrl,
-        })
-      },
-      fail:res=> {
-        wx.showToast({
-          title: res
-      });
-      }
-    })
-  },
-  onShareAppMessage: function () {
-  },
-  //跳转小程序
+  }
+, //跳转小程序
   openProgram: () => {
     wx.showModal({
       title: '精选好礼',
@@ -100,8 +83,8 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '玩的快乐',
-      path: '/page/home/home',
-      //imageUrl:'',
+      path: '/pages/home/home',
+      imageUrl:this.data.shareImg,
       success: function(res) {
         console.log('转发成功')
       },

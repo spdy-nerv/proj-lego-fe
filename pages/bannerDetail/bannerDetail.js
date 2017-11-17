@@ -36,7 +36,8 @@ Page({
     nearStoreImg:'',
     distance:'',
     showModal:'',
-    disabled:'true'
+    disabled:'true',
+    sharedImgPath:''
   },
 
   /**
@@ -96,7 +97,8 @@ Page({
           price :data.price ,
           description:data.description,
           signupStatus:data.signupStatus,
-          seckillSkuStatus:data.seckillSkuStatus
+          seckillSkuStatus:data.seckillSkuStatus,
+          sharedImgPath:data.sharedImgPath
         });
         if(that.data.signupStatus=="NOT_STARTED"||that.data.signupStatus == "END"){
           that.getLocaltion();
@@ -194,7 +196,7 @@ Page({
         wx.hideLoading();
        console.log(data);
        that.setData({
-         name:data.list[0].name,
+         storeName:data.list[0].name,
          address:data.list[0].address,
          longitude:data.list[0].longitude,
          latitude:data.list[0].latitude
@@ -252,5 +254,18 @@ Page({
   onConfirm: function () {
     this.hideModal();
     this.signUp()
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: this.data.name,
+      path: '/pages/bannerDetail/bannerDetail?productId='+this.data.productId,
+      imageUrl:this.data.sharedImgPath,
+      success: function(res) {
+        console.log('转发成功')
+      },
+      fail: function(res) {
+        console.log("转发失败")
+      }
+    }
   }
 })

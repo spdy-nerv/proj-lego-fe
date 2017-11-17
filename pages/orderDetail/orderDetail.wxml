@@ -29,6 +29,7 @@
         <view class="detail">支付方式：{{payTypeLabel}}</view>
         <view class="detail">支付状态：{{orderStatusLabel}} </view>
         <button class="pay" wx:if='{{orderStatus=="UNPAYED"?true:false}}'bindtap='payOrder'>立即支付</button>
+        <button class="pay" wx:if='{{orderStatus=="UNPAYED"?true:false}}'bindtap='cancelOrder'>取消订单</button>
         <!-- <button class="pay" wx:if='{{orderStatus=="PAYED"?true:false}}'>支付成功</button> -->
         
         <view class="detail" wx:if='{{invoiceInfo.invoiceTypeLabel}}'>发票类型：{{invoiceInfo.invoiceTypeLabel}}</view>
