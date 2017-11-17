@@ -3,8 +3,6 @@
     "pages/home/home",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
-    "pages/addressManager/addressManager",
-    "pages/addressAdd/addressAdd",
     "pages/productDetail/productDetail",
     "pages/orderConfirm/orderConfirm",
     "pages/couponList/couponList",

@@ -2,6 +2,7 @@
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
+var WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
 
   /**
@@ -162,7 +163,7 @@ Page({
     var deliveryInfo = this.data.deliveryInfo;
     if (!deliveryInfo.userName || !deliveryInfo.telNumber || !deliveryInfo.address) {
       wx.showToast({
-        title: '请选择完整的收货信息'
+        title: '未选择收货地址'
       });
       return;
     }
@@ -179,9 +180,31 @@ Page({
       header: {
         auth: wx.getStorageSync('token')
       },
-      realSuccess: function (data) {
+      realSuccess: function (res) {
+        console.log(res);
         // TODO
+        const orderId = res.orderId;
         that.isPaying = false;
+        wx.requestPayment({    //微信支付
+          'timeStamp': res.timestamp+'',
+          'nonceStr': res.nonce_str,
+          'package': res.package,
+          'signType': res.sign_type,
+          'paySign': res.pay_sign,
+          'success':function(res){
+              console.log(res);
+              wx.redirectTo({
+                url:'../orderDetail/orderDetail?orderId='+orderId
+              })
+          },
+          'fail':function(res){
+            wx.redirectTo({
+              url:'../orderDetail/orderDetail?orderId='+orderId
+            })
+          },complete:function(){
+            WxNotificationCenter.postNotificationName('NotificationName', {pay:'paying'})
+          }
+       })
       },
       loginCallback: this.onPay,
       realFail: function (msg, code) {
@@ -234,8 +257,8 @@ Page({
     }
 		console.log(data)
     return data;
-  },
-
+  }
+,
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

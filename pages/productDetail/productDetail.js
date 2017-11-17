@@ -2,6 +2,7 @@
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
+var WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
 
   /**
@@ -52,7 +53,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  	console.log(options)
+    console.log(options)
+    WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
   	 this.setData({
           productId :options.productId ,
         });
@@ -60,6 +62,15 @@ Page({
     //var that = this;
   	
     this.getProduct()
+  },
+  onUnload: function () {
+    WxNotificationCenter.removeNotification('NotificationName', this)
+  },
+  didNotification: function (info) {
+  
+    if(info.pay){
+      this.getProduct();
+    }
   },
   //点击图片放大
    onPreviewSlider: function(e) {

@@ -28,6 +28,7 @@
         <button class="Orders order-closed" wx:if="{{seckillSkuStatus == 'NO_SIGNUP' || seckillSkuStatus == 'NO_QUALIFY'||seckillSkuStatus==''}}">没有购买资格</button>
         <button class="Orders order-closed" wx:elif="{{seckillSkuStatus == 'ORDERED'}}">已下单，去支付</button>
         <button class="Orders order-closed" wx:elif="{{seckillSkuStatus == 'PURCHASED'}}">已购买</button>
+        <button class="Orders order-closed" wx:elif="{{seckillSkuStatus == 'INVALID_TIME'}}">未在有效期</button>
         <button class="Orders" wx:elif="{{seckillSkuStatus == 'QUALIFIED'}}" bindtap="Orders">去购买</button>
       </block>
 </view>

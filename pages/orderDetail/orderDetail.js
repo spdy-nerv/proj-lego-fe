@@ -92,20 +92,20 @@ Page({
               auth: wx.getStorageSync('token')
             },
             realSuccess: (res) => {
-              console.log(res);
-              this.wxpay();               
-                // wx.requestPayment({    //微信支付
-                //     'timeStamp': res.timeStamp,
-                //     'nonceStr': res.nonceStr,
-                //     'package': res.package,
-                //     'signType': 'MD5',
-                //     'paySign': res.paySign,
-                //     'success':function(res){
-                //         console.log(res);
-                //     },
-                //     'fail':function(res){
-                //     }
-                //  })
+              console.log(res);              
+                wx.requestPayment({    //微信支付
+                    'timeStamp': res.timestamp+'',
+                    'nonceStr': res.nonce_str,
+                    'package': res.package,
+                    'signType': res.sign_type,
+                    'paySign': res.pay_sign,
+                    'success':function(res){
+                        console.log(res);
+                        if(this.getOrderDetail){this.getOrderDetail()};
+                    },
+                    'fail':function(res){
+                    }
+                 })
                 this.isPaying = false;
           
             },loginCallback:this.payOrder,
@@ -115,42 +115,6 @@ Page({
                   title: res
               });
               this.isPaying = false;
-              }
-          }, true, this)
-
-    },
-    wxpay:function(){  //模拟微信支付
-        
-        request({
-            url: APIS.WXPAY+'?orderId='+this.data.orderId+'&&paySuccess=true',
-            method:'POST',
-            header: {
-              auth: wx.getStorageSync('token')
-            },
-            data:{
-                paySuccess:true,
-                orderId:this.data.orderId
-
-            },
-            realSuccess: (res) => {
-              console.log(1312);
-            
-              wx.showToast({
-                  title:'支付成功'
-              })
-              this.setData({
-                orderStatus:'PAYED'
-              })
-            //   if(this.getOrderDetail){
-            //     this.getOrderDetail();   
-            //   }         
-            },loginCallback:this.wxpay,
-            realFail:(res)=>{
-                console.log(res)
-               
-                wx.showToast({
-                  title: res
-              });
               }
           }, true, this)
 
@@ -170,6 +134,7 @@ Page({
                 title:'取消订单成功'
             })
             this.getOrderDetail();
+            this.getOrderStatus();
             WxNotificationCenter.postNotificationName('NotificationName', {cancelOrder:'success'})
             this.isCanceling=false;
             },loginCallback:this.cancelOrder,

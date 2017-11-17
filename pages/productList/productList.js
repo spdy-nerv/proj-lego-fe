@@ -20,7 +20,8 @@ Page({
     isStartToSell: false,       // 是否已经开启支付
     hasSignUp: false,
     goodsList:[],
-    productId:''           // 当前用户是否已经登记报名
+    productId:'',
+    skuid:''           // 当前用户是否已经登记报名
   },
   onLoad: function (options) {
     WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
@@ -85,6 +86,7 @@ Page({
  toProductDetail:function(e){
      const isCurrentMystery = e.currentTarget.dataset.ismystery;
      const id = e.currentTarget.id;
+     const skuid = e.currentTarget.dataset.skuid;
      if(isCurrentMystery==true){
       wx.showModal({
         title:'我是神秘商品，此处将会有\r神秘商品活动介绍。',
@@ -92,7 +94,7 @@ Page({
       })
      }else{
        wx.navigateTo({
-         url:'../bannerDetail/bannerDetail?productId='+id
+         url:'../bannerDetail/bannerDetail?productId='+id+'&&skuid='+skuid
        })
      }
  }

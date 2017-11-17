@@ -37,7 +37,8 @@ Page({
     distance:'',
     showModal:'',
     disabled:'true',
-    sharedImgPath:''
+    sharedImgPath:'',
+    skuid:''
   },
 
   /**
@@ -56,6 +57,7 @@ Page({
   	console.log(options);
   	 this.setData({
           productId :options.productId ,
+          skuid:options.skuid
         });
   // user.login(this.getProduct,true,this);
        that.getProduct();
@@ -118,7 +120,7 @@ Page({
     var that = this;
     console.log('点击了预约登记');
     request({
-      url:APIS.SIGN_UP+'?productId='+that.data.productId,
+      url:APIS.SIGN_UP+'?productId='+that.data.skuid,
       method: 'POST',
         header: {
             auth: wx.getStorageSync('token')
