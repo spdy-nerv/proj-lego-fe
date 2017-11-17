@@ -7,6 +7,8 @@ const WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
   data: {
     pictureUrls: [],
+    headerImg:'',//顶部图片
+    navigateUrl: '',//顶部图片跳转路径
     name: '',
     description: '',
     seckillStartTime: 0,
@@ -23,6 +25,7 @@ Page({
   onLoad: function (options) {
     WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
     this.getSeckillSkuList();
+    this.getbanner();
   },
   onUnload: function () {
     WxNotificationCenter.removeNotification('NotificationName', this)
@@ -37,6 +40,27 @@ Page({
     }
   },
   onReady: function () {
+  },
+  getbanner: function() {
+   	var that=this;
+    request({
+      url: APIS.GET_MODEL_BG,
+      method: 'GET',
+      data: {
+         positionType: 'SPU_LIST_TOP',
+        },
+      realSuccess: function (data) {
+      	console.log(data)
+        that.setData({
+          headerImg: data.pictureUrl,
+          navigateUrl:data.navigateUrl
+        })
+      },
+      realFail: function (msg, code) {
+        console.log(msg,code)
+      }
+    });
+
   },
  getSeckillSkuList:function(){
   request({

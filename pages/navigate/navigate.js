@@ -8,22 +8,22 @@ Page({
     centerLongitude:'',
     centerLatitude:'',
     scale: 15,
-    desLati: 23.091052,
-    desLong: 113.297035,
+    desLati: '',
+    desLong: '',
     type: 'entry',
     name: '中山大学',
     markers: [{
       iconPath: "../../images/Loc.png",
       id: 0,
-      latitude: 23.091052,
-      longitude: 113.297035,
+      latitude: '',
+      longitude: '',
       width: 23,
       height: 30
     }, {
       iconPath: "../../resources/bestPath.png",
       id: 0,
-      latitude: 23.094556,
-      longitude: 113.303901,
+      latitude: '',
+      longitude: '',
       width: 34,
       height: 34
     }],

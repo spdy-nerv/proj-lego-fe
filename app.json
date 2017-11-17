@@ -21,6 +21,7 @@
     "pages/myCoupon/myCoupon",
     "pages/myBuyRecord/myBuyRecord",
     "pages/bannerDetail/bannerDetail",
+    "pages/bannerIntroduct/bannerIntroduct",
     "pages/myGiftCard/myGiftCard",
     "pages/payAttentionTo/payAttentionTo"
    

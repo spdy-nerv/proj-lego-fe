@@ -61,6 +61,7 @@ var APIS = {
   // ----------- lego --------------------
   LOGIN: '/uc/login',
   GET_SLIDER_LIST: '/home/getSliderList', //获取首页轮播列表
+  GET_BANNERDETAIL:'/home/getCmIndexImage',//获取banner图大图
   GET_ORDER_LIST: '/order/list', //获取历史购买商品的订单列表 
   GET_ORDER_DETAIL: '/order/detail/',//获取购买订单详情
   GET_MY_COUPON_LIST: '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表

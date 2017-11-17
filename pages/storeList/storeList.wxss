@@ -63,10 +63,9 @@
   .regular-distance{
   	float:right;
   	width:30%;
-  	color:#ff7575;
   	font-size:30rpx;
   	height:40rpx;
-  	line-height:40rpx;
+  	line-height:70rpx;
   }
    .regular-address{
   	float:left;
@@ -109,7 +108,7 @@
   	width:40%;
   	font-size:30rpx;
   	height:40rpx;
-  	line-height:40rpx;
+  	line-height:70rpx;
   }
    .chainStore-address{
   	float:left;
@@ -238,7 +237,7 @@
   	height:40rpx;
   	width:40rpx;
   	position: absolute;
-	top:30rpx;
+	top:50rpx;
 	right:20rpx;
   }
   .icon{

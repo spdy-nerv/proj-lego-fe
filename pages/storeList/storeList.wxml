@@ -30,6 +30,7 @@
 				     	</view>
 				     </view>
 				   </view>
+				   <view class="img"><image src="../../images/five.png" mode='aspectFill'  style="width:40rpx;height:40rpx"/></view>
 			  </navigator>      
 			</view>
 		 </scroll-view>
@@ -44,7 +45,7 @@
 			   </view>
 			   <view class="chainStore-info">
 				   <view class="chainStore-distance">
-				      <text style="height:100%;line-height:100%;float:right;padding-right:30rpx">{{cList_distance[key]}}</text>
+				      <text style="float:right;padding-right:30rpx">{{cList_distance[key]}}</text>
 				   </view>
 				   <view class="chainStore-address" >
 				      {{item.address}}

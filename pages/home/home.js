@@ -28,7 +28,7 @@ Page({
       url: APIS.GET_SLIDER_LIST,
       method: 'GET', 
       success:res=>{
-        console.log(res.data)
+        console.log(res.data.data)
         this.setData({
           pictureUrl:res.data.data
         })

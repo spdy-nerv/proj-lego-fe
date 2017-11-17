@@ -1,7 +1,9 @@
 <!--pages/productDetail/productDetail.wxml-->
 <view class="page">
     <view class="headerImg">
-        <image class="goodsImg" src='https://microcloudtech.com/images/lego/image/product/goodsList.png' />
+       <navigator url='{{navigateUrl}}'> 
+         <image class="goodsImg" src="{{headerImg}}" />
+        </navigator>
     </view>
     <view class="error" wx:if='{{goodsList.length==0?true:false}}'>暂无限量预定商品！</view>
     <block wx:for='{{goodsList}}' wx:key='{{unique}}'>
