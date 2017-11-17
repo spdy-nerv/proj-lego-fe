@@ -23,7 +23,7 @@
 				     </view>
 				      <view class="regular-info">
 				        <view class="regular-distance">
-				        	<text>{{rList_distance[key]}}</text>
+				        	<text style="float:right;padding-right:30rpx">{{rList_distance[key]}}</text>
 				     	</view>
 				     	<view class="regular-address">
 				        	<text>{{item.address}}</text>
@@ -40,6 +40,7 @@
 	 	 <scroll-view scroll-y style="height: 320px; lower-threshold:10;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> 
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}" wx:for-index='key'>
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
+			 <view class="chainStore-bc">
 			   <view class="chainStore-name">
 			        <text>{{item.name}}</text>
 			   </view>
@@ -48,10 +49,11 @@
 				      <text style="float:right;padding-right:30rpx">{{cList_distance[key]}}</text>
 				   </view>
 				   <view class="chainStore-address" >
-				      {{item.address}}
+				      <text>{{item.address}}</text>
 				   </view>
 			   </view>
 			   <view class="img"><image src="../../images/five.png" mode='aspectFill'  style="width:40rpx;height:40rpx"/></view>
+			   </view>
 			</navigator>
 		</view>
 		<view wx:if="{{!hasMore}}" style="width:100%;height:50rpx;line-height:50rpx;font-size:40rpx;text-align:center;">没有更多了</view>

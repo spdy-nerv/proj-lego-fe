@@ -62,14 +62,14 @@
   }
   .regular-distance{
   	float:right;
-  	width:30%;
+  	width:40%;
   	font-size:30rpx;
   	height:40rpx;
   	line-height:70rpx;
   }
    .regular-address{
   	float:left;
-  	width:70%;
+  	width:60%;
   	font-size:23rpx;
   	height:60rpx;
   	line-height:32rpx;
@@ -111,13 +111,13 @@
   	line-height:70rpx;
   }
    .chainStore-address{
-  	float:left;
+  		float:left;
   	width:60%;
   	font-size:23rpx;
   	height:60rpx;
   	line-height:32rpx;
   	color:#7b7b7b;
-  		display: -webkit-box;
+  	display: -webkit-box;
 
     word-break: break-all;
 
@@ -211,7 +211,8 @@
 	  background:red;
 	  border:2rpx solid red;
 	box-shadow:15rpx 15rpx 10rpx #ddd;
-	  margin-bottom:50rpx;
+	  margin-bottom:40rpx;
+	  margin-top:20rpx;
 	  position: relative;
   }
   .header{
@@ -224,6 +225,9 @@
   	margin-left:40rpx;
   	background:#fff;
 
+  }
+  .chainStore-bc{
+  		display:block;
   }
   .header-left{
   	width:50%;
