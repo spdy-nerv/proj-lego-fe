@@ -27,9 +27,9 @@ Page({
       url: APIS.GET_SLIDER_LIST,
       method: 'GET', 
       success:res=>{
-        console.log(res.data)
+        console.log(res.data.data)
         this.setData({
-          pictureUrl:res.data
+          pictureUrl:res.data.data
         })
       },
       fail:(res)=> {
@@ -46,9 +46,9 @@ Page({
       method: 'GET',
       data:data, 
       success:res=>{
-        console.log(res);
+        console.log(res.data.data.pictureUrl);
         this.setData({
-          reserveImg:res.data.pictureUrl
+          reserveImg:res.data.data.pictureUrl
         })
       },
       fail:res=> {
@@ -66,7 +66,7 @@ Page({
       success:res=>{
         console.log(res);
         this.setData({
-          giftImg:res.data.pictureUrl,
+          giftImg:res.data.data.pictureUrl,
         })
       },
       fail:res=> {

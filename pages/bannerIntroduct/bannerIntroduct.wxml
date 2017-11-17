@@ -1,0 +1,9 @@
+<!--pages/bannerIntroduct/bannerIntroduct.wxml-->
+<view class="page">
+  	<scroll-view scroll-y class="scrol" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+	  	 <view class="store-list" wx:for="{{pictureUrl}}" style="width:100%;height:auto">
+	  		<image class="list"  style="width:100%;" mode="widthFix"  src='{{item}}' />
+	  	</view>	  
+	  	
+    </scroll-view>
+</view>
