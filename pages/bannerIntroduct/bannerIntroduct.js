@@ -15,6 +15,7 @@ Page({
     currentType: 'entry',
   	toView: 'red',
     scrollTop: 100,
+    shareImg:'https://legostatic.teown.com/product-088d828e-b1c7-48c9-99e5-6881979ca0d6.jpg',
   	detailPictureUrls:[],
 		content:'',
 		cmindexId:'',
@@ -101,7 +102,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+ onShareAppMessage: function (res) {
+  	var cmindexId=this.data.cmindexId;
+    return {
+      title: 'LEGO乐高',
+      path: '/pages/bannerIntroduct/bannerIntroduct?cmindexId='+cmindexId,
+      imageUrl:this.data.shareImg,
+      success: function(res) {
+        console.log('转发成功')
+      },
+      fail: function(res) {
+        console.log("转发失败")
+      }
+    }
   }
 })
