@@ -25,7 +25,7 @@
     </view>
     <view class="order">
         <view class="detail">订单编号：{{orderId}}</view>
-        <view class="detail">下单时间：{{orderTime}}</view>
+        <view class="detail">下单时间：{{createTime}}</view>
         <view class="detail">支付方式：{{payTypeLabel}}</view>
         <view class="detail">支付状态：{{orderStatusLabel}} </view>
         <button class="pay" wx:if='{{orderStatus=="UNPAYED"?true:false}}'bindtap='payOrder'>立即支付</button>

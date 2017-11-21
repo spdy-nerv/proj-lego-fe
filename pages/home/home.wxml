@@ -6,7 +6,7 @@
         <swiper-item>
           <!-- item.navigateUrl -->
           <!-- <navigator url='{{item.navigateUrl}}'>  -->
-              <navigator url='../productDetail/productDetail?productId=28'> 
+              <navigator url='../productDetail/productDetail?seckillSkuId=28'> 
             <image src="{{item.pictureUrl}}" mode='aspectFill' />
           </navigator>
         </swiper-item>

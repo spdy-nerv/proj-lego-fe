@@ -72,3 +72,7 @@
     background-color: #F3F3F3;
     color: #ccc;
   }
+  .order-width{
+      width: 350rpx;
+      text-align: center;
+  }

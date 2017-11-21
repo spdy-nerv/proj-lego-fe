@@ -1,4 +1,7 @@
 // pages/customerService/customerService.js
+var { APIS } = require('../../const.js');
+var { request } = require('../../libs/request');
+var user = require('../../libs/user');
 Page({
 
   /**
@@ -12,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  this.getServiceInfo();
   },
 
   /**
@@ -62,5 +65,24 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  getServiceInfo:function(){
+    var that = this;
+    request({
+      url:APIS.GET_OPTION+'CUSTOMER_SERVICE_DESCRIPTION',
+      method: 'GET',
+      realSuccess: function (res) {
+       console.log(res.optionValue);
+       that.setData({
+        getServiceInfo:res.optionValue
+       })
+    
+      },
+      realFail: function (msg) {
+        wx.showToast({
+          title:msg
+        })
+      }
+    },false,this);
   }
 })

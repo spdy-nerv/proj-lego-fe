@@ -38,7 +38,8 @@ Page({
     showModal:'',
     disabled:'true',
     sharedImgPath:'',
-    skuid:''
+    skuid:'',
+    buyIntroduction:''
   },
 
   /**
@@ -61,6 +62,7 @@ Page({
         });
   // user.login(this.getProduct,true,this);
        that.getProduct();
+       that.buyIntroduction();
        console.log(that.data.signupStatus)
   },
   //点击图片放大
@@ -102,10 +104,11 @@ Page({
           seckillSkuStatus:data.seckillSkuStatus,
           sharedImgPath:data.sharedImgPath
         });
+        wx.hideLoading();
         if(that.data.signupStatus=="NOT_STARTED"||that.data.signupStatus == "END"){
-          that.getLocaltion();
+          //that.getLocaltion();
         }else{
-          wx.hideLoading();
+         //wx.hideLoading();
         }
       },
       loginCallback:this.getProduct,
@@ -176,14 +179,12 @@ Page({
         
       },
       fail: function (err) {
-        console.log(err);
-        wx.showLoading({
-          title:'获取定位失败!'
-        })
-        setTimeout(function(){
-          wx.hideLoading();
-        },3000);
-        
+        console.log('定位失败');
+        wx.showToast({
+          title:'获取定位失败!',
+          icon:'loading',
+           duration: 2000
+        }) 
       }
     })
   },
@@ -269,5 +270,22 @@ Page({
         console.log("转发失败")
       }
     }
-  }
+  },
+  //获取抢购介绍
+buyIntroduction:function(){
+  var that = this;
+  request({
+    url:APIS.GET_OPTION+'ACTIVITY_EXPLAIN',
+    method: 'GET',
+    realSuccess: function (res) {
+     console.log(res.optionValue);
+     that.setData({
+      buyIntroduction:res.optionValue
+     })
+  
+    },
+    realFail: function () {
+    }
+  },false,this);
+}
 })

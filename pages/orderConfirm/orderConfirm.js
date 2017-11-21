@@ -2,7 +2,6 @@
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
-var WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
 
   /**
@@ -75,7 +74,7 @@ Page({
       loginCallback: this._getSelectedProduct,
       realFail: function (msg, code) {
         wx.showToast({
-          title: 'msg'
+          title: msg
         });
       }
     }, true, this);
@@ -183,7 +182,7 @@ Page({
       realSuccess: function (res) {
         console.log(res);
         // TODO
-        const orderId = res.orderId;
+        that.setData({orderId:res.orderId})
         that.isPaying = false;
         wx.requestPayment({    //微信支付
           'timeStamp': res.timestamp+'',
@@ -194,15 +193,14 @@ Page({
           'success':function(res){
               console.log(res);
               wx.redirectTo({
-                url:'../orderDetail/orderDetail?orderId='+orderId
+                url:'../orderDetail/orderDetail?orderId='+that.data.orderId
               })
           },
           'fail':function(res){
             wx.redirectTo({
-              url:'../orderDetail/orderDetail?orderId='+orderId
+              url:'../orderDetail/orderDetail?orderId='+that.data.orderId
             })
           },complete:function(){
-            WxNotificationCenter.postNotificationName('NotificationName', {pay:'paying'})
           }
        })
       },

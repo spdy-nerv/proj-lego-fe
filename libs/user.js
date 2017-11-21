@@ -83,11 +83,14 @@ function doAppLogin(data, cb, ctx) {
       method: 'POST',
       success: function(res){
         var d = res.data;
-        console.log(res);
+        console.log(d.code);
         if (d.code == 'SUCCESS' && d.data) {
             var token = d.data.token;
             wx.setStorageSync('token', token);
             typeof cb == "function" && cb.call(ctx);
+        }else if(d.code=='WECHAT_USER_STATUS_ERR'){
+          wx.showToast({title:'用户登陆异常！',icon:'loading', duration: 2000})
+          return;
         } else {
             wx.showToast({
                 title: '登录失败！' + d.resultMsg

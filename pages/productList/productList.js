@@ -89,12 +89,12 @@ Page({
      const skuid = e.currentTarget.dataset.skuid;
      if(isCurrentMystery==true){
       wx.showModal({
-        title:'我是神秘商品，此处将会有\r神秘商品活动介绍。',
+        title:'神秘商品，指定的时间内才能购买。',
         showCancel:false
       })
      }else{
        wx.navigateTo({
-         url:'../bannerDetail/bannerDetail?productId='+id+'&&skuid='+skuid
+         url:'../bannerDetail/bannerDetail?productId='+id+'&skuid='+skuid,
        })
      }
  }

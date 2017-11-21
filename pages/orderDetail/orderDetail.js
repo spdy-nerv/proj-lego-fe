@@ -20,7 +20,8 @@ Page({
         package: '',
         pay_sign: '',
         sign_type:'',
-        timestamp: ''
+        timestamp: '',
+        createTime:''
         
     },
     onLoad:function(options){
@@ -71,7 +72,9 @@ Page({
                 orderItems:res.orderItems,
                 deliveryInfo:res.deliveryInfo,
                 payTypeLabel:res.payTypeLabel,
-                invoiceInfo:res.invoiceInfo
+                invoiceInfo:res.invoiceInfo,
+                createTime:res.createTime
+
 
               })
             },loginCallback:this.getOrderDetail,
@@ -104,6 +107,7 @@ Page({
                         if(this.getOrderDetail){this.getOrderDetail()};
                     },
                     'fail':function(res){
+                       // if(this.getOrderDetail){this.getOrderDetail()};
                     }
                  })
                 this.isPaying = false;

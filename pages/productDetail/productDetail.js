@@ -2,7 +2,6 @@
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
-var WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
 
   /**
@@ -17,7 +16,7 @@ Page({
     serverTime: 0,
     price: 0,
     format: '',
-    productId:null,
+    seckillSkuId:null,
     seckillId:null,
     leftStock: 0,
     headimgPath:'',
@@ -54,23 +53,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
   	 this.setData({
-          productId :options.productId ,
+      seckillSkuId :options.seckillSkuId,
         });
   	//user.login(this.getProduct,true,this);
     //var that = this;
   	
     this.getProduct()
-  },
-  onUnload: function () {
-    WxNotificationCenter.removeNotification('NotificationName', this)
-  },
-  didNotification: function (info) {
-  
-    if(info.pay){
-      this.getProduct();
-    }
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -83,7 +72,7 @@ Page({
  //获取数据
    getProduct: function() {
    	var that=this;
-   	var productId=that.data.productId;
+     var seckillSkuId=that.data.seckillSkuId;
    	console.log(wx.getStorageSync('token'))
    	   wx.showLoading({
         title: '正在加载',
@@ -92,16 +81,16 @@ Page({
       url: APIS.GET_PRODUCT,
       method: 'GET',
       data: { 
-      	seckillSkuId:productId
+      	seckillSkuId:seckillSkuId
         },
         header: {
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
       	console.log(data)
-      	if(data.seckillTitle){
+      	if(data.name){
       		wx.setNavigationBarTitle({
-			      title: data.seckillTitle//页面标题为路由参数
+			      title: data.name//页面标题为路由参数
 			    })
       	}
       	  

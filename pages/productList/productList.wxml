@@ -17,11 +17,11 @@
             <view class="productRight">
                 <view class="title mg27">{{item.productName}}</view>
                 <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
-                <view class="fs30 mg27 fontColor">开始登记：{{item.signupStartTime}}</view>
-                <view class="fs30 mg27 fontColor">结束登记：{{item.signupEndTime}}</view>
-                    <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">开始登记</button>
-                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='END'?true:false}}">登记已截止</button>
-                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='SIGNUPED'?true:false}}">已经登记</button>
+                <view class="fs30 mg27 fontColor">开始预定：{{item.signupStartTime}}</view>
+                <view class="fs30 mg27 fontColor">结束预定：{{item.signupEndTime}}</view>
+                    <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">我要预定</button>
+                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='END'?true:false}}">预定已截止</button>
+                    <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='SIGNUPED'?true:false}}">已经预定</button>
                     <button class="mg27 bgcolor" disabled wx:if="{{item.signupStatus=='NOT_STARTED'?true:false}}">未开始</button>
             </view>
         </view>
