@@ -61,6 +61,9 @@ Page({
   	
     this.getProduct()
   },
+  onShow:function(){
+    this.getProduct()
+  },
   //点击图片放大
    onPreviewSlider: function(e) {
    	console.log(e)

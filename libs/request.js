@@ -15,7 +15,6 @@ var user = require('./user');
 function request(obj, needLogin = true, ctx) {
     obj.success = function(res) {
         var d = res.data;
-        console.log(d.code)
         if (d.success || d.code == 'success') {
             typeof obj.realSuccess == "function" && obj.realSuccess(d.data);
         } 

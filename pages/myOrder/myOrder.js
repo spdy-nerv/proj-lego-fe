@@ -2,7 +2,6 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
-const WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 const sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
@@ -31,12 +30,9 @@ Page({
         });
       }
     });
-    WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
   },
-  didNotification: function (info) {
-    if(info.cancelOrder){
-      this.getDataUnpayed();
-    }
+   onShow:function(){
+    this.getDataUnpayed();
   },
   tabClick: function (e) {
     this.setData({

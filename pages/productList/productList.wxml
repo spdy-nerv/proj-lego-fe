@@ -17,6 +17,7 @@
             <view class="productRight">
                 <view class="title mg27">{{item.productName}}</view>
                 <view class="goodsNum mg27 fontColor fs30">商品编号：{{item.productNo}}</view>
+                <view class="goodsNum mg27 fontColor fs30">库存数量：{{item.stock}}</view>
                 <view class="fs30 mg27 fontColor">开始预定：{{item.signupStartTime}}</view>
                 <view class="fs30 mg27 fontColor">结束预定：{{item.signupEndTime}}</view>
                     <button class="mg27 startBuy" wx:if="{{item.signupStatus=='STARTED'?true:false}}">我要预定</button>

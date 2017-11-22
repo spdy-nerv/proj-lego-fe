@@ -31,7 +31,7 @@
 }
 .productItem{
     width: 100%;
-    height: 300rpx;
+    height: 305rpx;
     display: flex;
     box-sizing: border-box;
     margin:30rpx 0;
@@ -42,7 +42,7 @@
 }
 .productItem .productLeftImg{
     width: 345rpx;
-    height: 300rpx;
+    height: 305rpx;
 }
 .productItem .productRight{
     background-color: #f3f3f3;
@@ -79,7 +79,7 @@
     font-size: 26rpx;
     text-align: center;
     line-height: 47rpx;
-    margin-top:30rpx;
+    margin-top:10rpx;
 }
 .error{
     width: 100%;

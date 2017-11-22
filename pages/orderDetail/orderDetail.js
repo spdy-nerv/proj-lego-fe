@@ -2,7 +2,6 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
-const WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
     data:{
         orderId:'',
@@ -74,8 +73,6 @@ Page({
                 payTypeLabel:res.payTypeLabel,
                 invoiceInfo:res.invoiceInfo,
                 createTime:res.createTime
-
-
               })
             },loginCallback:this.getOrderDetail,
             realFail:(res)=>{
@@ -88,6 +85,7 @@ Page({
     payOrder:function(){
         if (this.isPaying) return;
         this.isPaying = true;
+        const that = this;
         request({
             url: APIS.PAY_ORDER+'?orderId='+this.data.orderId,
             method:'POST',
@@ -104,10 +102,17 @@ Page({
                     'paySign': res.pay_sign,
                     'success':function(res){
                         console.log(res);
-                        if(this.getOrderDetail){this.getOrderDetail()};
+                        wx.redirectTo({
+                            url:'../orderDetail/orderDetail?orderId='+that.data.orderId
+                          })
                     },
                     'fail':function(res){
-                       // if(this.getOrderDetail){this.getOrderDetail()};
+                        wx.redirectTo({
+                            url:'../orderDetail/orderDetail?orderId='+that.data.orderId
+                          })
+                    },
+                    complete:function(){
+                    
                     }
                  })
                 this.isPaying = false;
@@ -139,7 +144,6 @@ Page({
             })
             this.getOrderDetail();
             this.getOrderStatus();
-            WxNotificationCenter.postNotificationName('NotificationName', {cancelOrder:'success'})
             this.isCanceling=false;
             },loginCallback:this.cancelOrder,
             realFail:(res)=>{
