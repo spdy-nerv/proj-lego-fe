@@ -17,35 +17,6 @@ Page({
     scrollTop: 100,
   	detailPictureUrls:[],
 		content:'',
-    activity:{
-   		hearder:'10月店内活动',
-   		activities:[
-   			{
-   				openTime: '9.28',
-   				closeTime: '10.8',
-   				title:'十一黄金周活动',
-   				pictureUrl:'../../images/ceshi.png',
-   			},
-   			{
-   				openTime: '10.9',
-   				closeTime: '10.30',
-   				title:'十一黄金周活动',
-   				pictureUrl:'../../images/ceshi.png',
-   			},
-   			{
-   				openTime: '10.9',
-   				closeTime: '10.30',
-   				title:'十一黄金周活动',
-   				pictureUrl:'../../images/ceshi.png',
-   			},
-   			{
-   				openTime: '10.10',
-   				closeTime: '10.17',
-   				title:'十一黄金周活动',
-   				pictureUrl:'../../images/ceshi.png',
-   			}  
-    ] 
-   }
   },
   //返回上一页
   back:function(e) {
@@ -77,6 +48,9 @@ Page({
   //获取店铺详情
    getDetail: function() {
    	var that=this;
+   	 wx.showLoading({
+        title: '正在加载',
+      })
    	var storeId=that.data.storeId;
    	   	console.log(that.data.longitude)
     request({
@@ -95,6 +69,7 @@ Page({
 			    longitude:data.longitude,
 			    address:data.name,
         })
+         wx.hideLoading()
       },
       realFail: function (msg, code) {
         console.log(msg,code)

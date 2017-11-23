@@ -7,11 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-  	centerLongitude:'',
-    centerLatitude:'',
-  	latitude:'',
-    longitude:'',
-    address:'',
     currentType: 'entry',
   	toView: 'red',
     scrollTop: 100,
@@ -37,12 +32,13 @@ Page({
 		    });
    that.getDetail()
   },
-  //获取店铺详情
    getDetail: function() {
    	var that=this;
    	var cmindexId=that.data.cmindexId;
    	console.log(cmindexId)
-   	
+   	 wx.showLoading({
+        title: '正在加载',
+      })
     request({
       url: APIS.GET_BANNERDETAIL+'/'+cmindexId,
       method: 'GET',
@@ -50,6 +46,7 @@ Page({
       	 that.setData({
 		      pictureUrl:data
 		    });
+		    wx.hideLoading()
       },
       realFail: function (msg, code) {
         console.log(msg,code)
