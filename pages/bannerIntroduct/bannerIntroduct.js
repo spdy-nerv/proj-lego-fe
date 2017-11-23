@@ -1,6 +1,7 @@
 // pages/storeDetail/storeDetail.js
 var { APIS } = require('../../const');
 var { request } = require('../../libs/request');
+import Util from '../../libs/Utils'; 
 Page({
 
   /**
@@ -15,6 +16,8 @@ Page({
 		content:'',
 		cmindexId:'',
 		pictureUrl:'',
+		imageWidth:0, 
+    imageHeight:0 
   },
   //返回上一页
   back:function(e) {
@@ -32,6 +35,17 @@ Page({
 		    });
    that.getDetail()
   },
+   imageLoad: function (e) {  
+    //获取图片的原始宽度和高度 
+    let originalWidth = e.detail.width; 
+    let originalHeight = e.detail.height; 
+    //let imageSize = Util.imageZoomHeightUtil(originalWidth,originalHeight); 
+  
+      let imageSize = Util.imageZoomHeightUtil(originalWidth,originalHeight); 
+//  let imageSize = Util.imageZoomWidthUtil(originalWidth,originalHeight,145); 
+  
+    this.setData({imageWidth:imageSize.imageWidth,imageHeight:imageSize.imageHeight});  
+ } ,
    getDetail: function() {
    	var that=this;
    	var cmindexId=that.data.cmindexId;
