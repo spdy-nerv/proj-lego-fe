@@ -191,7 +191,6 @@ reduction: function(){
           pageNum:that.data.pageNum+1,
           isend:true
         });
-         wx.hideLoading();
 	      that.reduction()
       },
       realFail: function (msg, code) {
