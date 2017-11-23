@@ -31,7 +31,8 @@ Page({
       bank: '',
       bankAccount: '',
       code: '',
-      tel: ''
+      tel: '',
+      token:''
     },
     qrCodeUrl: '',    // 线下核销二维码，如果deliveyType为1，此字段可缺省
 		expressCode: '',     // 快递单号，如果deliveyType为0，此字段可缺省
@@ -48,6 +49,7 @@ Page({
       productId: options.productId
     });
     this._getSelectedProduct();
+    this.getOrderToken();
     this.isPaying = false;
   },
 
@@ -252,11 +254,34 @@ Page({
       "province": d.deliveryInfo.province,
       "realname": d.deliveryInfo.userName,
       "remark": '',
+      "token":this.data.token
     }
 		console.log(data)
     return data;
   }
 ,
+getOrderToken:function(){
+  var that = this;
+  request({
+    url: APIS.GET_ORDER_TOKEN+'?skuId='+that.data.productId,
+    method: 'GET',
+    header: {
+      auth: wx.getStorageSync('token')
+    },
+    realSuccess: function (res) {
+      console.log(res.token);
+      that.setData({
+        token:res.token
+      });
+    },
+    loginCallback: this.getOrderToken,
+    realFail: function (msg, code) {
+      wx.showToast({
+        title: msg
+      });
+    }
+  }, true, this);
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

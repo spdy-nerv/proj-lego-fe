@@ -69,7 +69,7 @@
     font-size: 26rpx;
     text-align: center;
     line-height: 47rpx;
-    margin-top:30rpx;
+    margin-top:16rpx;
 }
 .fs30{
     font-size: 23rpx;

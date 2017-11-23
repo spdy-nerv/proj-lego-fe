@@ -21,12 +21,21 @@ Page({
     hasSignUp: false,
     goodsList:[],
     productId:'',
-    skuid:''           // 当前用户是否已经登记报名
+    skuid:'',
+    isNull:true,
+    img:''           // 当前用户是否已经登记报名
   },
   onLoad: function (options) {
+    wx.showLoading({title:'数据加载中'});
     WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
     this.getSeckillSkuList();
     this.getbanner();
+  },
+  loadImg:function(e){
+console.log('加载完成了')
+this.setData({
+  headerImg: this.data.img,
+})
   },
   onUnload: function () {
     WxNotificationCenter.removeNotification('NotificationName', this)
@@ -53,7 +62,8 @@ Page({
       realSuccess: function (data) {
       	console.log(data)
         that.setData({
-          headerImg: data.pictureUrl,
+          img:data.pictureUrl,
+          headerImg: data.pictureUrl+'?x-oss-process=image/quality,q_7',
           navigateUrl:data.navigateUrl
         })
       },
@@ -73,8 +83,10 @@ Page({
     realSuccess: (res) => {
       console.log(res);
       this.setData({
-      goodsList:res
+      goodsList:res,
+      isNull:false
       })
+      wx.hideLoading();
     },
     loginCallback: this.getSeckillSkuList,
     realFail:(res)=>{

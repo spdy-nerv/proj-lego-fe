@@ -29,6 +29,7 @@ var reqHost = config.domainPrefix;
 var APIS = {
   // ----------- lego --------------------
   LOGIN: '/uc/login',
+  GET_INDEX_RESOURCE:'/common/home/getIndexResource',//获取首页所有图片资源
   GET_SLIDER_LIST: '/common/home/getSliderList', //获取首页轮播列表
   GET_BANNERDETAIL:'/common/home/getCmIndexImage',//获取banner图大图
   GET_OPTION:'/common/option/getOption/',//根据参数名获取参数值
@@ -44,6 +45,7 @@ var APIS = {
   PAY_ORDER:'/order/payOrder',//支付订单
   CANCEL_ORDER:'/order/cancelOrder',//取消订单
   GET_ORDER_STATUS:'/order/orderStatus',//获取订单状态
+  GET_ORDER_TOKEN:'/order/addOrderToken',//新增订单前获取token
 
   GET_NEARBY_CHAINSTORE: '/store/getNearbyChainStore',//获取附近的经销店列表
   GET_ALL_REGULARCHAIN: '/store/getAllRegularChain',//获取所有专卖店列表

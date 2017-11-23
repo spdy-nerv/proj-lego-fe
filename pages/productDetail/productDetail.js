@@ -59,10 +59,11 @@ Page({
   	//user.login(this.getProduct,true,this);
     //var that = this;
   	
-    this.getProduct()
+   //this.getProduct()
   },
   onShow:function(){
-    this.getProduct()
+      this.getProduct();
+    
   },
   //点击图片放大
    onPreviewSlider: function(e) {
@@ -76,7 +77,6 @@ Page({
    getProduct: function() {
    	var that=this;
      var seckillSkuId=that.data.seckillSkuId;
-   	console.log(wx.getStorageSync('token'))
    	   wx.showLoading({
         title: '正在加载',
       })
@@ -109,7 +109,10 @@ Page({
       },
       loginCallback: this.getProduct,
       realFail: function (msg, code) {
-      	console.log(msg,code)
+        console.log(msg,code);
+        that.setData({
+          seckillSkuStatus:'INVALID_TIME'
+        })
         wx.showToast({
           title: msg
         });
@@ -132,17 +135,6 @@ Page({
   onReady: function () {
   
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
   
   },

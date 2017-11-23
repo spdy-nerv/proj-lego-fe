@@ -47,23 +47,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(wx.getStorageSync('coordinate'))
-  	var res=wx.getStorageSync('coordinate');
-  	if(res){
-  		that.setData({
-          centerLongitude: res.longitude,
-          centerLatitude: res.latitude,
-        })
-  	}
   	console.log(options);
   	 this.setData({
           productId :options.productId ,
           skuid:options.skuid
         });
-  // user.login(this.getProduct,true,this);
        that.getProduct();
        that.buyIntroduction();
-       console.log(that.data.signupStatus)
   },
   //点击图片放大
    onPreviewSlider: function(e) {

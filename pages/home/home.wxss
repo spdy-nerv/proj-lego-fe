@@ -1,4 +1,8 @@
 /* pages/home/home.wxss */
+page{
+    width: 100%;
+    height: 100%;
+}
 .page{
     padding-top: 42rpx;
     box-sizing: border-box;
@@ -50,7 +54,7 @@ swiper{
   }
   .footer{
       width: 100%rpx;
-     line-height: 93rpx;
+     line-height: 105rpx;
       display: flex;
       flex-direction: row;
       justify-content: space-around;

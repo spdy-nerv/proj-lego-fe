@@ -14,23 +14,25 @@ Page({
     navigateUrl: '',
     reserveImg:'',
     giftImg:'',
-    list:''
+    list:'',
+    shareImg:''
   },
   onLoad: function (options) {
     user.login();
-    this.getSliderList();
-    this.getModelBg({positionType:'INDEX_SECKILL'});
-    this.getModelBg({positionType:'INDEX_GIFT'});
-    this.getModelBg({positionType:'INDEX_SHARED_IMAGE'});
+    this.getIndexResource();
   },
-  getSliderList:function(){
+  getIndexResource:function(){
     wx.request({
-      url: APIS.GET_SLIDER_LIST,
+      url: APIS.GET_INDEX_RESOURCE,
       method: 'GET', 
       success:res=>{
-        console.log(res.data.data)
+        console.log(res.data.data);
+        const datas = res.data.data;
         this.setData({
-          pictureUrl:res.data.data
+          pictureUrl:datas.indexTop,
+          reserveImg:datas.indexSeckill.pictureUrl,
+          giftImg:datas.indexGift.pictureUrl,
+          shareImg:datas.indexSharedImage.pictureUrl
         })
       },
       fail:(res)=> {
@@ -40,26 +42,6 @@ Page({
       }
     })
 
-  },getModelBg:function(data){
-    wx.request({
-      url: APIS.GET_MODEL_BG,
-      method: 'GET',
-      data:data, 
-      success:res=>{
-        if(data.positionType=='INDEX_SECKILL'){
-          this.setData({reserveImg:res.data.data.pictureUrl})
-        }else if(data.positionType=='INDEX_GIFT'){
-          this.setData({giftImg:res.data.data.pictureUrl})
-        }else if(data.positionType=='INDEX_SHARED_IMAGE'){
-          this.setData({shareImg:res.data.data.pictureUrl})
-        }
-      },
-      fail:res=> {
-        wx.showToast({
-          title: res
-      });
-      }
-    })
   }
 , //跳转小程序
   openProgram: () => {
