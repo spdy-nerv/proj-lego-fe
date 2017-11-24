@@ -5,7 +5,7 @@
   </view>
   <view class="flex-row" style="flex-direction:row;">
     <view class="flex-view-item" wx:for="{{pictureUrls}}" wx:if='{{pictureUrls}}'>
-      <image mode="aspectFill" src="{{item}}" bindtap="onPreviewSlider" wx:if="{{item}}" data-url="{{item}}"></image>
+      <image mode="aspectFill" style="height:{{imageheight}}px;" bindload="imageLoad" src="{{item}}" bindtap="onPreviewSlider" wx:if="{{item}}" data-url="{{item}}"></image>
     </view>
   </view>
   <view class="content">

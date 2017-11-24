@@ -39,6 +39,7 @@ Page({
     disabled:'true',
     sharedImgPath:'',
     skuid:'',
+    imageheight: 0,
     buyIntroduction:''
   },
 
@@ -63,6 +64,20 @@ Page({
 		  urls: this.data.pictureUrls
 		});
 	},
+	imageLoad: function (e) { 
+		var that=this;
+       var n=that.data.pictureUrls.length;
+      	  wx.getSystemInfo({  
+				    success: function (res) {
+				    	console.log(res,n)
+				      var windowWidth = res.windowWidth;  
+				      var windowHeight = res.windowHeight;  
+				      that.setData({
+			          imageheight:windowWidth/n,
+			        });
+				    }  
+				  })  
+ } ,
  //获取数据
    getProduct: function() {
     wx.showLoading({
@@ -80,7 +95,7 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
-         console.log(data)
+         console.log(data.pictureUrls.length)
       	  wx.setNavigationBarTitle({
 			      title: data.name//页面标题为路由参数
 			    })
