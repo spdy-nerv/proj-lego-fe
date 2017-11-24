@@ -41,7 +41,8 @@ Page({
     items: [
       {name: '个人', value: '0',placeholder:'请填写个人信息', checked: false,inputValue: ''},
       {name: '公司', value: '1',placeholder:'请填写公司信息', checked: false,inputValue: ''},
-    ]
+    ],
+    onlyOne:false
   
   },
   onLoad: function (options) {
@@ -54,6 +55,7 @@ Page({
   },
 
   _getSelectedProduct: function() {
+    wx.showLoading({title:'数据加载中'});
     var that = this;
     var productId = this.data.productId;
     request({
@@ -174,6 +176,7 @@ Page({
     var that = this;
     console.log(that._buildPayData())
     var payData = that._buildPayData();
+    that.setData({onlyOne:true})
     request({
       url: APIS.ADD_ORDER,
       method: 'POST',

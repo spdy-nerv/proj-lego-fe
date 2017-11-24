@@ -28,14 +28,9 @@ Page({
   onLoad: function (options) {
     wx.showLoading({title:'数据加载中'});
     WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
-    this.getSeckillSkuList();
     this.getbanner();
-  },
-  loadImg:function(e){
-console.log('加载完成了')
-this.setData({
-  headerImg: this.data.img,
-})
+    this.getSeckillSkuList();
+
   },
   onUnload: function () {
     WxNotificationCenter.removeNotification('NotificationName', this)
@@ -63,7 +58,7 @@ this.setData({
       	console.log(data)
         that.setData({
           img:data.pictureUrl,
-          headerImg: data.pictureUrl+'?x-oss-process=image/quality,q_7',
+          headerImg: data.pictureUrl,
           navigateUrl:data.navigateUrl
         })
       },

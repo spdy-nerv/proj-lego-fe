@@ -80,7 +80,10 @@
         
     </view>
     <view class="footer">
-            <button class="button" bindtap="onPay">提交订单并支付</button>
+  
+            <button class="button" bindtap="onPay" wx:if='{{onlyOne==false?true:false}}'>提交订单并支付</button>
+            <button class="button" disabled  wx:else>正在支付</button>
+
     </view>
    
 

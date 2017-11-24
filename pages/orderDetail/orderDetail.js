@@ -20,7 +20,10 @@ Page({
         pay_sign: '',
         sign_type:'',
         timestamp: '',
-        createTime:''
+        createTime:'',
+        onlyOne:'false',
+        orderStatusName:'立即支付',
+        isDisabled:''
         
     },
     onLoad:function(options){
@@ -86,6 +89,7 @@ Page({
         if (this.isPaying) return;
         this.isPaying = true;
         const that = this;
+        that.setData({ orderStatusName:'正在支付',isDisabled:'disabled'})
         request({
             url: APIS.PAY_ORDER+'?orderId='+this.data.orderId,
             method:'POST',

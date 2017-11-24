@@ -2,7 +2,7 @@
 <view class="page">
     <view class="headerImg">
        <navigator url='{{navigateUrl}}'> 
-         <image class="goodsImg" src="{{headerImg}}" bindload='loadImg' />
+         <image class="goodsImg" src="{{headerImg}}"/>
          <view class="block"></view>
         </navigator>
     </view>
