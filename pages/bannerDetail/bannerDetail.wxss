@@ -37,7 +37,7 @@
   .content{
   	width:100%;
   	background:#F3F3F3; 
-	  margin-top:50rpx;	
+	  margin-top:15rpx;	
 	  font-size: 33rpx;
 	  align-self: center;
 	  padding:25rpx;
