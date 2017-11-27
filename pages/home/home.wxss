@@ -54,7 +54,7 @@ swiper{
   }
   .footer{
       width: 100%rpx;
-     line-height: 105rpx;
+     line-height: 120rpx;
       display: flex;
       flex-direction: row;
       justify-content: space-around;

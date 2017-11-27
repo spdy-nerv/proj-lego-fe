@@ -30,11 +30,12 @@ Page({
       headerImg:app.globalData.pictureUrl,
       navigateUrl:app.globalData.navigateUrl
     })
+    
   },
   onReady: function () {
   },
   onShow:function(){
-    this.getSeckillSkuList();
+     this.getSeckillSkuList();
   },
  getSeckillSkuList:function(){
   request({

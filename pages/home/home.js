@@ -20,7 +20,6 @@ Page({
     spuListTop:''
   },
   onLoad: function (options) {
-   
     this.getIndexResource();
     user.login();
   },
