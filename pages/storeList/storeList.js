@@ -100,8 +100,8 @@ Page({
       },
       complete:function(res){
       	console.log(res)
-//    	that.getAllRegularChain(),
-//      that.getNearbyChainStore()
+    	that.getAllRegularChain(),
+      that.getNearbyChainStore()
       }
     })
   },
@@ -192,6 +192,7 @@ reduction: function(){
           isend:true
         });
 	      that.reduction()
+	      wx.hideLoading()
       },
       realFail: function (msg, code) {
         console.log(msg,code)
