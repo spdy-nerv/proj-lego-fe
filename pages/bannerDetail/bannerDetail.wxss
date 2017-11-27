@@ -27,6 +27,7 @@
   }
   .flex-view-item{
   		width:33%;
+  		height:180rpx;
   		margin-left:1%;
   		margin-right:1%;
   }
@@ -37,7 +38,7 @@
   .content{
   	width:100%;
   	background:#F3F3F3; 
-	  margin-top:15rpx;	
+	  margin-top:50rpx;	
 	  font-size: 33rpx;
 	  align-self: center;
 	  padding:25rpx;

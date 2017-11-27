@@ -3,6 +3,7 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
+const app = getApp();
 Page({
   data: {
     pictureUrl: [],
@@ -15,11 +16,13 @@ Page({
     reserveImg:'',
     giftImg:'',
     list:'',
-    shareImg:''
+    shareImg:'',
+    spuListTop:''
   },
   onLoad: function (options) {
-    user.login();
+   
     this.getIndexResource();
+    user.login();
   },
   getIndexResource:function(){
     wx.request({
@@ -32,7 +35,8 @@ Page({
           pictureUrl:datas.indexTop,
           reserveImg:datas.indexSeckill.pictureUrl,
           giftImg:datas.indexGift.pictureUrl,
-          shareImg:datas.indexSharedImage.pictureUrl
+          shareImg:datas.indexSharedImage.pictureUrl,
+          spuListTop:datas.spuListTop  
         })
       },
       fail:(res)=> {
@@ -41,8 +45,16 @@ Page({
       });
       }
     })
-
-  }
+  },
+  toProductList:function(){
+    const navigateUrl =this.data.spuListTop.navigateUrl;
+    const pictureUrl = this.data.spuListTop.pictureUrl;
+    app.globalData.navigateUrl = navigateUrl;
+    app.globalData.pictureUrl = pictureUrl;
+    wx.navigateTo({
+      url: '../productList/productList'
+  })
+}
 , //跳转小程序
   openProgram: () => {
     wx.showModal({

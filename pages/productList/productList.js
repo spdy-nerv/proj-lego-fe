@@ -3,7 +3,7 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
-const WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
+const app = getApp();
 Page({
   data: {
     pictureUrls: [],
@@ -22,51 +22,19 @@ Page({
     goodsList:[],
     productId:'',
     skuid:'',
-    isNull:true,
-    img:''           // 当前用户是否已经登记报名
+    isNull:true,         // 当前用户是否已经登记报名
   },
   onLoad: function (options) {
-    wx.showLoading({title:'数据加载中'});
-    WxNotificationCenter.addNotification('NotificationName', this.didNotification,this)
-    this.getbanner();
-    this.getSeckillSkuList();
-
-  },
-  onUnload: function () {
-    WxNotificationCenter.removeNotification('NotificationName', this)
-  },
-  //通知处理
-  didNotification: function (info) {
+    wx.showLoading({title:'数据加载中'});  
     this.setData({
-      productId: info.productId
+      headerImg:app.globalData.pictureUrl,
+      navigateUrl:app.globalData.navigateUrl
     })
-    if(this.data.productId){
-      this.getSeckillSkuList();
-    }
   },
   onReady: function () {
   },
-  getbanner: function() {
-   	var that=this;
-    request({
-      url: APIS.GET_MODEL_BG,
-      method: 'GET',
-      data: {
-         positionType: 'SPU_LIST_TOP',
-        },
-      realSuccess: function (data) {
-      	console.log(data)
-        that.setData({
-          img:data.pictureUrl,
-          headerImg: data.pictureUrl,
-          navigateUrl:data.navigateUrl
-        })
-      },
-      realFail: function (msg, code) {
-        console.log(msg,code)
-      }
-    });
-
+  onShow:function(){
+    this.getSeckillSkuList();
   },
  getSeckillSkuList:function(){
   request({

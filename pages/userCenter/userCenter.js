@@ -27,16 +27,16 @@ Page({
     contentlist: []
   },
   onLoad: function (options) {
-      var userInfo = wx.getStorageSync('userInfo');
-    this.setData({
-      nickName: userInfo.nickName,
-      avatarUrl: userInfo.avatarUrl
-    });
-    console.log(userInfo)
-     this.setData({
-      nickName:userInfo.nickName,
-      avatarUrl:userInfo.avatarUrl
-    })
+    const that = this;
+      wx.getUserInfo({
+        success: function(res){
+          that.setData({
+            nickName: res.userInfo.nickName,
+            avatarUrl: res.userInfo.avatarUrl
+          });
+        }
+      })
+  
   },
   getOrderList: function(){
     var that = this;

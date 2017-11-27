@@ -2,7 +2,6 @@
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
-var WxNotificationCenter = require('../../libs/WxNotificationCenter.js')
 Page({
 
   /**
@@ -134,6 +133,7 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
+        console.log(data);
         wx.showModal({
           title: '预约成功',
           content: '下一步，将引导你关注我们公众号。只有关注我们公众号后，才能收到抢购提醒消息，并从消息链接进入购买页面。',
@@ -141,7 +141,6 @@ Page({
           confirmText:'离开',
           success:(res)=>{
             console.log('成功回调')
-            WxNotificationCenter.postNotificationName('NotificationName', {productId:that.data.productId})
             if (res.confirm) {
               wx.navigateBack();
             } else if (res.cancel) {

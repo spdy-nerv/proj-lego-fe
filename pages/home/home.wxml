@@ -19,10 +19,8 @@
   </view>
 
 <view class="content">
-    <view class="reserve">
-        <navigator url='../productList/productList'>
+    <view class="reserve" bindtap='toProductList'>
           <image src='{{reserveImg}}' wx:if='{{reserveImg}}'/>
-        </navigator>
       </view>
       
       <view class="gift" bindtap='openProgram'>
