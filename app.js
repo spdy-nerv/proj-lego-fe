@@ -12,6 +12,12 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+    	var res=wx.getStorageSync('coordinate');
+    	console.log(res)
+	  	if(res){
+				  wx.removeStorageSync('coordinate')
+				  console.log(wx.getStorageSync('coordinate'))
+	  	} 
     // 获取用户信息
     wx.getSetting({
       success: res => {
