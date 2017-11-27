@@ -145,7 +145,7 @@ reduction: function(){
 			if(regularChainList[i].distance<1000){
 				var n=regularChainList[i].distance+"米";
 						rList_distance.push(n);
-			}else if(regularChainList[i].distance>10000){
+			}else if(regularChainList[i].distance>1000){
 				var n= (regularChainList[i].distance/1000).toFixed(1)+"公里";
 					rList_distance.push(n);
 			}
