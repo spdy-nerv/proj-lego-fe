@@ -68,8 +68,8 @@ Page({
   	var that = this;
   	console.log(wx.getStorageSync('coordinate'))
   	var res=wx.getStorageSync('coordinate');
-  		console.log(res)
   	if(res){
+  		console.log(11)
   		that.setData({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
@@ -101,6 +101,7 @@ Page({
       },
       complete:function(res){
       	console.log(res)
+    	
       }
     })
   },
