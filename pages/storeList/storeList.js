@@ -101,8 +101,6 @@ Page({
       },
       complete:function(res){
       	console.log(res)
-    	that.getAllRegularChain(),
-      that.getNearbyChainStore()
       }
     })
   },
