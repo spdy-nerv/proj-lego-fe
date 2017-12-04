@@ -97,7 +97,8 @@ Page({
         console.log(1)
       },
       fail: function (err) {
-        console.log(err)
+        that.getAllRegularChain(),
+        that.getNearbyChainStore()
       },
       complete:function(res){
       	console.log(res)
