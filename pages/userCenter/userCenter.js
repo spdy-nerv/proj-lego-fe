@@ -24,7 +24,8 @@ Page({
     pageNum:1,
     pageSize:6,
     hasMore: true,
-    contentlist: []
+    contentlist: [],
+    bindtap:''
   },
   onLoad: function (options) {
     const that = this;
@@ -36,7 +37,7 @@ Page({
           });
         }
       })
-  
+  that.getMyCouponList();
   },
   getOrderList: function(){
     var that = this;
@@ -92,6 +93,44 @@ Page({
   toMyGiftCard:function(){
     wx.navigateTo({
       url: '../myGiftCard/myGiftCard',
+    })
+  },   
+  getMyCouponList:function(){  //已经领取优惠券列表
+    request({
+      url: APIS.GET_RECEIVED_CARD_LIST,
+      method:'GET',
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      realSuccess: (res) => {
+        console.log(res);
+        if(res.length==0){
+          this.setData({
+            bindtap:'toMyCoupon'
+          })
+         
+        }else{
+          this.setData({
+            bindtap:'openCard'
+          })
+        }
+       
+      },
+      loginCallback:this.getMyCouponList,
+      realFail:(res)=>{
+        wx.showToast({
+          title: res
+      });
+      }
+    }, true, this)
+  }, 
+  openCard:function(){
+    wx.openCard({
+      cardList: res,
+      success: function(res) {
+        console.log(2222)
+      },fail(){
+      }
     })
   }
 

@@ -16,5 +16,5 @@
       </view>
     </view>
   </view>
-  <view class="err" wx:if='{{list.length==0?true:false}}'>快递公司参数异常：单号不存在或者已经过期</view>
+  <view class="err" wx:if='{{list.length==0?true:false}}'>该运单暂无物流跟踪信息！</view>
 </view>

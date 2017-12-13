@@ -49,6 +49,23 @@
 .productLeft{
     position: relative;
 }
+.productRight .bookpeople{
+    color:#fff;
+    margin-top:30rpx;
+    position: absolute;
+    top:-20rpx;
+    right:0;
+    z-index: 22;
+    font-size: 25rpx;
+    color: #fff;
+    background-color: red;
+    
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    padding:0 5rpx;
+}
 .productItem .productLeftImg{
     width: 345rpx;
     height: 310rpx;
@@ -57,6 +74,7 @@
     background-color: #f3f3f3;
     box-sizing: border-box;
     flex: 1;
+    position: relative;
 }
 .productItem .title{
     font-size: 28rpx;

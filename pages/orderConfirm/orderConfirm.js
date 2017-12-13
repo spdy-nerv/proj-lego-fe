@@ -76,7 +76,7 @@ Page({
         wx.hideLoading();
       },
       loginCallback: this._getSelectedProduct,
-      realFail: function (msg, code) {
+      realFail: function (msg) {
         wx.showToast({
           title: msg
         });
@@ -210,11 +210,31 @@ Page({
        })
       },
       loginCallback: this.onPay,
-      realFail: function (msg, code) {
-        wx.showToast({
-          title: msg
-        });
+      realFail: function (msg,code) {
+        console.log(msg);
+        if(code=='STOCK_LACK'||code=='SALABLE_STOCK_LACK'){
+          wx.showModal({
+            title:'提示',
+            content: msg+'，返回上一页！',
+            showCancel:false,
+            success: function(res) {
+              if (res.confirm) {
+                wx.navigateBack();
+              } 
+            }
+          });
+        }else{
+          wx.showLoading({
+            title:msg
+          })
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 1
+            })
+          },2500)
+        }
         that.isPaying = false;
+    
       }
     }, true, this);
   },

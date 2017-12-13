@@ -5,9 +5,9 @@
       <block wx:for="{{pictureUrl}}" wx:key="unique">
         <swiper-item>
           <!-- item.navigateUrl -->
-          <navigator url='{{item.navigateUrl}}'> 
+          <navigator url='{{item.navigateUrl}}' hover-class="none"> 
               <!-- <navigator url='../productDetail/productDetail?seckillSkuId=28'>  -->
-            <image src="{{item.pictureUrl}}" mode='aspectFill' />
+            <image src="{{item.pictureUrl}}" mode='aspectFill'/>
           </navigator>
         </swiper-item>
       </block>

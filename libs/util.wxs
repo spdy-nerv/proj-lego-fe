@@ -1,0 +1,27 @@
+
+var formatTime = function (sec, monthDay) {
+  if(sec == null) return '--'
+  var date = getDate(sec*1000)
+  var month = formatNumber(date.getMonth() + 1)
+  var day = formatNumber(date.getDate())
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var year = date.getFullYear();
+ 
+  var time = [hour, minute].map(formatNumber).join(':')
+ 
+  if(monthDay) {
+    return year + '.'+month + '.' + day
+  }else {
+    return time
+  }
+   
+}
+ 
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}     
+ module.exports = {
+   formatDate: formatTime
+ }

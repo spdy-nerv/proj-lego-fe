@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/home/home",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
@@ -22,8 +23,6 @@
     "pages/bannerIntroduct/bannerIntroduct",
     "pages/myGiftCard/myGiftCard",
     "pages/payAttentionTo/payAttentionTo"
-   
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

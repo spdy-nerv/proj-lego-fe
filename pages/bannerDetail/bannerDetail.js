@@ -39,7 +39,8 @@ Page({
     sharedImgPath:'',
     skuid:'',
     imageheight: 0,
-    buyIntroduction:''
+    buyIntroduction:'',
+    signupCount:''
   },
 
   /**
@@ -94,6 +95,7 @@ Page({
             auth: wx.getStorageSync('token')
          },
       realSuccess: function (data) {
+        console.log(data)
          console.log(data.pictureUrls.length)
       	  wx.setNavigationBarTitle({
 			      title: data.name//页面标题为路由参数
@@ -106,7 +108,8 @@ Page({
           description:data.description,
           signupStatus:data.signupStatus,
           seckillSkuStatus:data.seckillSkuStatus,
-          sharedImgPath:data.sharedImgPath
+          sharedImgPath:data.sharedImgPath,
+          signupCount:data.signupCount
         });
         wx.hideLoading();
         if(that.data.signupStatus=="NOT_STARTED"||that.data.signupStatus == "END"){
@@ -118,6 +121,9 @@ Page({
       loginCallback:this.getProduct,
       realFail: function (msg, code) {
         console.log(msg,code)
+        wx.showLoading({
+          title:msg
+        })
       }
     },true,this);
 

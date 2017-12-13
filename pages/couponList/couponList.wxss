@@ -1,1 +1,101 @@
 /* pages/couponList/couponList.wxss */
+page{
+    background-color: #f1f1f1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.page{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.coupon-item{
+    margin-top:40rpx;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.couponLeft{
+    width: 612rpx;
+    height: 220rpx;
+}
+.couponRight{
+    width: 145rpx;
+    height: 220rpx;
+    margin-left: -30rpx;
+}
+.logo{
+    width: 113rpx;
+    height: 113rpx;
+    padding-left:10rpx;
+    margin-left:30rpx; 
+}
+.container1{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 220rpx;
+    top:0;
+    left: 0;
+}
+.coupon-item .container1 .container-left{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 612rpx;
+    height: 220rpx;
+    align-items: center;
+    box-sizing: border-box;
+    
+ }
+ .detail-right{
+     margin-right: 20rpx;
+     
+ }
+ .coupon-item .container1 .gitcard{
+    width: 80rpx;    
+    height: 220rpx;   
+    margin: 0 auto;
+    height: 220rpx;
+    font-size: 29rpx;
+    color: #FFD98F;
+    line-height: 18px;
+} 
+ .coupon-item .container1 .gitcard .text{
+    width: 20rpx;    
+    margin: 0 auto;
+    height: 220rpx;
+    font-size: 29rpx;
+    color: #FFD98F;
+    margin-left:16rpx;
+    margin-top:29rpx;
+    line-height: 18px;
+ }
+ .reduce_cost{
+     color: #D8231E;
+     font-size: 25px;
+ }
+ .reduce_cost_coupon{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     font-size: 22px;
+
+ }
+ .validity{
+     font-size: 13px;
+     color: #474747;
+ }
+ .couponText{
+    font-size:19px;margin-top:6rpx;
+ }
+ .giftTitle{
+    color: #D8231E;
+    font-size: 20px;
+ }

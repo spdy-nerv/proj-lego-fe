@@ -14,7 +14,6 @@ App({
     })
     //清除地址坐标缓存
     var res=wx.getStorageSync('coordinate');
-    console.log(res)
 	if(res){
 		wx.removeStorageSync('coordinate')
 		console.log(wx.getStorageSync('coordinate'))

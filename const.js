@@ -31,10 +31,14 @@ var APIS = {
   LOGIN: '/uc/login',
   GET_INDEX_RESOURCE:'/common/home/getIndexResource',//获取首页所有图片资源
   GET_SLIDER_LIST: '/common/home/getSliderList', //获取首页轮播列表
+  GET_HOME_CACHE_DATA:'https://legostatic.teown.com/index_option.json',//获取首页缓存数据
   GET_BANNERDETAIL:'/common/home/getCmIndexImage',//获取banner图大图
   GET_OPTION:'/common/option/getOption/',//根据参数名获取参数值
   GET_ORDER_LIST: '/order/list', //获取历史购买商品的订单列表 
   GET_ORDER_DETAIL: '/order/detail/',//获取购买订单详情
+  GET_WX_CARD_LIST:'/promo/wxcard/getWxcardList',//获取优惠券列表
+  GET_RECEIVED_CARD_LIST:'/promo/wxcard/getReceivedWxcardList',//获取已经领取优惠券列表
+  GET_ADDWXCARD_ARGUMENTS:'/promo/wxcard/getAddWxcardArguments',//获取调用领取优惠券需要的参数
   GET_MY_COUPON_LIST: '/promo/coupon/getMyCouponList',//获取用户所有优惠券列表
   GET_MODEL_BG: '/common/home/getModelBackground',
   GET_SECKILLSKU_LIST: '/product/seckill/getSecKillSkuList',//获取所有抢购商品列表

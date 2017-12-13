@@ -20,10 +20,10 @@ function request(obj, needLogin = true, ctx) {
         } 
         else {
           if (needLogin && (d.code == 'ACT_TOKEN_FAILURE' || d.code == 'CM_NOT_LOGIN' || d.code == 'CM_ERROR_TOKEN')) {
-                wx.showLoading({
-                    mask: true,
-                    title: '用户登录失效，重新登录中！'
-                });
+                // wx.showLoading({
+                //     mask: true,
+                //     title: '用户登录失效，重新登录中！'
+                // });
                 user.login(obj.loginCallback, ctx);
               /*
             // 未认证或未绑定
@@ -48,7 +48,7 @@ function request(obj, needLogin = true, ctx) {
                 });
                 */
             } else {
-                typeof obj.realFail == "function" && obj.realFail(d.message || '');
+                typeof obj.realFail == "function" && obj.realFail(d.message || '',d.code);
             }
         }
     };

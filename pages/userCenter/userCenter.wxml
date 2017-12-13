@@ -7,7 +7,7 @@
     </view>
     <!-- 我的优惠券 -->
     <view class="centerContent">
-    <view class="myCoupon"  bindtap='toMyCoupon'>
+    <view class="myCoupon"  bindtap='{{bindtap}}'>
         <view class="couponTitle">
             <view class="couponLeft">
                 <image src='../../images/couponIcon.png'/>

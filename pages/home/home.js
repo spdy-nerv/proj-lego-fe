@@ -3,6 +3,7 @@ const { APIS } = require('../../const');
 const { request } = require('../../libs/request');
 const util = require('../../utils/util');
 const user = require('../../libs/user');
+const config = require('../../config')
 const app = getApp();
 Page({
   data: {
@@ -17,11 +18,12 @@ Page({
     giftImg:'',
     list:'',
     shareImg:'',
-    spuListTop:''
+    spuListTop:'',
+    cacheDataUrl:''
   },
   onLoad: function (options) {
-    this.getIndexResource();
-    user.login();
+    //this.getIndexResource();
+    this.getCacheData();
   },
   getIndexResource:function(){
     wx.request({
@@ -44,6 +46,37 @@ Page({
       });
       }
     })
+  },
+  getCacheData:function(){
+    if(config.domainPrefix=='https://legominiprogram.teown.com/service/api'){
+    this.setData({
+      cacheDataUrl:'https://legostatic.teown.com/index_option.json'
+    })
+    }else{
+      this.setData({
+        cacheDataUrl:'https://legostatic.teown.com/index_option_test.json'
+      })
+    }
+    request({
+      url:this.data.cacheDataUrl,
+      method: 'GET',
+      realSuccess: res=>{
+        console.log(res)
+        if(res){
+          const datas = res;
+          this.setData({
+            pictureUrl:datas.indexTop,
+            reserveImg:datas.indexSeckill.pictureUrl,
+            giftImg:datas.indexGift.pictureUrl,
+            shareImg:datas.indexSharedImage.pictureUrl,
+            spuListTop:datas.spuListTop 
+          })
+        }
+      },
+      realFail:res=> {
+        this.getIndexResource();
+      },
+    },false,this)
   },
   toProductList:function(){
     const navigateUrl =this.data.spuListTop.navigateUrl;

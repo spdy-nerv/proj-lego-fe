@@ -13,14 +13,12 @@ Page({
     type: 'entry',
     name: '中山大学',
     markers: [{
-      iconPath: "../../images/Loc.png",
       id: 0,
       latitude: '',
       longitude: '',
       width: 23,
       height: 30
     }, {
-      iconPath: "../../resources/bestPath.png",
       id: 0,
       latitude: '',
       longitude: '',
@@ -67,14 +65,12 @@ Page({
           centerLatitude: res.latitude,
            storeId: options.storeId,
             markers: [{
-            iconPath: "../../images/Loc.png",
             id: 0,
             latitude: that.data.desLati,
             longitude: that.data.desLong,
             width: 23,
             height: 30
           }, {
-            iconPath: "../../resources/bestPath.png",
             id: 0,
             latitude: res.latitude,
             longitude: res.longitude,

@@ -1,11 +1,10 @@
-// pages/couponList/couponList.js
-Page({
 
-  /**
-   * 页面的初始数据
-   */
+var { APIS } = require('../../const.js');
+var { request } = require('../../libs/request');
+var user = require('../../libs/user');
+Page({
   data: {
-    couponList: [
+    couponArgumentList: [
       {
         cardId: 'ausnd23j2qjr',      // 微信卡券id
         name: '优惠券名称',
@@ -14,61 +13,76 @@ Page({
         timestamp: 142349304,                   // 由服务端生成的时间戳
         signature: 'asdasdasd213edwadf'         // 卡券签名
       },
-		]
+    ],
+    couponList:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    this.getWxCardList();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
   
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
   
   },
+  getWxCardList(){ 
+    wx.showLoading({
+      title:'数据加载中'
+    })
+    request({
+      url:APIS.GET_WX_CARD_LIST,
+      header: {auth: wx.getStorageSync('token')},
+      method: 'GET',
+      realSuccess:res=>{
+        console.log(res);
+        this.setData({
+          couponList:res
+        })
+        wx.hideLoading();
+      },
+      loginCallback:this.getWxCardList,
+      realFail:res=>{
+        wx.showToast({title:res});
+      }
+    },true,this);
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  //获取领取优惠券所需要的参数
+  getAddWxCardArguments(e){
+    console.log(e.currentTarget.dataset.cardid);
+    const cardId = e.currentTarget.dataset.cardid;
+    request({
+      url:APIS.GET_ADDWXCARD_ARGUMENTS+'?cardIds='+cardId,
+      header: {auth: wx.getStorageSync('token')},
+      method: 'GET',
+      realSuccess:res=>{
+        console.log(res[0]);
+        //添加卡券
+        const cardList =JSON.stringify(res[0]);
+        console.log(cardList);
+        wx.addCard({
+          cardList: [
+            {cardId,cardExt:cardList}],
+          success:res=>{
+            console.log(res.cardList) // 卡券添加结果
+            console.log('领取成功')
+          },fail(){
+            console.log('领取失败')
+          }
+        })
+      },
+      loginCallback:this.getAddWxCardArguments,
+      realFail:res=>{
+        wx.showToast({title:res});
+      }
+    },true,this);
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
   
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
   
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
   
   }
