@@ -1,0 +1,29 @@
+<import src="../../src/wetoast.wxml"/>
+<view class="page">
+    <view class="text-info">
+        <view class="fs34">请提供邮寄地址</view>
+        请仔细填写你的邮寄地址，礼品将直接邮寄至你提供的地址。因地址错误没有收到礼品，乐高不承担责任。如不提供邮寄地址，我们无法寄出礼品，并将视为你已放弃这次礼品。
+    </view>
+    <view class="text-info">
+        <view class="fs34">礼品</view>
+        <text space='true'> 40235 狗年特别套装</text>
+    </view>
+    <view class="text-info">
+        <view class="fs34">请提供邮寄信息</view>
+        <form bindsubmit="formSubmit">
+            <view class="input m30">
+                <input placeholder="姓名" name='name' value="{{nameValue}}" />
+            </view>
+            <view class="input">
+                <input placeholder="手机" name='tel' value="{{mobileValue}}" />
+            </view>
+            <view class="input">
+                <input placeholder="地址" name='address' value="{{addressValue}}" />
+            </view>
+
+            <button class="button" disabled='{{disabled}}' formType="submit">提交信息</button>
+        </form>
+    </view>
+</view>
+<!-- wetoast -->
+<template is="wetoast" data="{{...__wetoast__}}"/>

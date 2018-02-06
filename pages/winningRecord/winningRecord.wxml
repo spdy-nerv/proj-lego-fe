@@ -1,0 +1,22 @@
+<view class="page">
+    <block wx:for='{{getLuckyList}}'>
+            <view class="item" wx:if='{{item.productName}}'>
+                    <view><text class="title">中奖时间：</text><text class="c333">{{item.createAt}}</text></view>
+                    <view><text class="title">奖品名称：</text><text class="c333">{{item.productNo}} {{item.productName}}</text></view>
+                    <view wx:if='{{item.consigneeName}}'><text class="title">收货人姓名：</text><text class="c333">{{item.consigneeName}}</text></view>
+                    <view wx:if='{{item.consigneeMobile}}'><text class="title">收货人电话：</text><text class="c333">{{item.consigneeMobile}}</text></view>
+                    <view wx:if='{{item.consigneeAddress}}'><text class="title">收货地址：</text><text class="c333">{{item.consigneeAddress}}</text></view>
+                    <view wx:if='{{item.deliveryCompany}}'><text class="title">物流信息：</text><text class="c333">{{item.deliveryCompany}}</text></view>
+                    <view wx:if='{{item.deliveryNo}}' bindtap='expressStatus' data-deliveryNo='{{item.deliveryNo}}' data-deliveryCompany='{{item.deliveryCompany}}' class="deliveryNo"><text class="title">物流单号：</text><text class="c333">{{item.deliveryNo}}</text>
+                        <image class="arrow" src='../../images/arrow_qiandao.png'/>
+                
+                </view>
+                <view wx:if='{{!item.consigneeName}}' bindtap='toFillAddress' class="deliveryNo" data-luckDrawId='{{item.id}}'><text class="title">暂无收货地址信息,立即填写</text><text class="c333"></text>
+                        <image class="arrow" src='../../images/arrow_qiandao.png'/>
+                
+                </view>
+            </view> 
+    </block>
+   
+    <view class="order" wx:if='{{getLuckyList.length==0}}'>暂无中奖记录</view>
+</view>

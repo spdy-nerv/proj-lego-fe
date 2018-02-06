@@ -49,6 +49,7 @@ function request(obj, needLogin = true, ctx) {
                 */
             } else {
                 typeof obj.realFail == "function" && obj.realFail(d.message || '',d.code);
+                
             }
         }
     };

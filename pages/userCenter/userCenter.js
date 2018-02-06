@@ -25,7 +25,8 @@ Page({
     pageSize:6,
     hasMore: true,
     contentlist: [],
-    bindtap:''
+    bindtap:'',
+    couponList:[]
   },
   onLoad: function (options) {
     const that = this;
@@ -37,6 +38,8 @@ Page({
           });
         }
       })
+      
+      
   that.getMyCouponList();
   },
   getOrderList: function(){
@@ -111,7 +114,8 @@ Page({
          
         }else{
           this.setData({
-            bindtap:'openCard'
+            bindtap:'openCard',
+            couponList:res
           })
         }
        
@@ -126,11 +130,16 @@ Page({
   }, 
   openCard:function(){
     wx.openCard({
-      cardList: res,
+      cardList: this.data.couponList,
       success: function(res) {
         console.log(2222)
       },fail(){
       }
+    })
+  },
+  toWinningRecord(){
+    wx.navigateTo({
+      url:'../winningRecord/winningRecord'
     })
   }
 

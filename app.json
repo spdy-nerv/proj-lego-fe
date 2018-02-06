@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+   
     "pages/home/home",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
@@ -22,7 +22,11 @@
     "pages/bannerDetail/bannerDetail",
     "pages/bannerIntroduct/bannerIntroduct",
     "pages/myGiftCard/myGiftCard",
-    "pages/payAttentionTo/payAttentionTo"
+    "pages/payAttentionTo/payAttentionTo",
+    "pages/signInDetail/signInDetail",
+    "pages/signInActivity/signInActivity",
+    "pages/receivingAddress/receivingAddress",
+    "pages/winningRecord/winningRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -75,7 +75,8 @@ Page({
                 deliveryInfo:res.deliveryInfo,
                 payTypeLabel:res.payTypeLabel,
                 invoiceInfo:res.invoiceInfo,
-                createTime:res.createTime
+                createTime:res.createTime,
+                orderStatusLabel:res.orderStatusLabel
               })
             },loginCallback:this.getOrderDetail,
             realFail:(res)=>{

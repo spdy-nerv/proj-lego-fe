@@ -84,13 +84,19 @@ Page({
       title:'数据加载中'
     })
    	var that=this;
-   	var productId=that.data.productId;
+     var productId=that.data.productId;
+     var skuid = that.data.skuid;
+     if(skuid){
+        var url=APIS.GET_PRODUCT;
+        var data = {seckillSkuId:skuid}
+     }else{
+       var url= APIS.GET_PRODUCT_DETAIL;
+       var data = {productId};
+     }
     request({
-      url: APIS.GET_PRODUCT_DETAIL,
+      url,
       method: 'GET',
-      data: { 
-      	productId:productId
-        },
+      data,
         header: {
             auth: wx.getStorageSync('token')
          },
@@ -232,8 +238,8 @@ Page({
       }
     },false,this);
   },
-  // 弹窗
-  showDialogBtn: function() {
+   // 弹窗
+   showDialogBtn: function() {
     this.setData({
       showModal: true
     })
@@ -281,21 +287,20 @@ Page({
       }
     }
   },
-  //获取抢购介绍
-buyIntroduction:function(){
-  var that = this;
-  request({
-    url:APIS.GET_OPTION+'ACTIVITY_EXPLAIN',
-    method: 'GET',
-    realSuccess: function (res) {
-     console.log(res.optionValue);
-     that.setData({
-      buyIntroduction:res.optionValue
-     })
-  
-    },
-    realFail: function () {
-    }
-  },false,this);
-}
+  buyIntroduction:function(){
+    var that = this;
+    request({
+      url:APIS.GET_OPTION+'ACTIVITY_EXPLAIN',
+      method: 'GET',
+      realSuccess: function (res) {
+       console.log(res.optionValue);
+       that.setData({
+        buyIntroduction:res.optionValue
+       })
+    
+      },
+      realFail: function () {
+      }
+    },false,this);
+  },
 })

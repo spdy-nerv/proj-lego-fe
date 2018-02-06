@@ -44,7 +44,7 @@ var APIS = {
   GET_SECKILLSKU_LIST: '/product/seckill/getSecKillSkuList',//获取所有抢购商品列表
   SIGN_UP:'/product/seckill/signUp',   //登记报名秒杀活动
   GET_LIST_STORE:'/store/listStore',  //获取附近所有门店
-  GET_PRODUCT: '/product/seckill/getProductDetail',//获取商品详情
+  GET_PRODUCT: '/product/seckill/getProductDetail',//根据skuid获取商品详情
   GET_PRODUCT_DETAIL:'/product/productinfo/getProductDetail',//根据spu的ID获取抢购商品详情
   PAY_ORDER:'/order/payOrder',//支付订单
   CANCEL_ORDER:'/order/cancelOrder',//取消订单
@@ -62,7 +62,13 @@ var APIS = {
   DELETE_ADDRESS: '/uc/address/${addressId}',
   EDIT_ADDRESS: '/uc/address/${addressId}',
 
-  ADD_ORDER: '/order/addOrder'
+  ADD_ORDER: '/order/addOrder',
+  GET_SIGN_LIST:'/signIn/signIn/getSignInList',//获取新年签到列表
+  GET_LUCKY_DRWAINFOS:'/signIn/signIn/getLuckyDrwaInfos',//获取中奖信息
+  ADD_DELIVERY_INFO:'/signIn/signIn/addDeliveryInfo',//中奖后填写收货地址
+  SIGN_IN:'/signIn/signIn/signIn',//签到
+  AGREE_CLAUSE:'/signIn/signIn/agreeSignInClause',//同意签到条款
+  GET_DELIVERY_INFO:'/signIn/signIn/getDeliveryInfo',//获取收货地址
 
 
 }

@@ -25,11 +25,13 @@ Page({
     isNull:true,         // 当前用户是否已经登记报名
   },
   onLoad: function (options) {
-    wx.showLoading({title:'数据加载中'});  
-    this.setData({
-      headerImg:app.globalData.pictureUrl,
-      navigateUrl:app.globalData.navigateUrl
-    })
+    wx.showLoading({title:'数据加载中'}); 
+     
+    // this.setData({
+    //   headerImg:app.globalData.pictureUrl,
+    //   navigateUrl:app.globalData.navigateUrl
+    // })
+    this.getIndexResource()
     
   },
   onReady: function () {
@@ -40,6 +42,8 @@ Page({
  getSeckillSkuList:function(){
   request({
     url: APIS.GET_SECKILLSKU_LIST,
+    //线上环境测试支付时的商品列表
+   // url: APIS.GET_SECKILLSKU_LIST+'?isTest=true',
     method:'GET',
     header: {
       auth: wx.getStorageSync('token')
@@ -73,5 +77,24 @@ Page({
          url:'../bannerDetail/bannerDetail?productId='+id+'&skuid='+skuid,
        })
      }
- }
+ },
+ getIndexResource:function(){
+  wx.request({
+    url: APIS.GET_INDEX_RESOURCE,
+    method: 'GET', 
+    success:res=>{
+      console.log(res.data.data);
+      const datas = res.data.data;
+      this.setData({
+        headerImg:datas.spuListTop.pictureUrl,
+        navigateUrl:datas.spuListTop.navigateUrl
+      })
+    },
+    fail:(res)=> {
+      wx.showToast({
+        title: res
+    });
+    }
+  })
+},
 })

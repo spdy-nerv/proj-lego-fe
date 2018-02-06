@@ -5,15 +5,15 @@
       <block wx:for="{{pictureUrl}}" wx:key="unique">
         <swiper-item>
           <!-- item.navigateUrl -->
-          <navigator url='{{item.navigateUrl}}' hover-class="none"> 
-              <!-- <navigator url='../productDetail/productDetail?seckillSkuId=28'>  -->
+           <navigator url='{{item.navigateUrl}}' hover-class="none">  
+               <!-- <navigator url='../productDetail/productDetail?seckillSkuId=33'>  
+                <navigator url='../signInActivity/signInActivity' hover-class="none">  -->
             <image src="{{item.pictureUrl}}" mode='aspectFill'/>
           </navigator>
         </swiper-item>
       </block>
     </swiper>
   </view>
-
   <view>
     <image class="homeTopLogo" src='../../images/homeTopLogo.png' />
   </view>
@@ -28,11 +28,11 @@
       </view>
 </view>
   <view class="footer">
-      <navigator url='../storeList/storeList'>
+      <navigator url='../storeList/storeList'  hover-class="none">
         <view class="bottomLeft">寻找乐高</view>
       </navigator>
 
-      <navigator url='../userCenter/userCenter'>
+      <navigator url='../userCenter/userCenter'  hover-class="none">
         <view class="bottomRight">个人中心</view>
       </navigator>
   </view>

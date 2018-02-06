@@ -1,4 +1,5 @@
 
+<view class="coupon" wx:if='{{couponList.length==0&&isNull==true}}'>暂无优惠券</view>
 <wxs src='../../libs/util.wxs' module='getDate'></wxs> 
 <view class="page">
     <block wx:for='{{couponList}}'>
@@ -7,22 +8,23 @@
                     <image class="couponRight" src='../../images/couponRight.png'/>
                     <view class="container1">
                         <view class="container-left">
-                            <image class="logo" src='{{item.detailData.cash.base_info.logo_url||item.detailData.gift.base_info.logo_url||item.detailData.general_coupon.base_info.logo_url}}'/>
+                            <image class="logo" src='{{item.detailData.cash.base_info.logo_url||item.detailData.gift.base_info.logo_url||item.detailData.general_coupon.base_info.logo_url||item.detailData.general_coupon.base_info.logo_url||item.detailData.discount.base_info.logo_url}}'/>
                             <view class="detail-right">
-                               
-                                <view class="reduce_cost_coupon" wx:if='{{!item.detailData.gift.base_info.title&&!item.detailData.gift&&!item.detailData.general_coupon}}'> <view style='font-size:18px;'>￥</view> <view class="reduce_cost">{{item.detailData.cash.reduce_cost||item.detailData.general_coupon.reduce_cost}}元</view ><view class="couponText">优惠券</view></view>
+                                <view class="reduce_cost_coupon" wx:if='{{!item.detailData.gift.base_info.title&&!item.detailData.gift&&!item.detailData.general_coupon&&!item.detailData.discount}}'> <view style='font-size:18px;'>￥</view> <view class="reduce_cost">{{item.detailData.cash.reduce_cost||item.detailData.general_coupon.reduce_cost}}元</view ><view class="couponText">优惠券</view></view>
                                 <view class="giftTitle">{{item.detailData.gift.base_info.title}}</view>
                                 <view class="giftTitle">{{item.detailData.general_coupon.base_info.title}}</view>
-                                <view class="validity" wx:if='{{item.detailData.cash.base_info.date_info}}'>有效期:{{getDate.formatDate(item.detailData.cash.base_info.date_info.begin_timestamp,true)}}-{{getDate.formatDate(item.detailData.cash.base_info.date_info.end_timestamp,true)}}</view>
+                                <view class="giftTitle">{{item.detailData.discount.base_info.title}}</view>
+                                <view class="validity" wx:if='{{item.detailData.cash.base_info.date_info.begin_timestamp}}'>有效期:{{getDate.formatDate(item.detailData.cash.base_info.date_info.begin_timestamp,true)}}-{{getDate.formatDate(item.detailData.cash.base_info.date_info.end_timestamp,true)}}</view>
+                                <!-- <view class="validity" wx:if='{{item.detailData.cash.base_info.date_info.type=="DATE_TYPE_FIX_TERM"}}'>有效期:领取后{{item.detailData.cash.base_info.date_info.fixed_term}}天内有效</view> -->
                                 <view class="validity" wx:if='{{item.detailData.gift.base_info.date_info}}'>有效期:{{getDate.formatDate(item.detailData.gift.base_info.date_info.begin_timestamp,true)}}-{{getDate.formatDate(item.detailData.gift.base_info.date_info.end_timestamp,true)}}</view>
                                 <view class="validity" wx:if='{{item.detailData.general_coupon.base_info.date_info}}'>有效期:{{getDate.formatDate(item.detailData.general_coupon.base_info.date_info.begin_timestamp,true)}}-{{getDate.formatDate(item.detailData.general_coupon.base_info.date_info.end_timestamp,true)}}</view>
+                                <view class="validity" wx:if='{{item.detailData.discount.base_info.date_info}}'>有效期:{{getDate.formatDate(item.detailData.discount.base_info.date_info.begin_timestamp,true)}}-{{getDate.formatDate(item.detailData.discount.base_info.date_info.end_timestamp,true)}}</view>
                             </view>
                         </view>
                         <view class="gitcard" bindtap='getAddWxCardArguments'  data-cardid='{{item.cardId}}'>
                             <view class="text" >立即领取</view>
                         </view>
                     </view>
-               
                 </view>
     </block>
   

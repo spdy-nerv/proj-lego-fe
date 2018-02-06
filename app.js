@@ -1,4 +1,5 @@
 //app.js
+let {WeToast} = require('src/wetoast.js')
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -43,5 +44,6 @@ App({
     navigateUrl:'',
     pictureUrl:''
 
-  }
+  },
+  WeToast
 })

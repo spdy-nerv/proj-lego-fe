@@ -13,8 +13,10 @@ Page({
         timestamp: 142349304,                   // 由服务端生成的时间戳
         signature: 'asdasdasd213edwadf'         // 卡券签名
       },
+      
     ],
-    couponList:[]
+    couponList:[],
+    isNull:false
   },
   onLoad: function (options) {
     this.getWxCardList();
@@ -36,7 +38,8 @@ Page({
       realSuccess:res=>{
         console.log(res);
         this.setData({
-          couponList:res
+          couponList:res,
+          isNull:true
         })
         wx.hideLoading();
       },

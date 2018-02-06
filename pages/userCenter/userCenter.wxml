@@ -17,7 +17,7 @@
           </view>
     </view>
     <!-- 我的礼品卡 -->
-    <view class="myCoupon"  catchtap='toMyGiftCard'>
+    <!-- <view class="myCoupon"  catchtap='toMyGiftCard'>
       <view class="couponTitle">
           <view class="couponLeft">
               <image src='../../images/giftCard.png'/>
@@ -25,7 +25,7 @@
           </view>
           <image class="couponIcon youhui" src='../../images/arrow.png'/>
         </view>
-  </view>
+  </view> -->
     <!-- 我的订单 -->
     <view class="myOrder" bindtap='toMyOrder'>
           <view class="myOrderLeft">
@@ -34,8 +34,15 @@
         </view>
           <image class='myOrderArrow' src='../../images/arrow.png'/>
     </view>
+    <view class="myOrder" bindtap='toWinningRecord'>
+      <view class="myOrderLeft">
+      <image class="myOrderImg" src='../../images/winning.png'/>
+      <text>中奖记录</text>
+    </view>
+      <image class='myOrderArrow' src='../../images/arrow.png'/>
+</view>
    <!-- 我的购买记录 -->
-    <view class="coupon" bindtap='toMyBuyRecord'>
+    <!-- <view class="coupon" bindtap='toMyBuyRecord'>
       <view class="couponTitle">
         <view class="couponLeft">
             <image src='../../images/buyHistoryIcon.png'/>
@@ -43,6 +50,6 @@
         </view>
         <image class="couponIcon" src='../../images/arrow.png'/>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>

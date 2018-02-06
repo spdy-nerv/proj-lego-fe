@@ -22,7 +22,6 @@ Page({
     cacheDataUrl:''
   },
   onLoad: function (options) {
-    //this.getIndexResource();
     this.getCacheData();
   },
   getIndexResource:function(){
@@ -39,6 +38,11 @@ Page({
           shareImg:datas.indexSharedImage.pictureUrl,
           spuListTop:datas.spuListTop  
         })
+        //首页跳转传的图片
+        const navigateUrl =this.data.spuListTop.navigateUrl;
+        const pictureUrl = this.data.spuListTop.pictureUrl;
+        app.globalData.navigateUrl = navigateUrl;
+        app.globalData.pictureUrl = pictureUrl;
       },
       fail:(res)=> {
         wx.showToast({
@@ -71,6 +75,11 @@ Page({
             shareImg:datas.indexSharedImage.pictureUrl,
             spuListTop:datas.spuListTop 
           })
+          //首页跳转传的图片
+          const navigateUrl =this.data.spuListTop.navigateUrl;
+          const pictureUrl = this.data.spuListTop.pictureUrl;
+          app.globalData.navigateUrl = navigateUrl;
+          app.globalData.pictureUrl = pictureUrl;
         }
       },
       realFail:res=> {
@@ -89,20 +98,13 @@ Page({
 }
 , //跳转小程序
   openProgram: () => {
-    wx.showModal({
-      title: '精选好礼',
-      showCancel: false,
-      content: '敬请期待！',
-    })
     wx.navigateToMiniProgram({
-      appId: '',
-      path: 'pages/index/index?id=123',
-      extraData: {
-        foo: 'bar'
-      },
-      envVersion: 'develop',
+      appId: 'wx36f3e821949ce24b',
+      path: 'pages/index/index',
+      extraData: {},
+      envVersion: 'release',
       success(res) {
-        console.log(res);
+        console.log('跳转小程序成功');
       }
     })
   },

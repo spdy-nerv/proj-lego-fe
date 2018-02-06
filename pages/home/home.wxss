@@ -7,6 +7,8 @@ page{
     padding-top: 42rpx;
     box-sizing: border-box;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 .img{
     width: 100%;
@@ -53,13 +55,15 @@ swiper{
       justify-content: center;
   }
   .footer{
-      width: 100%rpx;
+      width: 100%;
      line-height: 120rpx;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       background-color: #F7F7F9;
-      margin-top:60rpx;
+      position: absolute;
+      bottom: 0;
+      left: 0;
       align-items: center;
       font-family: hyt4gi;
       border-top:1rpx solid #e0e0e0;

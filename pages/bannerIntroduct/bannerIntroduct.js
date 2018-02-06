@@ -17,7 +17,8 @@ Page({
 		cmindexId:'',
 		pictureUrl:'',
 		imageWidth:0, 
-    imageHeight:0 
+    imageHeight:0,
+    showModal:false 
   },
   //返回上一页
   back:function(e) {
@@ -33,7 +34,7 @@ Page({
   	 that.setData({
 		     cmindexId:options.cmindexId
 		    });
-   that.getDetail()
+   that.getDetail();
   },
    imageLoad: function (e) {  
     //获取图片的原始宽度和高度 
@@ -114,17 +115,20 @@ Page({
    * 用户点击右上角分享
    */
  onShareAppMessage: function (res) {
-  	var cmindexId=this.data.cmindexId;
-    return {
-      title: 'LEGO乐高',
-      path: '/pages/bannerIntroduct/bannerIntroduct?cmindexId='+cmindexId,
-      imageUrl:this.data.shareImg,
-      success: function(res) {
-        console.log('转发成功')
-      },
-      fail: function(res) {
-        console.log("转发失败")
+    var cmindexId=this.data.cmindexId;
+    if(cmindexId!=64&&cmindexId!=59){
+      return {
+        title: 'LEGO乐高',
+        path: '/pages/bannerIntroduct/bannerIntroduct?cmindexId='+cmindexId,
+        imageUrl:this.data.shareImg,
+        success: function(res) {
+          console.log('转发成功')
+        },
+        fail: function(res) {
+          console.log("转发失败")
+        }
       }
     }
+  
   }
 })
