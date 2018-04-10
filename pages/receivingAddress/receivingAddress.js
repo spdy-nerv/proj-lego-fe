@@ -18,7 +18,6 @@ Page({
       luckDrawId:options.luckDrawId
     })
     this.getDeliveryInfo();
-  
   },
   formSubmit: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -55,7 +54,7 @@ Page({
           content:'提交成功',
           showCancel:false,
           success:()=>{
-            wx.navigateTo({
+            wx.redirectTo({
               url: '../home/home'
             })
           }

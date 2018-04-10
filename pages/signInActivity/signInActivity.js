@@ -21,6 +21,7 @@ Page({
     hasSignUp: false,
     signInSList:[],
     productId:'',
+    shareImg2:'',
     skuid:'',
     disabled:true,
     isNull:true,         // 当前用户是否已经登记报名
@@ -29,6 +30,7 @@ Page({
     wx.showLoading({title:'数据加载中'}); 
     this.getIndexResource();
     this.buyIntroduction();
+    this.getSharePic();
     this.setData({
       headerImg:app.globalData.pictureUrl,
       navigateUrl:app.globalData.navigateUrl
@@ -119,6 +121,24 @@ getIndexResource:function(){
     });
     }
   })
+},
+getSharePic(){
+  request({
+    url: APIS.GET_MODEL_BG +'?positionType=SIGNIN_LIST_SHARED',
+    method: 'GET',
+    realSuccess: res => {
+      console.log(res);
+      
+      this.setData({
+        shareImg2: res.pictureUrl
+      })
+    },
+    realFail: (res) => {
+     console.log(res);
+    }
+  },false,this)
+
+
 },
 sign(e){
   console.log(e)
@@ -259,5 +279,21 @@ buyIntroduction:function(){
       })
       }
     }, true, this)
+  },
+  //转发
+  onShareAppMessage: function (res) {
+    return {
+      title: 'LEGO乐高',
+      path: '/pages/signInActivity/signInActivity',
+      imageUrl: this.data.shareImg2,
+      success: function (res) {
+        console.log('转发成功')
+      },
+      fail: function (res) {
+        console.log("转发失败")
+      }
+    }
+  
+
   }
 })

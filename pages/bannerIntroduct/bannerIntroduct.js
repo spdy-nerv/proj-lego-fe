@@ -11,7 +11,7 @@ Page({
     currentType: 'entry',
   	toView: 'red',
     scrollTop: 100,
-    shareImg:'https://legostatic.teown.com/product-088d828e-b1c7-48c9-99e5-6881979ca0d6.jpg',
+    shareImg:'',
   	detailPictureUrls:[],
 		content:'',
 		cmindexId:'',
@@ -30,11 +30,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  	var that=this;	
+    wx.showLoading({
+      title: '正在加载',
+    })
+  	var that=this;
+    console.log(options)	
   	 that.setData({
-		     cmindexId:options.cmindexId
+		     cmindexId:options.cmindexId,
+         shareId:options.shareId
 		    });
    that.getDetail();
+   that.getShareDetail();
   },
    imageLoad: function (e) {  
     //获取图片的原始宽度和高度 
@@ -51,13 +57,11 @@ Page({
    	var that=this;
    	var cmindexId=that.data.cmindexId;
    	console.log(cmindexId)
-   	 wx.showLoading({
-        title: '正在加载',
-      })
     request({
-      url: APIS.GET_BANNERDETAIL+'/'+cmindexId,
+      url: APIS.GET_BANNERDETAIL + '/' + cmindexId,
       method: 'GET',
       realSuccess: function (data) {
+        console.log(data)
       	 that.setData({
 		      pictureUrl:data
 		    });
@@ -69,6 +73,26 @@ Page({
     });
 
   },
+getShareDetail(){
+  var that = this;
+  var shareId = that.data.shareId;
+  request({
+    url: APIS.GET_BANNERDETAIL + '/' + shareId,
+    method: 'GET',
+    realSuccess: function (data) {
+      console.log(data)
+      that.setData({
+        shareImg: data.pictureUrl
+      });
+      wx.hideLoading()
+    },
+    realFail: function (msg, code) {
+      console.log(msg, code)
+    }
+  });
+
+}
+,
   /**
    * 生命周期函数--监听页面初次渲染完成s
    */
@@ -116,7 +140,6 @@ Page({
    */
  onShareAppMessage: function (res) {
     var cmindexId=this.data.cmindexId;
-    if(cmindexId!=64&&cmindexId!=59){
       return {
         title: 'LEGO乐高',
         path: '/pages/bannerIntroduct/bannerIntroduct?cmindexId='+cmindexId,
@@ -130,5 +153,5 @@ Page({
       }
     }
   
-  }
+  
 })

@@ -17,13 +17,15 @@ Page({
       latitude: '',
       longitude: '',
       width: 23,
-      height: 30
+      height: 30,
+      iconPath: "../../images/mapicon_navi_s.png",
     }, {
       id: 0,
       latitude: '',
       longitude: '',
       width: 34,
-      height: 34
+      height: 34,
+       iconPath: "../../images/mapicon_navi_s.png",
     }],
     distance: '加载中',
     cost: '加载中',
@@ -69,13 +71,15 @@ Page({
             latitude: that.data.desLati,
             longitude: that.data.desLong,
             width: 23,
-            height: 30
+            height: 30,
+            iconPath: "../../images/mapicon_navi_e.png"
           }, {
             id: 0,
             latitude: res.latitude,
             longitude: res.longitude,
-            width: 80,
-            height: 30
+            width: 23,
+            height: 30,
+            iconPath: "../../images/mapicon_navi_s.png"
           }],
            
         })
