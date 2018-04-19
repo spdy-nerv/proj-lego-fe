@@ -22,7 +22,7 @@
           <image src='{{reserveImg}}' wx:if='{{reserveImg}}'/>
       </view>
       
-      <view class="gift" bindtap='openProgram'>
+      <view class="gift" >
         <image src='{{giftImg}}' wx:if='{{giftImg}}'/>
       </view>
 </view>
