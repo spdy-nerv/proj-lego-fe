@@ -110,7 +110,7 @@ Page({
     // })
   wx.showModal({
     title:'提示',
-    content:'礼品店暂时关闭！',
+    content:'敬请期待！',
     showCancel:false
   })
   },
