@@ -98,15 +98,21 @@ Page({
 }
 , //跳转小程序
   openProgram: () => {
-    wx.navigateToMiniProgram({
-      appId: 'wx36f3e821949ce24b',
-      path: 'pages/index/index',
-      extraData: {},
-      envVersion: 'release',
-      success(res) {
-        console.log('跳转小程序成功');
-      }
-    })
+    //打开礼品卡小程序
+    // wx.navigateToMiniProgram({
+    //   appId: 'wx36f3e821949ce24b',
+    //   path: 'pages/index/index',
+    //   extraData: {},
+    //   envVersion: 'release',
+    //   success(res) {
+    //     console.log('跳转小程序成功');
+    //   }
+    // })
+  wx.showModal({
+    title:'提示',
+    content:'礼品店暂时关闭！',
+    showCancel:false
+  })
   },
   onShareAppMessage: function (res) {
     return {
