@@ -1,9 +1,12 @@
 <!--pages/bannerIntroduct/bannerIntroduct.wxml-->
 <view class="page" >
   	<scroll-view scroll-y class="scrol" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-	  	 <view class="store-list" wx:for="{{pictureUrl}}" wx:key='*this' style="width:100%;height:auto">
+	  	 <!-- <view class="store-list" wx:for="{{pictureUrl}}" wx:key='*this' style="width:100%;height:auto">
 	  		<image bindload="imageLoad" style="width:{{imageWidth}}px;display:block;height:{{imageHeight}}px;" mode="widthFix"  src='{{item}}' />
-	  	</view>	  
+	  	</view>	   -->
+       <view class="store-list"  wx:key='*this' style="width:100%;height:auto">
+	  		<image bindload="imageLoad" style="width:{{imageWidth}}px;display:block;height:{{imageHeight}}px;" mode="widthFix"  src='{{imgUrl}}' />
+	  	</view>	
 	  	
 	</scroll-view>
 </view>

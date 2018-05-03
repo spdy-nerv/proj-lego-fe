@@ -43,7 +43,7 @@ Page({
   request({
     url: APIS.GET_SECKILLSKU_LIST,
     //线上环境测试支付时的商品列表
-   // url: APIS.GET_SECKILLSKU_LIST+'?isTest=true',
+   //url: APIS.GET_SECKILLSKU_LIST+'?isTest=true',
     method:'GET',
     header: {
       auth: wx.getStorageSync('token')

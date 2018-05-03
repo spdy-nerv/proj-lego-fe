@@ -18,7 +18,8 @@ Page({
 		pictureUrl:'',
 		imageWidth:0, 
     imageHeight:0,
-    showModal:false 
+    showModal:false ,
+    imgUrl:''
   },
   //返回上一页
   back:function(e) {
@@ -49,6 +50,7 @@ Page({
     //let imageSize = Util.imageZoomHeightUtil(originalWidth,originalHeight); 
   
       let imageSize = Util.imageZoomHeightUtil(originalWidth,originalHeight); 
+      console.log(imageSize)
 //  let imageSize = Util.imageZoomWidthUtil(originalWidth,originalHeight,145); 
   
     this.setData({imageWidth:imageSize.imageWidth,imageHeight:imageSize.imageHeight});  
@@ -63,7 +65,9 @@ Page({
       realSuccess: function (data) {
         console.log(data)
       	 that.setData({
-		      pictureUrl:data
+		      pictureUrl:data,
+          imgUrl: data.pictureUrl
+
 		    });
 		    wx.hideLoading()
       },

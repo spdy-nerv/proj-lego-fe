@@ -40,7 +40,8 @@ Page({
     skuid:'',
     imageheight: 0,
     buyIntroduction:'',
-    signupCount:''
+    signupCount:'',
+    sharedImgPath:''
   },
 
   /**

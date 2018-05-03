@@ -1,10 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/orderConfirm/orderConfirm",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
     "pages/productDetail/productDetail",
-    "pages/orderConfirm/orderConfirm",
+   
     "pages/couponList/couponList",
     "pages/storeList/storeList",
     "pages/storeDetail/storeDetail",
