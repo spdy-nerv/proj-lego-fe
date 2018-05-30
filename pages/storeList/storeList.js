@@ -118,11 +118,12 @@ Page({
       data: {
           longitude: that.data.centerLongitude,
           latitude:that.data.centerLatitude,
-          pageSize:that.data.pageSize,
+          pageSize:999,
           pageNum:that.data.pageNum,
           usePriority	:true
         },
       realSuccess: function (data) {
+        console.log(data)
         that.setData({
           regularChainList: data.list,
           qrCodeUrl:data.hasMore,
