@@ -108,11 +108,9 @@ Page({
     //     console.log('跳转小程序成功');
     //   }
     // })
-  wx.showModal({
-    title:'提示',
-    content:'敬请期待！',
-    showCancel:false
-  })
+   wx.navigateTo({
+     url: '../racingSeries/racingSeries',
+   })
   },
   onShareAppMessage: function (res) {
     return {

@@ -1,0 +1,44 @@
+
+page,.page{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.swiper{
+  width: 100%;
+  height: 690rpx;
+}
+.top-img{
+height: 584rpx;
+position: relative;
+width: 100%;
+}
+.video{
+  width: 100%;
+  height: 422rpx;
+}
+.button-img{
+  width: 510rpx;
+  height: 113rpx;
+  margin-top:36rpx;
+}
+.group17{
+  width: 100%;
+  height: 18rpx;
+}
+.bottom-box{
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.bottom-bj{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 177rpx;
+  z-index: -22;
+}

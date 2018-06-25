@@ -1,0 +1,62 @@
+<view class='page'>
+  <image src='../../images/car-detail-bg.png' class='bg' />
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='{{indicatorColor}}'>
+    <block wx:for="{{imgUrls}}" wx:key='*this'>
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='goodsName'>
+    <text space='true'>货号：75888</text>
+    <text space='true'>保时捷 911 RSR和911 Turbo 3.0</text>
+  </view>
+  <image src='../../images/buy-button.png' class='buy-button' />
+
+  <scroll-view scroll-x='{{scrollX}}' class='goodsScroll' scroll-into-view='{{scrollToItem}}' scroll-with-animation>
+    <block wx:for='{{goodsList}}' wx:key='index'>
+      <view id="{{'item'+index}}" class="item  {{currentIndex==index?'currentStyle':''}}" catchtap='selectGood' data-index='{{index}}'>
+        <image src='../../images/item.png' class='good-img' />
+      </view>
+    </block>
+  </scroll-view>
+  <image src='../../images/gray.png' class='gray' />
+  <image src='../../images/right-icon.png' catchtap='rightScroll' class='rightIcon' />
+  <image src='../../images/left-icon.png' catchtap='leftScroll' class='leftIcon' />
+  <!--footer  -->
+  <view class='footer'>
+    <view class='footer-left' catchtap='showModel'></view>
+    <view class='footer-right'>未选购产品</view>
+    <!--购物车图标  -->
+    <image src='../../images/shoppingCart.png' catchtap='showModel' class='shoppingCart' />
+  </view>
+</view>
+<!--购物车列表  -->
+<view class='drawer_screen' wx:if='{{showModel}}' data-status='close' catchtap='showModel'></view>
+<view class='cartlist' wx:if='{{showModel}}'>
+  <view class='cartListTitle'>
+    <view class='cartList-title-left'>
+      <image src='../../images/cartListIcon.png' class='cartListIcon' />
+      <text class='mrleft'>已选产品</text>
+    </view>
+    <view class='cartList-title-right'>
+      <image src='../../images/empty.png' class='empty' />
+      <text class='mrleft'>清空</text>
+    </view>
+  </view>
+  <!--goods-item  -->
+  <view class='goods'>
+    <view class='goods-item'>
+      <text class='goods-item-name'>货号75886</text>
+      <text class='goods-item-detail'>法拉利 4886 GT3 Scuderia Corca 车队</text>
+    </view>
+    <!--price  -->
+    <view class='price'>¥499</view>
+    <!--add reduce  -->
+    <view class='amount'>
+      <view class='reduce'>-</view>
+      <text class='num'>12</text>
+      <view class='add'>+</view>
+    </view>
+  </view>
+</view>

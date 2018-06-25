@@ -1,11 +1,13 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/carDetail/carDetail",
+   
+    "pages/racingSeries/racingSeries",
     "pages/orderConfirm/orderConfirm",
     "pages/orderDetail/orderDetail",
     "pages/userCenter/userCenter",
     "pages/productDetail/productDetail",
-   
     "pages/couponList/couponList",
     "pages/storeList/storeList",
     "pages/storeDetail/storeDetail",
@@ -27,6 +29,7 @@
     "pages/signInActivity/signInActivity",
     "pages/receivingAddress/receivingAddress",
     "pages/winningRecord/winningRecord"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,10 @@
+<view class='page'>
+<image src='../../images/store.jpg' mode='scaleToFill' class='top-img'/>
+<video class='video' show-center-play-btn></video>
+<image src='../../images/group17.png' class='group17'/>
+<view class='bottom-box'>
+<image src='../../images/../../images/bg-bottom_r2_c1.png' class='bottom-bj'/>
+<image src='../../images/button.png' class='button-img' bindtap='toCarDetail'></image>
+</view>
+
+</view>
