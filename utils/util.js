@@ -130,11 +130,18 @@ function substitute(
   }); // String
 }
 
+function propEq(prop,value){
+  return (obj)=>{
+  return obj&&obj[prop]===value
+  }
+
+}
 module.exports = {
   substitute: substitute,
   formatTime: formatTime,
   formatDate: formatDate,
   formatClock: formatClock,
   getCalByDate: getCalByDate,
-  inArray: inArray
+  inArray: inArray,
+  propEq: propEq
 }

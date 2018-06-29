@@ -1,0 +1,42 @@
+.unBind{
+  margin-top:80rpx;
+  width: 98%;
+  margin-left: 1%;background-color: #fbca00;
+  color: #fff;
+}
+page{
+  background-color: #fff;
+}
+.verified{
+  color: #000;
+}
+.verified image{
+  width: 34rpx;
+  height: 38rpx;
+}
+
+.center_info{
+    padding-bottom:20rpx;
+    text-align: center;
+    color: #ffffff;
+    line-height: 45rpx;
+}
+.center_info .icon{
+    width: 148rpx;
+    height:148rpx;
+    border-radius: 100%;
+    border:solid 5rpx #ffffff;
+    margin: 30rpx 0 10rpx 0;
+}
+.center_info .verify image{
+    width: 103rpx;
+    height: 40rpx;
+    margin-top: 10rpx;
+}
+.center_info .verified image{
+    width: 34rpx;
+    height: 38rpx;
+    
+    vertical-align: middle;
+    margin-right: 10rpx;
+}

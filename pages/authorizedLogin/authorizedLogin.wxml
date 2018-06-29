@@ -1,0 +1,20 @@
+
+	<view class="center_info">
+		<image src="{{avatarUrl}}" class="icon"></image>
+		<view>{{nick}}</view>
+		<!-- <block wx:if="{{false}}">
+			<view class="verify"> 
+				<image src="../../images/no-verify.png" />
+			</view>
+		</block>
+		<block wx:else> -->
+			<view class="verified"> 
+				<image src="../../images/verified.png" />
+				<text>{{nickName}}</text>
+			</view>
+			 <view> 
+				<!-- <text class="unBind" bindtap="unBind">点击登录</text> -->
+        <!-- wx:if='{{!nickName}}' -->
+        <button disabled='{{disabled}}'  class="unBind" open-type='getUserInfo' bindgetuserinfo='getUser' >{{buttonText}}</button>
+			</view> 
+</view>

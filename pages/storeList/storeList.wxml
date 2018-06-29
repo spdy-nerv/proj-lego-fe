@@ -13,7 +13,7 @@
 	</view> 
 	<view wx:if="{{currentTab==0}}">
 		 
-	  	<scroll-view scroll-y class="scrol" style="height: 339px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
+	  	<scroll-view scroll-y class="scrol" style="height:65vh;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">	  
 			<view class="content store1"  wx:for="{{regularChainList}}" wx:for-index='key'>
 				 <image class="icon" src='../../images/new.png' wx:if='{{item.isNew ==true}}' />
 			   <navigator url='../storeDetail/storeDetail?storeId={{item.storeId}}'>
@@ -37,7 +37,7 @@
 	</view>
 	<view wx:else>	
 		
-	 	 <scroll-view scroll-y style="height: 339px; lower-threshold:10;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> 
+	 	 <scroll-view scroll-y style="height: 65vh; lower-threshold:10;"bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> 
 		<view class="content chainStore1"  wx:for="{{chainStoreList}}" wx:for-index='key'>
 			<navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&type={{currentType}}&name={{item.address}}"> 
 			 <view class="chainStore-bc">

@@ -17,11 +17,28 @@ var formatTime = function (sec, monthDay) {
   }
    
 }
+var totalPrice = function (cartList) {
+  var totalPrice = 0;
+  for (var i = 0; i < cartList.length; i++) {
+    totalPrice = totalPrice + parseFloat(cartList[i].num * cartList[i].seckillPrice)
+  }
+  return totalPrice.toFixed(2);
+}
+ 
+var shoppingCartNum = function (cartList) {
+  var shoppingCartNum = 0;
+  for (var i = 0; i < cartList.length; i++) {
+    shoppingCartNum = shoppingCartNum + cartList[i].num
+  }
+  return shoppingCartNum
+}
  
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }     
  module.exports = {
-   formatDate: formatTime
+   formatDate: formatTime,
+   totalPrice: totalPrice,
+   shoppingCartNum: shoppingCartNum
  }

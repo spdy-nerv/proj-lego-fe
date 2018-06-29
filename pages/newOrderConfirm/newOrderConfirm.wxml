@@ -1,0 +1,94 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="page">
+  <view class="selectedGoods">
+    <view class="selectedTitle">
+      <image src='../../images/selected.png' />
+      <text>已选商品</text>
+    </view>
+    <view class="selectedItem" wx:for='{{goods}}' wx:key='*this'>
+      <image class="GoodsImg" src="{{item.listImgPath}}" mode="aspectFill" />
+      <view class="selectedMid">
+        <view class="selectedText">
+          <text>{{item.productName}}</text>
+          <text class="selectedNum">X {{item.num}}</text>
+        </view>
+        <text class="price">¥{{item.seckillPrice}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='buyingInformation' wx:if='{{buyIntroduction}}'> 
+  <rich-text nodes="{{buyIntroduction}}"></rich-text>
+  </view>
+
+  <view style="background-color:#fff">
+    <view class="express">
+
+      <view class="expressTitle">
+        <image src='../../images/expressIcon.png' />
+        <text>供货方式</text>
+      </view>
+      <view class="address-wrap" bindtap="onOpenAddressBook" hover-class='none'>
+        <view class="expressDetail">
+
+          <view wx:if="{{deliveryInfo.userName}}" class="diw-left">
+            <view class='detailTitle'>快递至这个地址</view>
+            <view class="personlInfo">
+              <text>收货人：{{deliveryInfo.userName}}</text>
+              <text>{{deliveryInfo.telNumber}}</text>
+            </view>
+            <view class="address">
+              <text space='emsp'>收货地址：{{deliveryInfo.address}}</text>
+            </view>
+          </view>
+          <view wx:else class="diw-left">
+            <view class="delivery-empty">请选择收货信息</view>
+          </view>
+          <view class="diw-right">
+            <image src='../../images/arrow.png' />
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+    <view class="expressType">配送方式：默认顺丰，不发EMS</view>
+  </view>
+
+
+  <view class="invoice">
+    <view class="invoiceTitle">
+      <image src='../../images/invoiceIcon.png' />
+      <text>发票抬头</text>
+    </view>
+    <radio-group class="radio-group" bindchange="onRadioChange">
+      <view class="radio" wx:for="{{items}}" wx:key="name">
+        <view>
+          <radio value="{{index}}" checked="{{item.checked}}" color='#3F93E1' />{{item.name}}</view>
+      </view>
+    </radio-group>
+
+    <view wx:if="{{items[0].checked}}" class="fapiao-input-wrap">
+      <input type="text" class="input" placeholder="请填写个人信息" data-name="title" bindinput="onInput" placeholder-class="input-ph"></input>
+    </view>
+    <view wx:elif="{{items[1].checked}}" class="fapiao-input-wrap">
+      <input type="text" class="input" placeholder="请填写公司抬头" data-name="title" bindinput="onInput" placeholder-class="input-ph"></input>
+      <input type="text" class="input" placeholder="请填写纳税人识别号" data-name="code" bindinput="onInput" placeholder-class="input-ph"></input>
+      <input type="text" class="input" placeholder="请填写开户行" data-name="bank" bindinput="onInput" placeholder-class="input-ph"></input>
+      <input type="text" class="input" placeholder="请填写开户行账号" data-name="bankAccount" bindinput="onInput" placeholder-class="input-ph"></input>
+      <input type="text" class="input" placeholder="请填写公司地址" data-name="address" bindinput="onInput" placeholder-class="input-ph"></input>
+      <input type="text" class="input" placeholder="请填写公司电话" data-name="tel" bindinput="onInput" placeholder-class="input-ph"></input>
+    </view>
+    <view class="notice">
+      注：发票随商品邮寄，请注意检查包裹
+    </view>
+
+  </view>
+  <view class="footer">
+
+    <button class="button"  bindtap="onPay" wx:if='{{onlyOne==false?true:false}}'>提交订单并支付</button>
+    <button class="button"  disabled wx:else>正在支付</button>
+
+  </view>
+
+
+</view>

@@ -5,11 +5,11 @@
       <block wx:for="{{pictureUrl}}" wx:key="unique">
         <swiper-item>
           <!-- item.navigateUrl -->
-             <navigator url='{{item.navigateUrl}}' hover-class="none">    
-               <!-- <navigator url='../productDetail/productDetail?seckillSkuId=33'>   -->
+              <navigator url='{{item.navigateUrl}}' hover-class="none">     
+                <!-- <navigator url='../productDetail/productDetail?seckillSkuId=51'>    -->
                  <!-- <navigator url='../signInActivity/signInActivity' hover-class="none">   -->
             <image src="{{item.pictureUrl}}" mode='aspectFill'/>
-          </navigator>
+           </navigator> 
         </swiper-item>
       </block>
     </swiper>

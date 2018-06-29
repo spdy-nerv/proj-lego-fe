@@ -1,7 +1,8 @@
 // pages/orderDetail/orderDetail.js
-var { APIS } = require('../../const.js');
-var { request } = require('../../libs/request');
-var user = require('../../libs/user');
+const { APIS } = require('../../const');
+const { request } = require('../../libs/request');
+const util = require('../../utils/util');
+const user = require('../../libs/user');
 Page({
 
   /**
@@ -46,18 +47,22 @@ Page({
   
   },
   onLoad: function (options) {
+    console.log(JSON.parse(options.selectGoods))
+    user.login();
     this.setData({
-      productId: options.productId
+      goods: JSON.parse(options.selectGoods)
     });
-    this._getSelectedProduct();
-    this.getOrderToken();
+    this.buyIntroduction();
+    // this._getSelectedProduct();
+   // this.getOrderToken();
     this.isPaying = false;
   },
-  onShow: function () {
+  onShow:function(){
     this.isPaying = false;
-    this.setData({ onlyOne: false })
+    this.setData({ onlyOne:false})
 
   },
+
   _getSelectedProduct: function() {
     wx.showLoading({title:'数据加载中'});
     var that = this;
@@ -182,7 +187,7 @@ Page({
     var payData = that._buildPayData();
     that.setData({onlyOne:true})
     request({
-      url: APIS.ADD_ORDER,
+      url: APIS.UNIFIED_ADDORDER,
       method: 'POST',
       data: payData,
       header: {
@@ -200,16 +205,25 @@ Page({
           'signType': res.sign_type,
           'paySign': res.pay_sign,
           'success':function(res){
-              console.log(res);
+              console.log(res)
               wx.redirectTo({
-                url:'../orderDetail/orderDetail?orderId='+that.data.orderId
+                url: '../orderDetail/orderDetail?orderId=' + that.data.orderId
               })
           },
           'fail':function(res){
             wx.redirectTo({
-              url:'../orderDetail/orderDetail?orderId='+that.data.orderId
+              url: '../orderDetail/orderDetail?orderId=' + that.data.orderId
             })
+
           },complete:function(){
+            let pages = getCurrentPages();
+            let currPage = pages[pages.length - 1];
+            let prevPage = pages[pages.length - 2];
+            prevPage.setData({
+              showModel: false
+            });
+            prevPage.clearCartList();
+           
           }
        })
       },
@@ -247,6 +261,13 @@ Page({
     var d = this.data;
     var isNeedInvoice = false;
     var invoiceType = 'PERSONAL';
+    var goods = this.data.goods;
+    goods.map((e, i) => {
+      e.productCount = e.num;
+      e.secKillSkuId = e.id;
+      return e;
+    })
+    console.log(goods)
     d.items.forEach(function(item, i) {
       if (item.checked) {
         isNeedInvoice = true;
@@ -270,18 +291,13 @@ Page({
       "invoiceTitle": d.fapiaoInfo.title,
       "invoiceType": invoiceType,
       "isNeedInvoice": isNeedInvoice,
-      "orderItems": [
-        {
-          "productCount": 1,
-          "secKillSkuId": d.productId
-        }
-      ],
+      "orderItems": goods,
       "payType": "WXPAY",
       "phone": d.deliveryInfo.telNumber,
       "province": d.deliveryInfo.province,
       "realname": d.deliveryInfo.userName,
       "remark": '',
-      "token":this.data.token
+      "token":'fafaf'
     }
 		console.log(data);
     return data;
@@ -314,5 +330,21 @@ getOrderToken:function(){
   },
   onPullDownRefresh: function () {
   
+  },
+  buyIntroduction: function () {
+    var that = this;
+    request({
+      url: APIS.GET_OPTION + 'BUY_INFORMATION',
+      method: 'GET',
+      realSuccess: function (res) {
+        console.log(res.optionValue);
+        that.setData({
+          buyIntroduction: res.optionValue
+        })
+
+      },
+      realFail: function () {
+      }
+    }, false, this);
   },
 })

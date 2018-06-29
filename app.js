@@ -41,8 +41,10 @@ App({
   },
   globalData: {
     userInfo: null,
-    navigateUrl:'',
-    pictureUrl:''
+    navigateUrl: '',
+    pictureUrl: '',
+    isLoginIng: null,
+    extraData: null
 
   },
   WeToast

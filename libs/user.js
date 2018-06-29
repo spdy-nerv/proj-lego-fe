@@ -87,6 +87,7 @@ function doAppLogin(data, cb, ctx) {
             var token = d.data.token;
             wx.setStorageSync('token', token);
             typeof cb == "function" && cb.call(ctx);
+           // addUserChannelLog();
         }else if(d.code=='WECHAT_USER_STATUS_ERR'){
           wx.showToast({title:'用户登陆异常！',icon:'loading', duration: 2000})
           return;
@@ -105,6 +106,24 @@ function doAppLogin(data, cb, ctx) {
       }
     })
 }
+ //记录渠道商
+function addUserChannelLog(){
+  wx.request({
+    url: APIS.ADD_USER_CHANNEL_LOG,
+    method:'PUT',
+    header: {
+      auth: wx.getStorageSync('token')
+    },success(res){
+      console.log('记录渠道商成功')
+
+    },
+    fail(res){
+      console.log('记录渠道商失败')
+    }
+
+  })
+
+} 
 
 module.exports = {
     login: login

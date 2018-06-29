@@ -208,3 +208,9 @@ text-align: center;
 	text-align: center;
 	font-size: 33rpx;
   }
+  .productName{
+    width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

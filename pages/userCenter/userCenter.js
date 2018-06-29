@@ -30,17 +30,25 @@ Page({
   },
   onLoad: function (options) {
     const that = this;
-      wx.getUserInfo({
-        success: function(res){
-          that.setData({
-            nickName: res.userInfo.nickName,
-            avatarUrl: res.userInfo.avatarUrl
-          });
-        }
-      })
+    wx.getUserInfo({
+      success: function (res) {
+        that.setData({
+          nickName: res.userInfo.nickName,
+          avatarUrl: res.userInfo.avatarUrl
+        });
+      }
+    })
       
       
   that.getMyCouponList();
+  },
+  onShow:function(){
+    let userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo)
+    this.setData({
+      nickName: userInfo.nickName,
+      avatarUrl: userInfo.avatarUrl
+    })
   },
   getOrderList: function(){
     var that = this;

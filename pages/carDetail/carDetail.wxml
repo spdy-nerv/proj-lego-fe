@@ -1,22 +1,33 @@
+<wxs src="../../libs/util.wxs" module="totalPrice" />
 <view class='page'>
-  <image src='../../images/car-detail-bg.png' class='bg' />
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='{{indicatorColor}}'>
-    <block wx:for="{{imgUrls}}" wx:key='*this'>
-      <swiper-item>
-        <image src="{{item}}" class="slide-image" width="355" height="150" />
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class='goodsName'>
-    <text space='true'>货号：75888</text>
-    <text space='true'>保时捷 911 RSR和911 Turbo 3.0</text>
-  </view>
-  <image src='../../images/buy-button.png' class='buy-button' />
+  <image src='https://legostatic.teown.com/product-c12f5564-788e-4ad5-85ec-c10c0166afc3.png' mode='scaleToFill' class='bg' />
+  <block wx:for='{{goodsList}}' wx:key='*this'>
+    <swiper wx:if="{{index==currentIndex}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
+    circular='{{circular}}'
+    interval="{{interval}}" duration="{{duration}}" indicator-color='{{indicatorColor}}'>
+      <block wx:for="{{item.pictureUrls}}" wx:for-item="imgItem" wx:key='*this'>
+        <swiper-item>
+          <image src="{{imgItem}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view >
+    <view class='goodsName' style="bottom:{{goodsNameBottom}}" wx:if='{{index==currentIndex}}'>
+      <text space='true'>货号：{{item.productNo}}</text>
+      <text space='true' class='productName'>{{item.productName}}</text>
+    </view>
+    <!--加入购物车  -->
+    <image src='../../images/buy-button.png' style="bottom:{{buyButtonBottom}}" data-id='{{item.id}}'data-index='{{index}}' data-goods='{{item}}' wx:if='{{index==currentIndex}}' class='buy-button' catchtap='addCartlist' />
+    </view>
+  </block>
+
 
   <scroll-view scroll-x='{{scrollX}}' class='goodsScroll' scroll-into-view='{{scrollToItem}}' scroll-with-animation>
     <block wx:for='{{goodsList}}' wx:key='index'>
-      <view id="{{'item'+index}}" class="item  {{currentIndex==index?'currentStyle':''}}" catchtap='selectGood' data-index='{{index}}'>
-        <image src='../../images/item.png' class='good-img' />
+      <view id="{{'item'+index}}" class="item" catchtap='selectGood' data-index='{{index}}'>
+        <!-- <image src='{{item.listImgPath}}' class='good-img' />
+        <image src='{{item.listImgOkPath}}' class='good-img' /> -->
+        <image src="{{currentIndex==index?item.listImgOkPath:item.listImgPath}}" class='good-img' />
       </view>
     </block>
   </scroll-view>
@@ -25,10 +36,15 @@
   <image src='../../images/left-icon.png' catchtap='leftScroll' class='leftIcon' />
   <!--footer  -->
   <view class='footer'>
-    <view class='footer-left' catchtap='showModel'></view>
-    <view class='footer-right'>未选购产品</view>
+    <view class='footer-left' catchtap='showModel'>¥{{totalPrice.totalPrice(ShoppingCartList)}}元</view>
+    <view class='footer-right' wx:if='{{ShoppingCartList==0}}'>未选购产品</view>
+    <view class='footer-right selectEd' wx:else catchtap='toOrder'>
+    选好了</view>
     <!--购物车图标  -->
-    <image src='../../images/shoppingCart.png' catchtap='showModel' class='shoppingCart' />
+    <image src='../../images/shoppingCart.png' wx:if='{{ShoppingCartList==0}}' catchtap='showModel' class='shoppingCart' />
+    <image src='../../images/shoppingCarted.png' wx:else catchtap='showModel' class='shoppingCart' />
+    <!--商品数量  -->
+    <view class='cartGoodsNum' wx:if='{{ShoppingCartList.length>0}}'>{{totalPrice.shoppingCartNum(ShoppingCartList)}}</view>
   </view>
 </view>
 <!--购物车列表  -->
@@ -39,24 +55,29 @@
       <image src='../../images/cartListIcon.png' class='cartListIcon' />
       <text class='mrleft'>已选产品</text>
     </view>
-    <view class='cartList-title-right'>
+    <view class='cartList-title-right' catchtap='clearCartList'>
       <image src='../../images/empty.png' class='empty' />
       <text class='mrleft'>清空</text>
     </view>
   </view>
   <!--goods-item  -->
-  <view class='goods'>
-    <view class='goods-item'>
-      <text class='goods-item-name'>货号75886</text>
-      <text class='goods-item-detail'>法拉利 4886 GT3 Scuderia Corca 车队</text>
+  <block wx:for='{{ShoppingCartList}}' wx:key='*this'>
+    <view class='goods'>
+      <!--商品图  -->
+      <image class='goodsImg' src='{{item.listImgPath}}'/>
+      <view class='goods-item'>
+        <text class='goods-item-name'>货号{{item.productNo}}</text>
+        <text class='goods-item-detail'>{{item.productName}}</text>
+      </view>
+      <!--price  -->
+      <view class='price'>¥{{item.seckillPrice}}</view>
+      <!--add reduce  -->
+      <view class='amount'>
+        <view class='reduce' catchtap='reduceNum' data-index='{{index}}'>-</view>
+        <text class='num'>{{item.num}}</text>
+        <view class='add' catchtap='addNum' data-index='{{index}}'>+</view>
+      </view>
     </view>
-    <!--price  -->
-    <view class='price'>¥499</view>
-    <!--add reduce  -->
-    <view class='amount'>
-      <view class='reduce'>-</view>
-      <text class='num'>12</text>
-      <view class='add'>+</view>
-    </view>
-  </view>
+  </block>
+  <view class='nullCartList' wx:if='{{ShoppingCartList.length==0}}'>暂未选购商品</view>
 </view>

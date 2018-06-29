@@ -4,12 +4,12 @@
         <image src='../../images/status.png'/>
        </view> -->
     
-    <view class="orderItems">
-        <view><image src='{{orderItems[0].pictureUrl}}'wx:if='{{orderItems[0].pictureUrl}}'/></view>
+    <view class="orderItems" wx:for='{{orderItems}}' wx:key='*this'>
+        <view><image src='{{item.pictureUrl}}'wx:if='{{item.pictureUrl}}'/></view>
         <view class="orderItemsRight">
-            <view class="orderItemsName">{{orderItems[0].skuName}}</view>
-            <view class="orderItemsNum">数量：{{orderItems[0].skuCount}}</view>
-            <view class="orderItemsPrice" style="color:red">￥{{orderItems[0].realPayAmount}}</view>
+            <view class="orderItemsName">{{item.skuName}}</view>
+            <view class="orderItemsNum">数量：{{item.skuCount}}</view>
+            <view class="orderItemsPrice" style="color:red">￥{{item.realPayAmount}}</view>
         </view>
 
     </view>

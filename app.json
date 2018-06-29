@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/carDetail/carDetail",
    
+    "pages/newOrderConfirm/newOrderConfirm",
     "pages/racingSeries/racingSeries",
     "pages/orderConfirm/orderConfirm",
     "pages/orderDetail/orderDetail",
@@ -28,7 +29,8 @@
     "pages/signInDetail/signInDetail",
     "pages/signInActivity/signInActivity",
     "pages/receivingAddress/receivingAddress",
-    "pages/winningRecord/winningRecord"
+    "pages/winningRecord/winningRecord",
+    "pages/authorizedLogin/authorizedLogin"
    
   ],
   "window": {

@@ -1,10 +1,10 @@
 <view class='page'>
-<image src='../../images/store.jpg' mode='scaleToFill' class='top-img'/>
-<video class='video' show-center-play-btn></video>
-<image src='../../images/group17.png' class='group17'/>
+ <image src='{{nextGiftImg||giftImg}}' mode='scaleToFill' class='top-img'/>
+<video id='myVideo' class='video' src='{{videoUrl}}' show-center-play-btn poster='{{additiveUrl}}'></video>
+<image src='../../images/group17.png' class='group17'/> 
 <view class='bottom-box'>
-<image src='../../images/../../images/bg-bottom_r2_c1.png' class='bottom-bj'/>
 <image src='../../images/button.png' class='button-img' bindtap='toCarDetail'></image>
 </view>
-
+<image src='https://legostatic.teown.com/store-4bcd265a-83a5-4775-a6fe-2fd8620605f3.jpg' class='bg-img'
+mode='scaleToFill' ></image>
 </view>

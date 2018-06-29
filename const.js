@@ -69,6 +69,10 @@ var APIS = {
   SIGN_IN:'/signIn/signIn/signIn',//签到
   AGREE_CLAUSE:'/signIn/signIn/agreeSignInClause',//同意签到条款
   GET_DELIVERY_INFO:'/signIn/signIn/getDeliveryInfo',//获取收货地址
+  GET_GENERAL_SKU_LIST:'/product/seckill/getGeneralSkuList',//获取所有普通商品
+  UNIFIED_ADDORDER:'/order/unifiedAddOrder',//新商户新增订单
+  UNIFIED_PAY_ORDER:'/order/unifiedPayOrder',//新商户支付订单
+  ADD_USER_CHANNEL_LOG:'/common/consume/addUserChannelLog',//新增渠道商记录
 
 
 }
