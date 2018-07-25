@@ -14,8 +14,8 @@ var app = getApp();
  */
 function request(obj, needLogin = true, ctx) {
   const header = {
-    "x-client-tag": "v1.2",
-    "x-canary": "FORCE"
+    "x-client-tag": "v1.3",
+    "x-canary": "SMOOTHNESS"
   }
   obj.header = Object.assign(header, obj.header || {})
 

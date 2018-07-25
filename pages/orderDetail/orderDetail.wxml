@@ -44,5 +44,13 @@
     <view class="service">
             <input value="售后服务" class="input" type="button" bindtap='customerService'/>
     </view>
-  
+    <!-- 弹窗 -->
+      <view class='drawer_screen' wx:if='{{showModal}}' data-status='close' catchtap='showModel'>
+      </view>
+      <view class='showmodalImg' wx:if='{{showModal}}'>
+       <image src='{{showModalImg}}' mode='aspectFit' class='shareimg'/>
+       <button class='share'  open-type='share'></button>
+       <view class='close' bindtap='closeShowMoadel'></view>
+      </view>
+      
 </view>

@@ -35,12 +35,12 @@ swiper image{
   left: 0rpx;
 }
 .buy-button{
-  width: 281rpx;
-  height: 63rpx;
+  width: 361rpx;
+  height: 100rpx;
   margin-top:24rpx;
   position: absolute;
-  bottom: 290rpx;
-  left: 234rpx;
+  bottom: 270rpx;
+  left: 195rpx;
 }
 /* .buy-button:active{
   border: 1px solid red;
@@ -98,7 +98,7 @@ swiper image{
 .footer .footer-left{
   width: 512rpx;
   height: 90rpx;
-  background-color: #201d1a;
+  background-color: #0163ac;
   color: #fff;
   text-align: center;
   line-height: 90rpx;

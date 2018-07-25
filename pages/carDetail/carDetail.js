@@ -29,6 +29,7 @@ Page({
       channel:options.channel
     })
     this.getGoodsList();
+    this.getIndexResource();
     // 获取系统信息
     var that = this;
     wx.getSystemInfo({
@@ -41,7 +42,7 @@ Page({
         if (res.windowHeight>700){
           that.setData({
             goodsNameBottom:'466rpx',
-            buyButtonBottom:'370rpx'
+            buyButtonBottom:'350rpx'
           })
         }
        
@@ -232,5 +233,26 @@ Page({
         console.log(res);
       }
     }, true, this)
+  },
+  getIndexResource: function () {
+    wx.request({
+      url: APIS.GET_INDEX_RESOURCE,
+      method: 'GET',
+      success: res => {
+        console.log(res.data.data);
+        const datas = res.data.data;
+        this.setData({
+          giftSpuAddButton: datas.giftSpuAddButton.pictureUrl,
+          giftSpuImage: datas.giftSpuImage.pictureUrl
+
+
+        })
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: res
+        });
+      }
+    })
   }
 })

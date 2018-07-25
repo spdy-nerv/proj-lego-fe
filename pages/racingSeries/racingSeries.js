@@ -3,7 +3,9 @@ var { request } = require('../../libs/request');
 var user = require('../../libs/user');
 Page({
   data: {
-  
+    giftButton:'',
+    giftImg: '',
+    giftSharedImage: '',
   },
   onLoad: function (options) {
     console.log(options.nextGiftImg)
@@ -50,7 +52,13 @@ Page({
         this.setData({
           giftImg: datas.giftImg.pictureUrl,
           videoUrl: datas.giftVedio.pictureUrl,
-          additiveUrl: datas.giftVedio.additiveUrl
+          additiveUrl: datas.giftVedio.additiveUrl,
+          giftButton: datas.giftButton.pictureUrl,
+          giftImg: datas.giftImg.pictureUrl,
+          giftSharedImage: datas.giftSharedImage.pictureUrl,
+          giftVedio: datas.giftVedio.pictureUrl
+
+
         })
       },
       fail: (res) => {
@@ -59,5 +67,5 @@ Page({
         });
       }
     })
-  },
+  }
 })

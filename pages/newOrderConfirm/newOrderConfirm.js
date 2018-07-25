@@ -87,7 +87,8 @@ Page({
       loginCallback: this._getSelectedProduct,
       realFail: function (msg) {
         wx.showToast({
-          title: msg
+          title: msg,
+          icon:'none'
         });
       }
     }, true, this);
@@ -242,8 +243,9 @@ Page({
             }
           });
         }else{
-          wx.showLoading({
-            title:msg
+          wx.showToast({
+            title:msg,
+            icon: 'none'
           })
           setTimeout(function(){
             wx.navigateBack({
@@ -320,7 +322,8 @@ getOrderToken:function(){
     loginCallback: this.getOrderToken,
     realFail: function (msg, code) {
       wx.showToast({
-        title: msg
+        title: msg,
+        icon: 'none'
       });
     }
   }, true, this);

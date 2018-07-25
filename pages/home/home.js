@@ -26,6 +26,7 @@ Page({
        channel:options.channel
     })
     this.getCacheData();
+    this.getOption();
   },
   onShow:function(){
     if (this.data.channel){
@@ -121,9 +122,19 @@ Page({
     //   }
     // })
     let nextGiftImg = this.data.nextGiftImg;
-   wx.navigateTo({
-     url: `../racingSeries/racingSeries?nextGiftImg=${nextGiftImg}`,
-   })
+    if (this.data.optionValue=='true'){
+      wx.navigateTo({
+        url: `../racingSeries/racingSeries?nextGiftImg=${nextGiftImg}`,
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '敬请期待！',
+        showCancel: false
+      })
+    }
+   
+   
   },
   onShareAppMessage: function (res) {
     return {
@@ -158,5 +169,25 @@ Page({
         console.log(res);
       }
     }, true, this)
+  },
+  getOption(){
+   return new Promise((resolve,reject)=>{
+     request({
+       url: APIS.GET_OPTION +`INDEX_GIFT_SWITCH`,
+       method: 'GET',
+       realSuccess: (res) => {
+         console.log(res);
+         resolve(this.setData({
+           optionValue: res.optionValue
+         }))
+        
+       },
+       loginCallback: this.addUserChannelLog,
+       realFail: (res) => {
+         console.log(res);
+         reject(res)
+       }
+     }, true, this)
+   })
   }
 })

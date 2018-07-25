@@ -73,6 +73,8 @@ var APIS = {
   UNIFIED_ADDORDER:'/order/unifiedAddOrder',//新商户新增订单
   UNIFIED_PAY_ORDER:'/order/unifiedPayOrder',//新商户支付订单
   ADD_USER_CHANNEL_LOG:'/common/consume/addUserChannelLog',//新增渠道商记录
+  GET_MODEL_BACK_GROUND:'/common/home/getModelBackground',//根据类型获取配置图片，数据库多张则取第一张
+  GET_OPTION:'/common/option/getOption/'//根据参数名获取参数值
 
 
 }

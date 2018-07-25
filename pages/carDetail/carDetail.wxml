@@ -1,6 +1,6 @@
 <wxs src="../../libs/util.wxs" module="totalPrice" />
 <view class='page'>
-  <image src='https://legostatic.teown.com/product-c12f5564-788e-4ad5-85ec-c10c0166afc3.png' mode='scaleToFill' class='bg' />
+  <image src='{{giftSpuImage}}' mode='scaleToFill' class='bg' />
   <block wx:for='{{goodsList}}' wx:key='*this'>
     <swiper wx:if="{{index==currentIndex}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
     circular='{{circular}}'
@@ -17,7 +17,7 @@
       <text space='true' class='productName'>{{item.productName}}</text>
     </view>
     <!--加入购物车  -->
-    <image src='../../images/buy-button.png' style="bottom:{{buyButtonBottom}}" data-id='{{item.id}}'data-index='{{index}}' data-goods='{{item}}' wx:if='{{index==currentIndex}}' class='buy-button' catchtap='addCartlist' />
+    <image src='{{giftSpuAddButton}}' style="bottom:{{buyButtonBottom}}" data-id='{{item.id}}'data-index='{{index}}' data-goods='{{item}}' wx:if='{{index==currentIndex}}' class='buy-button' catchtap='addCartlist' />
     </view>
   </block>
 
@@ -31,7 +31,6 @@
       </view>
     </block>
   </scroll-view>
-  <image src='../../images/gray.png' class='gray' />
   <image src='../../images/right-icon.png' catchtap='rightScroll' class='rightIcon' />
   <image src='../../images/left-icon.png' catchtap='leftScroll' class='leftIcon' />
   <!--footer  -->

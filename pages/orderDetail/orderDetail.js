@@ -23,7 +23,9 @@ Page({
         createTime:'',
         onlyOne:'false',
         orderStatusName:'立即支付',
-        isDisabled:''
+        isDisabled:'',
+        showModal:false,
+        shareImgUrl:''
         
     },
     onLoad:function(options){
@@ -35,7 +37,15 @@ Page({
        this.isPaying = false;
        this.isCanceling = false;
        this.getOrderDetail();
-       this.getOrderStatus();
+      Promise.all([this.getOrderStatus(), this.getOption()]).then((res)=>{
+          console.log('res',res)
+        if (res[0] == "PAYED" && res[1].pictureUrl){
+          this.setData({
+            showModal:true
+          })
+        }
+      })
+        
     },
     customerService: function () {
        wx.navigateTo({
@@ -164,26 +174,72 @@ Page({
 
     },
     getOrderStatus:function(){
+      return new Promise((resolve,reject)=>{
         request({
-            url: APIS.GET_ORDER_STATUS+'?orderId='+this.data.orderId,
-            method:'GET',
-            header: {
-              auth: wx.getStorageSync('token')
-            },
-            realSuccess: (res) => {
-              console.log(res);
-              this.setData({
-                orderStatus:res.orderStatus,
-                orderStatusLabel:res.orderStatusLabel
-              })
-            },loginCallback:this.getOrderStatus,
-            realFail:(res)=>{
-                wx.showToast({
-                  title: res
-              });
-              }
-          }, true, this)
+          url: APIS.GET_ORDER_STATUS + '?orderId=' + this.data.orderId,
+          method: 'GET',
+          header: {
+            auth: wx.getStorageSync('token')
+          },
+          realSuccess: (res) => {
+            console.log(res);
+          
+           this.setData({
+              orderStatus: res.orderStatus,
+              orderStatusLabel: res.orderStatusLabel
+            })
+            resolve(res.orderStatus)
+           
+          }, loginCallback: this.getOrderStatus,
+          realFail: (res) => {
+            reject(res)
+            wx.showToast({
+              title: res,
+              icon:'none'
+            });
+          }
+        }, true, this)
+      })
+       
+    },
+  getOption() {
+    return new Promise((resolve, reject) => {
+      request({
+        url: APIS.GET_MODEL_BACK_GROUND + `?positionType=ORDER_POPUP`,
+        method: 'GET',
+        realSuccess: (res) => {
+          console.log(res);
+          this.setData({
+            showModalImg: res.pictureUrl,
+            shareImgUrl: res.shareImgUrl
+          })
+          resolve(res)
+
+        },
+        loginCallback: this.getOption,
+        realFail: (res) => {
+          console.log(res);
+          reject(res)
+        }
+      }, true, this)
+    })
+  },
+  closeShowMoadel(){
+    this.setData({
+      showModal:false
+    })
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
     }
+    return {
+      title: '乐高得宝智能火车来了，快给你家宝贝带上。',
+      path: '/pages/racingSeries/racingSeries',
+      imageUrl: this.data.shareImgUrl
+    }
+  }
     
     
 });
